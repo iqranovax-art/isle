@@ -1,0 +1,48 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import { siteConfig } from '../../data/site';
+import { maraudersImages } from '../../data/marauders';
+
+const title = 'Refund Policy – Marauders Cheats';
+const description =
+	'Read the Marauders Cheats refund policy, including eligibility conditions and how to request a review.';
+---
+
+<PageLayout
+	title={title}
+	description={description}
+	canonicalPath="/refund-policy/"
+	heading="Refund Policy"
+	intro="When Marauders Cheats purchases may be reviewed for a refund, and how to request a review."
+	eyebrow="Legal"
+	heroImage={maraudersImages.product[5].src}
+	heroAlt="Marauders Cheats refund policy visual"
+	gallery={[maraudersImages.cover, maraudersImages.product[5], maraudersImages.product[3]]}
+	ctaPrimary={{ href: `mailto:${siteConfig.supportEmail}`, label: 'Request Review' }}
+	ctaSecondary={{ href: '/support/', label: 'Support Page' }}
+>
+	<section class="card-panel">
+		<h2>Eligibility overview</h2>
+		<p>
+			Digital products are reviewed case by case. A refund request is more likely to be considered when the
+			order was not successfully delivered or when a verified billing error occurred.
+		</p>
+	</section>
+
+	<section class="card-panel">
+		<h2>Requests that may be declined</h2>
+		<ul>
+			<li>Change-of-mind requests after a license has been delivered and used</li>
+			<li>Requests that do not include valid order information</li>
+			<li>Issues caused by unsupported systems or incomplete setup steps</li>
+		</ul>
+	</section>
+
+	<section class="card-panel">
+		<h2>How to request a review</h2>
+		<p>
+			Email <a href={`mailto:${siteConfig.supportEmail}`}>{siteConfig.supportEmail}</a> with your order
+			reference and a short explanation. Support will confirm whether a refund or replacement path applies.
+		</p>
+	</section>
+</PageLayout>

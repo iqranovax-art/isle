@@ -1,0 +1,48 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import { siteConfig } from '../../data/site';
+import { maraudersImages } from '../../data/marauders';
+
+const title = 'Privacy Policy – Marauders Cheats';
+const description =
+	'Learn how Marauders Cheats handles personal information collected through the website and support requests.';
+---
+
+<PageLayout
+	title={title}
+	description={description}
+	canonicalPath="/privacy-policy/"
+	heading="Privacy Policy"
+	intro="How information is handled when you browse marauderscheats.com or contact support."
+	eyebrow="Legal"
+	heroImage={maraudersImages.product[0].src}
+	heroAlt="Marauders Cheats privacy policy visual"
+	gallery={[maraudersImages.product[0], maraudersImages.product[2], maraudersImages.hero]}
+	ctaPrimary={{ href: `mailto:${siteConfig.supportEmail}`, label: 'Email Us' }}
+	ctaSecondary={{ href: '/terms/', label: 'Terms of Use' }}
+>
+	<section class="card-panel">
+		<h2>Information we may collect</h2>
+		<ul>
+			<li>Contact details you send by email</li>
+			<li>Order references needed to resolve support requests</li>
+			<li>Basic technical data used to operate and secure the website</li>
+		</ul>
+	</section>
+
+	<section class="card-panel">
+		<h2>How information is used</h2>
+		<p>
+			Information is used to respond to support requests, process order issues, improve site reliability, and
+			meet legal obligations when required.
+		</p>
+	</section>
+
+	<section class="card-panel">
+		<h2>Contact</h2>
+		<p>
+			Privacy questions can be sent to
+			<a href={`mailto:${siteConfig.supportEmail}`}>{siteConfig.supportEmail}</a>.
+		</p>
+	</section>
+</PageLayout>

@@ -1,0 +1,269 @@
+---
+import { maraudersImages } from '../data/marauders';
+
+interface Props {
+	title?: string;
+	accent?: string;
+	subtitle?: string;
+}
+
+const {
+	title = 'Marauders Cheats for',
+	accent = 'ESP & Aimbot',
+	subtitle = 'Review Marauders Cheats features, package options, and support resources. Explore ESP and Aimbot tools built for clearer combat decisions.',
+} = Astro.props;
+---
+
+<section class="hero" aria-label="Hero">
+	<div class="hero__media" aria-hidden="true">
+		<img
+			src={maraudersImages.hero}
+			alt=""
+			class="hero__bg"
+			width="1400"
+			height="788"
+			fetchpriority="high"
+			decoding="async"
+		/>
+		<div class="hero__splash"></div>
+		<div class="hero__veil"></div>
+	</div>
+
+	<div class="hero__inner">
+		<div class="hero__copy">
+			<p class="hero__eyebrow">Marauders Cheats</p>
+			<h1 class="hero__title">
+				<span class="hero__line">{title}</span>
+				<span class="text-gradient hero__accent">{accent}</span>
+			</h1>
+			<p class="hero__subtitle">{subtitle}</p>
+			<div class="hero__cta">
+				<a href="/pricing/" class="hero__btn hero__btn--primary bg-brand">View Pricing</a>
+				<a href="/features/" class="hero__btn hero__btn--ghost">See Features</a>
+			</div>
+		</div>
+	</div>
+</section>
+
+<style>
+	.hero {
+		position: relative;
+		overflow: hidden;
+		isolation: isolate;
+		min-height: clamp(380px, 52vw, 520px);
+	}
+
+	.hero__media {
+		position: absolute;
+		inset: 0;
+		z-index: 0;
+	}
+
+	.hero__bg {
+		position: absolute;
+		inset: 0;
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		object-position: 70% 40%;
+		transform: translateZ(0) scale(1.03);
+		will-change: transform;
+		backface-visibility: hidden;
+		animation: kenburns 18s ease-in-out infinite alternate;
+	}
+
+	.hero__splash {
+		position: absolute;
+		inset: 0;
+		background:
+			radial-gradient(ellipse 55% 80% at 78% 45%, rgba(168, 85, 247, 0.55), transparent 70%),
+			radial-gradient(ellipse 40% 60% at 92% 70%, rgba(217, 70, 239, 0.35), transparent 65%),
+			radial-gradient(ellipse 35% 50% at 60% 20%, rgba(124, 58, 237, 0.4), transparent 70%);
+		mix-blend-mode: color;
+		pointer-events: none;
+		animation: pulse-glow 7s ease-in-out infinite;
+	}
+
+	.hero__veil {
+		position: absolute;
+		inset: 0;
+		background:
+			linear-gradient(90deg, #0a0612 0%, rgba(10, 6, 18, 0.92) 34%, rgba(10, 6, 18, 0.35) 62%, rgba(10, 6, 18, 0.55) 100%),
+			linear-gradient(180deg, rgba(10, 6, 18, 0.35) 0%, transparent 40%, rgba(10, 6, 18, 0.75) 100%);
+		pointer-events: none;
+	}
+
+	.hero__inner {
+		position: relative;
+		z-index: 1;
+		display: flex;
+		align-items: center;
+		width: min(100% - (var(--page-gutter) * 2), var(--page-max));
+		margin: 0 auto;
+		padding: 4.25rem 0 3.5rem;
+		min-height: inherit;
+	}
+
+	.hero__copy {
+		max-width: min(42rem, 100%);
+		animation: rise-in 0.8s cubic-bezier(0.22, 1, 0.36, 1) both;
+	}
+
+	.hero__eyebrow {
+		margin: 0 0 0.85rem;
+		font-size: 0.78rem;
+		font-weight: 700;
+		letter-spacing: 0.14em;
+		text-transform: uppercase;
+		color: var(--color-orchid);
+	}
+
+	.hero__title {
+		margin: 0;
+		font-family: var(--font-display);
+		font-size: clamp(1.85rem, 4.6vw, 3.75rem);
+		font-weight: 800;
+		line-height: 1.08;
+		letter-spacing: -0.03em;
+		display: flex;
+		flex-direction: column;
+		gap: 0.08em;
+		text-shadow: 0 8px 32px rgba(10, 6, 18, 0.65);
+	}
+
+	.hero__line,
+	.hero__accent {
+		display: block;
+		white-space: nowrap;
+	}
+
+	.hero__accent {
+		background-size: 200% 100%;
+		animation: shimmer 4s ease-in-out infinite;
+		width: fit-content;
+	}
+
+	.hero__subtitle {
+		margin: 1.2rem 0 0;
+		max-width: 28rem;
+		font-size: clamp(0.95rem, 1.5vw, 1.05rem);
+		line-height: 1.65;
+		color: #c8bdd8;
+		animation: rise-in 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.1s both;
+	}
+
+	.hero__cta {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.75rem;
+		margin-top: 1.6rem;
+		animation: rise-in 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.18s both;
+	}
+
+	.hero__btn {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		padding: 0.85rem 1.25rem;
+		border-radius: 0.8rem;
+		font-size: 0.95rem;
+		font-weight: 700;
+		transition:
+			transform 0.2s ease,
+			filter 0.2s ease,
+			background 0.2s ease,
+			border-color 0.2s ease;
+	}
+
+	.hero__btn--primary {
+		color: white;
+		box-shadow: 0 8px 18px rgba(0, 0, 0, 0.3);
+	}
+
+	.hero__btn--primary:hover {
+		transform: translateY(-1px);
+		filter: brightness(1.05);
+	}
+
+	.hero__btn--ghost {
+		border: 1px solid rgba(192, 132, 252, 0.35);
+		background: rgba(18, 16, 26, 0.55);
+		color: var(--color-ink);
+		backdrop-filter: blur(8px);
+	}
+
+	.hero__btn--ghost:hover {
+		border-color: rgba(192, 132, 252, 0.6);
+		background: rgba(48, 36, 72, 0.65);
+	}
+
+	@keyframes rise-in {
+		from {
+			opacity: 0;
+			transform: translateY(18px);
+		}
+		to {
+			opacity: 1;
+			transform: translateY(0);
+		}
+	}
+
+	@keyframes kenburns {
+		from {
+			transform: translateZ(0) scale(1.04) translate3d(0, 0, 0);
+		}
+		to {
+			transform: translateZ(0) scale(1.1) translate3d(-1.5%, 1%, 0);
+		}
+	}
+
+	@keyframes pulse-glow {
+		0%,
+		100% {
+			opacity: 0.85;
+		}
+		50% {
+			opacity: 1;
+		}
+	}
+
+	@keyframes shimmer {
+		0%,
+		100% {
+			background-position: 0% 50%;
+		}
+		50% {
+			background-position: 100% 50%;
+		}
+	}
+
+	@media (max-width: 760px) {
+		.hero {
+			min-height: 460px;
+		}
+
+		.hero__bg {
+			object-position: center 30%;
+		}
+
+		.hero__veil {
+			background:
+				linear-gradient(180deg, rgba(10, 6, 18, 0.55) 0%, rgba(10, 6, 18, 0.45) 40%, rgba(10, 6, 18, 0.92) 100%),
+				linear-gradient(90deg, rgba(10, 6, 18, 0.55), transparent 70%);
+		}
+
+		.hero__inner {
+			align-items: flex-end;
+			padding-top: 3rem;
+			padding-bottom: 2.25rem;
+		}
+
+		.hero__copy {
+			max-width: none;
+		}
+
+		.hero__title {
+			font-size: clamp(1.55rem, 7.4vw, 2.6rem);
+		}
+	}
+</style>

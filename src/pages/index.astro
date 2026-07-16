@@ -1,0 +1,88 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import Hero from '../components/Hero.astro';
+import BreadcrumbBar from '../components/BreadcrumbBar.astro';
+import ProductCard from '../components/ProductCard.astro';
+import Gallery from '../components/Gallery.astro';
+import HomeSeo from '../components/HomeSeo.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+import { homeFaqs, productInfo, siteConfig } from '../data/site';
+
+const title = 'Marauders Cheats – ESP & Aimbot';
+const description =
+	'Explore Marauders Cheats featuring ESP and Aimbot. View features, pricing, updates, and support information for Marauders players.';
+
+const productSchema = {
+	'@context': 'https://schema.org',
+	'@type': 'SoftwareApplication',
+	name: productInfo.name,
+	applicationCategory: 'GameApplication',
+	operatingSystem: 'Windows',
+	description: productInfo.summary,
+	offers: productInfo.plans.map((plan) => ({
+		'@type': 'Offer',
+		name: `${productInfo.name} ${plan.label}`,
+		price: plan.price.toFixed(2),
+		priceCurrency: productInfo.currency,
+		availability: 'https://schema.org/InStock',
+		url: `${siteConfig.url}/pricing/`,
+	})),
+};
+
+const faqSchema = {
+	'@context': 'https://schema.org',
+	'@type': 'FAQPage',
+	mainEntity: homeFaqs.map((item) => ({
+		'@type': 'Question',
+		name: item.question,
+		acceptedAnswer: {
+			'@type': 'Answer',
+			text: item.answer,
+		},
+	})),
+};
+---
+
+<Layout title={title} description={description} canonicalPath="/" ogImage="/images/hero.webp">
+	<script type="application/ld+json" set:html={JSON.stringify(productSchema)} />
+	<script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+	<Navbar />
+	<main class="site">
+		<Hero />
+		<BreadcrumbBar />
+		<section class="site__section" id="store" aria-label="Product packages">
+			<div class="shell">
+				<ProductCard />
+			</div>
+		</section>
+		<section class="site__section site__section--seo">
+			<HomeSeo />
+		</section>
+		<section class="site__section site__section--gallery">
+			<div class="shell">
+				<Gallery />
+			</div>
+		</section>
+		<SiteFooter />
+	</main>
+</Layout>
+
+<style>
+	.site {
+		overflow-x: clip;
+	}
+
+	.site__section {
+		padding-block: var(--section-space);
+	}
+
+	.site__section--seo {
+		padding-top: 0.25rem;
+	}
+
+	.site__section--gallery {
+		padding-top: 0.5rem;
+		padding-bottom: 2rem;
+	}
+</style>

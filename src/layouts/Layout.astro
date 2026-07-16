@@ -1,0 +1,89 @@
+---
+import '../styles/global.css';
+import { siteConfig } from '../data/site';
+
+interface Props {
+	title: string;
+	description: string;
+	canonicalPath?: string;
+	ogImage?: string;
+	noindex?: boolean;
+	type?: 'website' | 'article';
+}
+
+const {
+	title,
+	description,
+	canonicalPath = Astro.url.pathname,
+	ogImage = siteConfig.defaultOgImage,
+	noindex = false,
+	type = 'website',
+} = Astro.props;
+
+const path = canonicalPath.endsWith('/') || canonicalPath.includes('.') ? canonicalPath : `${canonicalPath}/`;
+const canonicalURL = new URL(path === '//' ? '/' : path, siteConfig.url).href;
+const ogImageURL = new URL(ogImage, siteConfig.url).href;
+const robots = noindex ? 'noindex, nofollow' : 'index, follow, max-image-preview:large';
+---
+
+<!doctype html>
+<html lang={siteConfig.locale}>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+		<meta name="color-scheme" content="dark" />
+		<meta name="theme-color" content="#0a0612" />
+		<meta name="robots" content={robots} />
+		<meta name="googlebot" content={robots} />
+		<meta name="description" content={description} />
+		<link rel="canonical" href={canonicalURL} />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap-index.xml" />
+
+		<meta property="og:type" content={type} />
+		<meta property="og:site_name" content={siteConfig.name} />
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={description} />
+		<meta property="og:url" content={canonicalURL} />
+		<meta property="og:image" content={ogImageURL} />
+		<meta property="og:image:alt" content={title} />
+		<meta property="og:locale" content="en_US" />
+
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:title" content={title} />
+		<meta name="twitter:description" content={description} />
+		<meta name="twitter:image" content={ogImageURL} />
+		<meta name="twitter:image:alt" content={title} />
+
+		{!noindex && (
+			<script
+				type="application/ld+json"
+				set:html={JSON.stringify({
+					'@context': 'https://schema.org',
+					'@graph': [
+						{
+							'@type': 'WebSite',
+							'@id': `${siteConfig.url}/#website`,
+							url: siteConfig.url,
+							name: siteConfig.name,
+							description,
+							inLanguage: 'en',
+						},
+						{
+							'@type': 'Organization',
+							'@id': `${siteConfig.url}/#organization`,
+							name: siteConfig.name,
+							url: siteConfig.url,
+							email: siteConfig.supportEmail,
+						},
+					],
+				})}
+			/>
+		)}
+
+		<title>{title}</title>
+	</head>
+	<body>
+		<slot />
+	</body>
+</html>

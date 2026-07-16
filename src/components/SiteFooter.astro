@@ -1,0 +1,95 @@
+---
+import { footerNav, mainNav, siteConfig } from '../data/site';
+---
+
+<footer class="footer" id="support-footer">
+	<div class="shell footer__inner">
+		<div class="footer__brand">
+			<p class="footer__name">{siteConfig.name}</p>
+			<p class="footer__text">ESP and Aimbot information, pricing, updates, and support for Marauders players.</p>
+		</div>
+		<nav class="footer__cols" aria-label="Footer">
+			<div>
+				<p class="footer__label">Explore</p>
+				<ul>
+					{mainNav.map((link) => <li><a href={link.href}>{link.label}</a></li>)}
+				</ul>
+			</div>
+			<div>
+				<p class="footer__label">Help</p>
+				<ul>
+					{footerNav.map((link) => <li><a href={link.href}>{link.label}</a></li>)}
+					<li><a href={`mailto:${siteConfig.supportEmail}`}>Contact</a></li>
+				</ul>
+			</div>
+		</nav>
+	</div>
+</footer>
+
+<style>
+	.footer {
+		border-top: 1px solid rgba(168, 85, 247, 0.12);
+		padding-block: 2rem;
+		padding-bottom: calc(2rem + env(safe-area-inset-bottom, 0px));
+	}
+
+	.footer__inner {
+		display: grid;
+		grid-template-columns: 1.2fr 1fr;
+		gap: 2rem;
+	}
+
+	.footer__name {
+		margin: 0;
+		font-family: var(--font-display);
+		font-weight: 800;
+		letter-spacing: 0.04em;
+	}
+
+	.footer__text {
+		margin: 0.55rem 0 0;
+		color: var(--color-faint);
+		font-size: 0.9rem;
+		line-height: 1.55;
+		max-width: 28rem;
+	}
+
+	.footer__cols {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: 1.25rem;
+	}
+
+	.footer__label {
+		margin: 0 0 0.65rem;
+		font-size: 0.72rem;
+		font-weight: 700;
+		letter-spacing: 0.1em;
+		text-transform: uppercase;
+		color: var(--color-orchid);
+	}
+
+	.footer ul {
+		margin: 0;
+		padding: 0;
+		list-style: none;
+		display: grid;
+		gap: 0.45rem;
+	}
+
+	.footer a {
+		color: var(--color-muted);
+		font-size: 0.92rem;
+		font-weight: 600;
+	}
+
+	.footer a:hover {
+		color: var(--color-ink);
+	}
+
+	@media (max-width: 760px) {
+		.footer__inner {
+			grid-template-columns: 1fr;
+		}
+	}
+</style>

@@ -1,0 +1,58 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import { productInfo, siteConfig } from '../../data/site';
+import { maraudersImages } from '../../data/marauders';
+
+const title = 'Marauders Cheats Pricing – Packages & Durations';
+const description =
+	'Compare Marauders Cheats pricing for 1 Day, 1 Week, and 1 Month packages. Review delivery details and support options before purchase.';
+---
+
+<PageLayout
+	title={title}
+	description={description}
+	canonicalPath="/pricing/"
+	heading="Marauders Cheats Pricing"
+	intro="Packages are sold by duration in USD and include the Marauders Cheats ESP and Aimbot product line."
+	heroImage={maraudersImages.cover}
+	heroAlt="Marauders Cheats pricing visual"
+	gallery={[maraudersImages.product[1], maraudersImages.product[3], maraudersImages.product[5]]}
+	ctaPrimary={{ href: '/#product', label: 'Open Product Card' }}
+	ctaSecondary={{ href: '/features/', label: 'See Features' }}
+>
+	<section class="card-panel">
+		<h2>Current packages</h2>
+		<div class="price-grid">
+			{
+				productInfo.plans.map((plan) => (
+					<article class:list={['price-card', { 'is-featured': plan.id === '1week' }]}>
+						<span class="price-card__label">{plan.label}</span>
+						<span class="price-card__price">${plan.price}</span>
+						<span class="price-card__meta">{productInfo.currency} · ESP + Aimbot</span>
+					</article>
+				))
+			}
+		</div>
+	</section>
+
+	<section class="card-panel">
+		<h2>What each package includes</h2>
+		<p>
+			Each duration includes access to the Marauders Cheats feature set described on
+			<a href="/features/">Features</a>, including ESP and Aimbot options. Delivery method:
+			{productInfo.delivery}.
+		</p>
+	</section>
+
+	<section class="card-panel">
+		<h2>Before you buy</h2>
+		<ul>
+			<li><a href="/refund-policy/">Read the refund policy</a></li>
+			<li><a href="/terms/">Review the terms</a></li>
+			<li><a href="/updates/">Check the latest updates</a></li>
+			<li>
+				<a href={`mailto:${siteConfig.supportEmail}`}>Email support</a> if you need order help
+			</li>
+		</ul>
+	</section>
+</PageLayout>

@@ -1,0 +1,48 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import { productInfo } from '../../data/site';
+import { maraudersImages } from '../../data/marauders';
+
+const title = 'Marauders Aimbot – Settings & Controls';
+const description =
+	'Learn how Marauders Aimbot works, including targeting controls, smoothness options, and hotkey toggles. Compare packages and support options.';
+---
+
+<PageLayout
+	title={title}
+	description={description}
+	canonicalPath="/marauders-aimbot/"
+	heading="Marauders Aimbot"
+	intro="Marauders Aimbot is the aim-assist feature set inside Marauders Cheats. This page explains the controls players usually evaluate before choosing a package."
+	heroImage={maraudersImages.product[0].src}
+	heroAlt="Marauders Aimbot combat preview"
+	gallery={[maraudersImages.product[0], maraudersImages.product[1], maraudersImages.product[4]]}
+	ctaPrimary={{ href: '/pricing/', label: 'Choose a Package' }}
+	ctaSecondary={{ href: '/marauders-esp/', label: 'Explore ESP' }}
+>
+	<section class="card-panel">
+		<h2>What Marauders Aimbot includes</h2>
+		<ul>
+			{productInfo.features.aimbot.map((item) => <li>{item}</li>)}
+		</ul>
+	</section>
+
+	<section class="card-panel">
+		<h2>Who this page is for</h2>
+		<p>
+			Use this page if you are comparing aim assist behavior, configuration options, and whether Aimbot
+			belongs in your Marauders Cheats package. For visibility tools, see
+			<a href="/marauders-esp/">Marauders ESP</a>.
+		</p>
+	</section>
+
+	<section class="card-panel">
+		<h2>Next steps</h2>
+		<ul>
+			<li><a href="/features/">Review the complete feature list</a></li>
+			<li><a href="/pricing/">Compare Aimbot-ready packages and pricing</a></li>
+			<li><a href="/updates/">Check recent product updates</a></li>
+			<li><a href="/support/">Contact support with setup questions</a></li>
+		</ul>
+	</section>
+</PageLayout>

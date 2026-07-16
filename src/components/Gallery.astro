@@ -1,0 +1,157 @@
+---
+import { maraudersImages } from '../data/marauders';
+
+const featured =
+	maraudersImages.gallery.find((image) => 'featured' in image && image.featured) ??
+	maraudersImages.gallery[0];
+const tiles = maraudersImages.gallery.filter((image) => image.src !== featured.src).slice(0, 6);
+---
+
+<section class="gallery" id="gallery" aria-labelledby="gallery-title">
+	<header class="gallery__head">
+			<p class="gallery__eyebrow">Marauders Cheats</p>
+			<h2 id="gallery-title" class="gallery__title">Game Context Gallery</h2>
+			<p class="gallery__sub">Visual context for Marauders gameplay environments referenced across the site.</p>
+	</header>
+
+	<div class="gallery__layout">
+		<figure class="gallery__featured media-frame">
+			<img
+				src={featured.src}
+				alt={featured.alt}
+				width="1400"
+				height="788"
+				loading="lazy"
+				decoding="async"
+			/>
+			<figcaption>{featured.alt}</figcaption>
+		</figure>
+
+		<div class="gallery__grid">
+			{
+				tiles.map((image) => (
+					<figure class="gallery__item media-frame">
+						<img src={image.src} alt={image.alt} width="1280" height="720" loading="lazy" decoding="async" />
+						<figcaption>{image.alt}</figcaption>
+					</figure>
+				))
+			}
+		</div>
+	</div>
+</section>
+
+<style>
+	.gallery {
+		width: 100%;
+		content-visibility: auto;
+		contain-intrinsic-size: 1px 900px;
+	}
+
+	.gallery__head {
+		margin-bottom: 1.25rem;
+	}
+
+	.gallery__eyebrow {
+		margin: 0 0 0.4rem;
+		font-size: 0.75rem;
+		font-weight: 700;
+		letter-spacing: 0.14em;
+		text-transform: uppercase;
+		color: var(--color-orchid);
+	}
+
+	.gallery__title {
+		margin: 0;
+		font-family: var(--font-display);
+		font-size: clamp(1.6rem, 3vw, 2.2rem);
+		font-weight: 800;
+		letter-spacing: -0.03em;
+	}
+
+	.gallery__sub {
+		margin: 0.55rem 0 0;
+		color: var(--color-muted);
+		max-width: 36rem;
+		line-height: 1.55;
+	}
+
+	.gallery__layout {
+		display: grid;
+		gap: 0.85rem;
+	}
+
+	.gallery__featured,
+	.gallery__item {
+		margin: 0;
+	}
+
+	.gallery__featured {
+		aspect-ratio: 21 / 9;
+		border: 1px solid rgba(192, 132, 252, 0.22);
+		box-shadow: 0 12px 28px rgba(0, 0, 0, 0.26);
+	}
+
+	.gallery__grid {
+		display: grid;
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+		gap: 0.85rem;
+	}
+
+	.gallery__item {
+		aspect-ratio: 16 / 10;
+	}
+
+	.gallery__featured img,
+	.gallery__item img {
+		transition: transform 0.45s ease;
+	}
+
+	.gallery__featured:hover img,
+	.gallery__item:hover img {
+		transform: scale(1.03);
+	}
+
+	.gallery__featured figcaption,
+	.gallery__item figcaption {
+		position: absolute;
+		inset: auto 0 0;
+		z-index: 2;
+		padding: 1.6rem 0.95rem 0.8rem;
+		background: linear-gradient(transparent, rgba(10, 6, 18, 0.92));
+		color: #ddd4ec;
+		font-size: 0.75rem;
+		font-weight: 600;
+		opacity: 0;
+		transform: translateY(6px);
+		transition:
+			opacity 0.25s ease,
+			transform 0.25s ease;
+	}
+
+	.gallery__featured:hover figcaption,
+	.gallery__item:hover figcaption {
+		opacity: 1;
+		transform: translateY(0);
+	}
+
+	@media (max-width: 900px) {
+		.gallery__featured {
+			aspect-ratio: 16 / 9;
+		}
+
+		.gallery__grid {
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+		}
+	}
+
+	@media (max-width: 560px) {
+		.gallery__grid {
+			grid-template-columns: 1fr 1fr;
+			gap: 0.65rem;
+		}
+
+		.gallery__featured {
+			aspect-ratio: 16 / 10;
+		}
+	}
+</style>

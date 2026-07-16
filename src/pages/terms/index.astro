@@ -1,0 +1,48 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import { siteConfig } from '../../data/site';
+import { maraudersImages } from '../../data/marauders';
+
+const title = 'Terms of Use – Marauders Cheats';
+const description =
+	'Read the Marauders Cheats terms of use covering website access, digital products, and support communications.';
+---
+
+<PageLayout
+	title={title}
+	description={description}
+	canonicalPath="/terms/"
+	heading="Terms of Use"
+	intro="Terms covering use of marauderscheats.com and purchases related to Marauders Cheats packages."
+	eyebrow="Legal"
+	heroImage={maraudersImages.product[1].src}
+	heroAlt="Marauders Cheats terms visual"
+	gallery={[maraudersImages.product[1], maraudersImages.product[4], maraudersImages.cover]}
+	ctaPrimary={{ href: '/pricing/', label: 'View Pricing' }}
+	ctaSecondary={{ href: '/privacy-policy/', label: 'Privacy Policy' }}
+>
+	<section class="card-panel">
+		<h2>Website use</h2>
+		<p>
+			You may browse product information, pricing, updates, and support pages for personal research and
+			purchase decisions. Do not attempt to disrupt the site or misuse published materials.
+		</p>
+	</section>
+
+	<section class="card-panel">
+		<h2>Digital products</h2>
+		<p>
+			Packages are sold as digital access for the selected duration. Features and availability can change when
+			updates are required. Refund conditions are described in the
+			<a href="/refund-policy/">Refund Policy</a>.
+		</p>
+	</section>
+
+	<section class="card-panel">
+		<h2>Contact</h2>
+		<p>
+			Questions about these terms can be sent to
+			<a href={`mailto:${siteConfig.supportEmail}`}>{siteConfig.supportEmail}</a>.
+		</p>
+	</section>
+</PageLayout>

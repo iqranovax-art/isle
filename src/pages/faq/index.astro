@@ -1,0 +1,73 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import { homeFaqs, siteConfig } from '../../data/site';
+import { maraudersImages } from '../../data/marauders';
+
+const title = 'Marauders Cheats FAQ – Delivery, Features & Support';
+const description =
+	'Find answers about Marauders Cheats features, pricing packages, digital delivery, updates, and support.';
+
+const faqs = [
+	...homeFaqs,
+	{
+		question: 'Do Marauders Cheats include both ESP and Aimbot?',
+		answer:
+			'Yes. The product line covers ESP and Aimbot feature groups. See the ESP and Aimbot pages for the controls each area includes.',
+	},
+	{
+		question: 'Can I get a refund?',
+		answer:
+			'Refund eligibility depends on the conditions published on the Refund Policy page. Review that page before purchasing.',
+	},
+	{
+		question: 'Which platforms are supported?',
+		answer:
+			'Current package information lists Windows PC support. Confirm details on the Features and Pricing pages before checkout.',
+	},
+];
+
+const faqSchema = {
+	'@context': 'https://schema.org',
+	'@type': 'FAQPage',
+	mainEntity: faqs.map((item) => ({
+		'@type': 'Question',
+		name: item.question,
+		acceptedAnswer: {
+			'@type': 'Answer',
+			text: item.answer,
+		},
+	})),
+};
+---
+
+<PageLayout
+	title={title}
+	description={description}
+	canonicalPath="/faq/"
+	heading="Marauders Cheats FAQ"
+	intro="Straight answers about Marauders Cheats features, packages, delivery, and support."
+	heroImage={maraudersImages.product[3].src}
+	heroAlt="Marauders Cheats FAQ visual"
+	gallery={maraudersImages.product.slice(2, 5)}
+	ctaPrimary={{ href: '/support/', label: 'Open Support' }}
+	ctaSecondary={{ href: '/pricing/', label: 'View Pricing' }}
+>
+	<script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+
+	{
+		faqs.map((item) => (
+			<section class="card-panel">
+				<h2>{item.question}</h2>
+				<p>{item.answer}</p>
+			</section>
+		))
+	}
+
+	<section class="card-panel">
+		<h2>Still need help?</h2>
+		<p>
+			Visit <a href="/support/">Support</a> or email
+			<a href={`mailto:${siteConfig.supportEmail}`}>{siteConfig.supportEmail}</a>.
+		</p>
+	</section>
+</PageLayout>

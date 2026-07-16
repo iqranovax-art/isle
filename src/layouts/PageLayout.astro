@@ -1,0 +1,541 @@
+---
+import Layout from './Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+import { maraudersImages } from '../data/marauders';
+
+interface Props {
+	title: string;
+	description: string;
+	canonicalPath?: string;
+	heading: string;
+	intro: string;
+	eyebrow?: string;
+	heroImage?: string;
+	heroAlt?: string;
+	gallery?: ReadonlyArray<{ src: string; alt: string }>;
+	ctaPrimary?: { href: string; label: string };
+	ctaSecondary?: { href: string; label: string };
+}
+
+const {
+	title,
+	description,
+	canonicalPath = '/',
+	heading,
+	intro,
+	eyebrow = 'Marauders Cheats',
+	heroImage = maraudersImages.hero,
+	heroAlt = 'Marauders Cheats page visual',
+	gallery = maraudersImages.product.slice(0, 3),
+	ctaPrimary,
+	ctaSecondary,
+} = Astro.props;
+---
+
+<Layout title={title} description={description} canonicalPath={canonicalPath} ogImage={heroImage}>
+	<Navbar />
+	<main class="page">
+		<section class="banner">
+			<div class="banner__media" aria-hidden="true">
+				<img src={heroImage} alt="" width="1600" height="900" class="banner__img" decoding="async" />
+				<div class="banner__scrim"></div>
+			</div>
+			<div class="shell banner__content">
+				<nav class="banner__crumbs" aria-label="Breadcrumb">
+					<a href="/">Home</a>
+					<span aria-hidden="true">/</span>
+					<span aria-current="page">{heading}</span>
+				</nav>
+				<p class="banner__eyebrow">{eyebrow}</p>
+				<h1 class="banner__title">{heading}</h1>
+				<p class="banner__intro">{intro}</p>
+				{
+					(ctaPrimary || ctaSecondary) && (
+						<div class="banner__actions">
+							{ctaPrimary && (
+								<a class="btn btn--primary" href={ctaPrimary.href}>
+									{ctaPrimary.label}
+								</a>
+							)}
+							{ctaSecondary && (
+								<a class="btn btn--ghost" href={ctaSecondary.href}>
+									{ctaSecondary.label}
+								</a>
+							)}
+						</div>
+					)
+				}
+			</div>
+		</section>
+
+		<div class="shell page__wrap">
+			<section class="showcase">
+				<figure class="showcase__frame">
+					<img src={heroImage} alt={heroAlt} width="1400" height="788" decoding="async" />
+				</figure>
+			</section>
+
+			<article class="article">
+				<slot />
+			</article>
+
+			{
+				gallery.length > 0 && (
+					<section class="gallery-block" aria-labelledby="page-gallery-title">
+						<div class="gallery-block__head">
+							<p class="gallery-block__eyebrow">Gallery</p>
+							<h2 id="page-gallery-title" class="gallery-block__title">Visual reference</h2>
+						</div>
+						<div class="gallery-block__grid">
+							{gallery.map((image) => (
+								<figure class="gallery-block__item">
+									<img src={image.src} alt={image.alt} width="800" height="500" loading="lazy" decoding="async" />
+									<figcaption>{image.alt}</figcaption>
+								</figure>
+							))}
+						</div>
+					</section>
+				)
+			}
+		</div>
+	</main>
+	<SiteFooter />
+</Layout>
+
+<style>
+	.page {
+		overflow-x: clip;
+		padding-bottom: calc(3.25rem + env(safe-area-inset-bottom, 0px));
+	}
+
+	/* —— Banner —— */
+	.banner {
+		position: relative;
+		isolation: isolate;
+		border-bottom: 1px solid rgba(168, 85, 247, 0.12);
+		margin-bottom: 2rem;
+	}
+
+	.banner__media {
+		position: absolute;
+		inset: 0;
+		z-index: 0;
+	}
+
+	.banner__img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		object-position: center 30%;
+	}
+
+	.banner__scrim {
+		position: absolute;
+		inset: 0;
+		background:
+			linear-gradient(180deg, rgba(10, 6, 18, 0.72) 0%, rgba(10, 6, 18, 0.88) 100%),
+			linear-gradient(90deg, rgba(10, 6, 18, 0.55), rgba(10, 6, 18, 0.35) 50%, rgba(10, 6, 18, 0.55));
+	}
+
+	.banner__content {
+		position: relative;
+		z-index: 1;
+		max-width: 720px;
+		margin-inline: auto;
+		padding: 2.75rem 0 2.5rem;
+		text-align: center;
+	}
+
+	.banner__crumbs {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		flex-wrap: wrap;
+		gap: 0.45rem;
+		margin-bottom: 1rem;
+		font-size: 0.8rem;
+		color: var(--color-faint);
+	}
+
+	.banner__crumbs a {
+		color: var(--color-muted);
+		font-weight: 600;
+	}
+
+	.banner__crumbs a:hover {
+		color: var(--color-orchid);
+	}
+
+	.banner__eyebrow {
+		margin: 0 0 0.55rem;
+		font-size: 0.72rem;
+		font-weight: 700;
+		letter-spacing: 0.14em;
+		text-transform: uppercase;
+		color: var(--color-orchid);
+	}
+
+	.banner__title {
+		margin: 0;
+		font-family: var(--font-display);
+		font-size: clamp(1.9rem, 4.5vw, 2.75rem);
+		font-weight: 800;
+		letter-spacing: -0.03em;
+		line-height: 1.12;
+	}
+
+	.banner__intro {
+		margin: 0.9rem auto 0;
+		max-width: 36rem;
+		color: #cfc3e3;
+		font-size: 1.02rem;
+		line-height: 1.65;
+	}
+
+	.banner__actions {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
+		gap: 0.65rem;
+		margin-top: 1.35rem;
+	}
+
+	.btn {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		min-height: 2.7rem;
+		padding: 0.7rem 1.15rem;
+		border-radius: 0.75rem;
+		font-size: 0.92rem;
+		font-weight: 700;
+		transition:
+			transform 0.2s ease,
+			filter 0.2s ease,
+			background 0.2s ease,
+			border-color 0.2s ease;
+	}
+
+	.btn--primary {
+		background: var(--gradient-brand);
+		color: white;
+		box-shadow: 0 8px 18px rgba(0, 0, 0, 0.28);
+	}
+
+	.btn--primary:hover {
+		transform: translateY(-1px);
+		filter: brightness(1.05);
+		color: white;
+	}
+
+	.btn--ghost {
+		border: 1px solid rgba(192, 132, 252, 0.28);
+		background: rgba(18, 16, 26, 0.55);
+		color: var(--color-ink);
+	}
+
+	.btn--ghost:hover {
+		border-color: rgba(192, 132, 252, 0.5);
+		color: var(--color-ink);
+	}
+
+	/* —— Body —— */
+	.page__wrap {
+		display: grid;
+		gap: 2rem;
+		justify-items: center;
+	}
+
+	.showcase {
+		width: min(100%, 960px);
+	}
+
+	.showcase__frame {
+		margin: 0;
+		overflow: hidden;
+		border-radius: 1rem;
+		border: 1px solid rgba(168, 85, 247, 0.16);
+		background: #12081f;
+		aspect-ratio: 21 / 9;
+		box-shadow: 0 14px 32px rgba(0, 0, 0, 0.28);
+	}
+
+	.showcase__frame img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		object-position: center;
+	}
+
+	.article {
+		width: min(100%, 760px);
+		display: grid;
+		gap: 1rem;
+		text-align: left;
+		color: #d8cee9;
+		line-height: 1.7;
+	}
+
+	.article :global(.card-panel) {
+		padding: 1.35rem 1.45rem;
+		border-radius: 0.95rem;
+		border: 1px solid rgba(168, 85, 247, 0.14);
+		background: rgba(22, 18, 32, 0.9);
+		display: grid;
+		gap: 0.8rem;
+	}
+
+	.article :global(h2) {
+		margin: 0;
+		font-family: var(--font-display);
+		font-size: 1.2rem;
+		font-weight: 800;
+		letter-spacing: -0.02em;
+		color: var(--color-ink);
+	}
+
+	.article :global(h3) {
+		margin: 0;
+		font-size: 1rem;
+		font-weight: 700;
+		color: var(--color-ink);
+	}
+
+	.article :global(p) {
+		margin: 0;
+		color: var(--color-muted);
+	}
+
+	.article :global(ul) {
+		margin: 0;
+		padding: 0;
+		list-style: none;
+		display: grid;
+		gap: 0.5rem;
+	}
+
+	.article :global(li) {
+		position: relative;
+		padding: 0.55rem 0.75rem 0.55rem 2rem;
+		border-radius: 0.65rem;
+		background: rgba(10, 6, 18, 0.4);
+		border: 1px solid rgba(168, 85, 247, 0.1);
+		color: #d4cae6;
+		font-size: 0.95rem;
+	}
+
+	.article :global(li::before) {
+		content: '';
+		position: absolute;
+		left: 0.8rem;
+		top: 50%;
+		width: 0.4rem;
+		height: 0.4rem;
+		border-radius: 999px;
+		background: var(--color-orchid);
+		transform: translateY(-50%);
+	}
+
+	.article :global(a) {
+		color: var(--color-orchid);
+		font-weight: 600;
+	}
+
+	.article :global(a:hover) {
+		color: #e9d5ff;
+	}
+
+	.article :global(.price-grid) {
+		display: grid;
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+		gap: 0.75rem;
+	}
+
+	.article :global(.price-card) {
+		display: grid;
+		gap: 0.3rem;
+		justify-items: center;
+		padding: 1.2rem 0.9rem;
+		border-radius: 0.85rem;
+		border: 1px solid rgba(192, 132, 252, 0.18);
+		background: rgba(10, 6, 18, 0.45);
+		text-align: center;
+		transition:
+			border-color 0.2s ease,
+			transform 0.2s ease;
+	}
+
+	.article :global(.price-card:hover) {
+		border-color: rgba(192, 132, 252, 0.4);
+		transform: translateY(-1px);
+	}
+
+	.article :global(.price-card.is-featured) {
+		background: linear-gradient(160deg, #6d28d9, #9333ea 55%, #a21caf);
+		border-color: transparent;
+		color: white;
+	}
+
+	.article :global(.price-card.is-featured .price-card__meta) {
+		color: rgba(255, 255, 255, 0.88);
+	}
+
+	.article :global(.price-card__label) {
+		font-size: 0.78rem;
+		font-weight: 800;
+		letter-spacing: 0.08em;
+		text-transform: uppercase;
+	}
+
+	.article :global(.price-card__price) {
+		font-family: var(--font-display);
+		font-size: 1.9rem;
+		font-weight: 800;
+		color: var(--color-ink);
+	}
+
+	.article :global(.price-card.is-featured .price-card__price) {
+		color: white;
+	}
+
+	.article :global(.price-card__meta) {
+		font-size: 0.78rem;
+		color: var(--color-muted);
+	}
+
+	.article :global(.cta-row) {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.6rem;
+		margin-top: 0.25rem;
+	}
+
+	.article :global(.cta-btn) {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		min-height: 2.55rem;
+		padding: 0.65rem 1.05rem;
+		border-radius: 0.7rem;
+		font-size: 0.9rem;
+		font-weight: 700;
+		transition:
+			transform 0.2s ease,
+			filter 0.2s ease,
+			border-color 0.2s ease;
+	}
+
+	.article :global(.cta-btn--primary) {
+		background: var(--gradient-brand);
+		color: white;
+		box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
+	}
+
+	.article :global(.cta-btn--primary:hover) {
+		transform: translateY(-1px);
+		filter: brightness(1.05);
+		color: white;
+	}
+
+	.article :global(.cta-btn--ghost) {
+		border: 1px solid rgba(192, 132, 252, 0.28);
+		background: transparent;
+		color: var(--color-ink);
+	}
+
+	.article :global(.cta-btn--ghost:hover) {
+		border-color: rgba(192, 132, 252, 0.5);
+		color: var(--color-ink);
+	}
+
+	/* —— Gallery —— */
+	.gallery-block {
+		width: min(100%, 960px);
+		display: grid;
+		gap: 1rem;
+		padding-top: 0.5rem;
+		border-top: 1px solid rgba(168, 85, 247, 0.12);
+	}
+
+	.gallery-block__head {
+		text-align: center;
+	}
+
+	.gallery-block__eyebrow {
+		margin: 0 0 0.35rem;
+		font-size: 0.7rem;
+		font-weight: 700;
+		letter-spacing: 0.12em;
+		text-transform: uppercase;
+		color: var(--color-orchid);
+	}
+
+	.gallery-block__title {
+		margin: 0;
+		font-family: var(--font-display);
+		font-size: 1.35rem;
+		font-weight: 800;
+	}
+
+	.gallery-block__grid {
+		display: grid;
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+		gap: 0.75rem;
+	}
+
+	.gallery-block__item {
+		position: relative;
+		margin: 0;
+		overflow: hidden;
+		border-radius: 0.85rem;
+		border: 1px solid rgba(168, 85, 247, 0.14);
+		background: #12081f;
+		aspect-ratio: 16 / 10;
+	}
+
+	.gallery-block__item img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		transition: transform 0.4s ease;
+	}
+
+	.gallery-block__item:hover img {
+		transform: scale(1.03);
+	}
+
+	.gallery-block__item figcaption {
+		position: absolute;
+		inset: auto 0 0;
+		padding: 1.4rem 0.75rem 0.65rem;
+		background: linear-gradient(transparent, rgba(10, 6, 18, 0.92));
+		color: #d8cfea;
+		font-size: 0.72rem;
+		font-weight: 600;
+	}
+
+	@media (max-width: 800px) {
+		.article :global(.price-grid) {
+			grid-template-columns: 1fr;
+		}
+
+		.showcase__frame {
+			aspect-ratio: 16 / 9;
+		}
+	}
+
+	@media (max-width: 640px) {
+		.banner__content {
+			padding-block: 2.1rem 1.9rem;
+		}
+
+		.gallery-block__grid {
+			grid-template-columns: 1fr;
+		}
+
+		.article :global(.card-panel) {
+			padding: 1.15rem 1.1rem;
+		}
+	}
+</style>

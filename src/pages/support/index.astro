@@ -1,0 +1,50 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import { productInfo, siteConfig } from '../../data/site';
+import { maraudersImages } from '../../data/marauders';
+
+const title = 'Marauders Cheats Support – Contact & Help';
+const description =
+	'Contact Marauders Cheats support for delivery, billing, and setup questions related to ESP and Aimbot packages.';
+---
+
+<PageLayout
+	title={title}
+	description={description}
+	canonicalPath="/support/"
+	heading="Marauders Cheats Support"
+	intro="Get help with orders, digital delivery, or package setup for Marauders Cheats."
+	heroImage={maraudersImages.product[4].src}
+	heroAlt="Marauders Cheats support visual"
+	gallery={[maraudersImages.product[4], maraudersImages.product[0], maraudersImages.cover]}
+	ctaPrimary={{ href: `mailto:${siteConfig.supportEmail}`, label: 'Email Support' }}
+	ctaSecondary={{ href: '/faq/', label: 'Browse FAQ' }}
+>
+	<section class="card-panel">
+		<h2>Contact</h2>
+		<p>
+			Email: <a href={`mailto:${siteConfig.supportEmail}`}>{siteConfig.supportEmail}</a>
+		</p>
+		<p>{productInfo.supportHours}.</p>
+	</section>
+
+	<section class="card-panel">
+		<h2>Include these details</h2>
+		<ul>
+			<li>Order ID or payment reference</li>
+			<li>Package duration purchased</li>
+			<li>Clear description of the issue</li>
+			<li>Screenshots when they help explain the problem</li>
+		</ul>
+	</section>
+
+	<section class="card-panel">
+		<h2>Useful links</h2>
+		<ul>
+			<li><a href="/faq/">FAQ</a></li>
+			<li><a href="/updates/">Updates</a></li>
+			<li><a href="/refund-policy/">Refund Policy</a></li>
+			<li><a href="/pricing/">Pricing</a></li>
+		</ul>
+	</section>
+</PageLayout>
