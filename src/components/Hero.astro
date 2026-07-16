@@ -2,13 +2,11 @@
 import { maraudersImages } from '../data/marauders';
 
 interface Props {
-	title?: string;
 	accent?: string;
 	subtitle?: string;
 }
 
 const {
-	title = 'Marauders Cheats –',
 	accent = 'ESP & Aimbot',
 	subtitle = 'Review Marauders Cheats features, package options, and support resources. Explore ESP and Aimbot tools built for clearer combat decisions.',
 } = Astro.props;
@@ -18,7 +16,7 @@ const {
 	<div class="hero__media">
 		<img
 			src={maraudersImages.hero}
-			alt="Marauders Cheats ESP and Aimbot gameplay showcase background"
+			alt="Marauders Cheats ESP and Aimbot gameplay showcase"
 			class="hero__bg"
 			width="1400"
 			height="788"
@@ -33,13 +31,16 @@ const {
 		<div class="hero__copy">
 			<p class="hero__eyebrow">Marauders Cheats</p>
 			<h1 class="hero__title">
-				<span class="hero__line">{title}</span>
+				<span class="hero__line">
+					<span class="hero__word">Marauders</span>
+					<span class="hero__word">Cheats</span>
+				</span>
 				<span class="text-gradient hero__accent">{accent}</span>
 			</h1>
 			<p class="hero__subtitle">{subtitle}</p>
 			<div class="hero__cta">
-				<a href="/pricing/" class="hero__btn hero__btn--primary bg-brand">Compare package pricing</a>
-				<a href="/features/" class="hero__btn hero__btn--ghost">Browse ESP &amp; Aimbot features</a>
+				<a href="/pricing/" class="hero__btn hero__btn--primary bg-brand">View pricing</a>
+				<a href="/features/" class="hero__btn hero__btn--ghost">See features</a>
 			</div>
 		</div>
 	</div>
@@ -106,6 +107,7 @@ const {
 
 	.hero__copy {
 		max-width: min(42rem, 100%);
+		min-width: 0;
 		animation: rise-in 0.8s cubic-bezier(0.22, 1, 0.36, 1) both;
 	}
 
@@ -123,24 +125,37 @@ const {
 		font-family: var(--font-display);
 		font-size: clamp(1.85rem, 4.6vw, 3.75rem);
 		font-weight: 800;
-		line-height: 1.08;
+		line-height: 1.15;
 		letter-spacing: -0.03em;
 		display: flex;
 		flex-direction: column;
-		gap: 0.08em;
+		gap: 0.18em;
 		text-shadow: 0 8px 32px rgba(10, 6, 18, 0.65);
+		text-wrap: balance;
+		overflow-wrap: break-word;
+		word-break: normal;
+		hyphens: none;
 	}
 
-	.hero__line,
+	.hero__line {
+		display: flex;
+		flex-wrap: wrap;
+		column-gap: 0.28em;
+		row-gap: 0.02em;
+		max-width: 100%;
+	}
+
+	.hero__word {
+		display: inline-block;
+	}
+
 	.hero__accent {
 		display: block;
-	}
-
-	.hero__accent {
+		max-width: 100%;
 		background-size: 200% 100%;
 		animation: shimmer 4s ease-in-out infinite;
 		width: fit-content;
-		white-space: nowrap;
+		padding-bottom: 0.06em;
 	}
 
 	.hero__subtitle {
@@ -168,6 +183,7 @@ const {
 		border-radius: 0.8rem;
 		font-size: 0.95rem;
 		font-weight: 700;
+		text-align: center;
 		transition:
 			transform 0.2s ease,
 			filter 0.2s ease,
@@ -239,31 +255,90 @@ const {
 
 	@media (max-width: 760px) {
 		.hero {
-			min-height: 460px;
+			min-height: min(72svh, 560px);
 		}
 
 		.hero__bg {
-			object-position: center 30%;
+			object-position: center 28%;
 		}
 
 		.hero__veil {
 			background:
-				linear-gradient(180deg, rgba(10, 6, 18, 0.55) 0%, rgba(10, 6, 18, 0.45) 40%, rgba(10, 6, 18, 0.92) 100%),
-				linear-gradient(90deg, rgba(10, 6, 18, 0.55), transparent 70%);
+				linear-gradient(180deg, rgba(10, 6, 18, 0.62) 0%, rgba(10, 6, 18, 0.42) 38%, rgba(10, 6, 18, 0.94) 100%),
+				linear-gradient(90deg, rgba(10, 6, 18, 0.6), transparent 72%);
 		}
 
 		.hero__inner {
 			align-items: flex-end;
-			padding-top: 3rem;
-			padding-bottom: 2.25rem;
+			padding-top: 5.25rem;
+			padding-bottom: 1.75rem;
+			min-height: inherit;
 		}
 
 		.hero__copy {
 			max-width: none;
+			width: 100%;
+		}
+
+		.hero__eyebrow {
+			margin-bottom: 0.65rem;
+			font-size: 0.7rem;
+			letter-spacing: 0.12em;
 		}
 
 		.hero__title {
-			font-size: clamp(1.55rem, 7.4vw, 2.6rem);
+			font-size: clamp(1.5rem, 7.2vw, 2.1rem);
+			line-height: 1.2;
+			letter-spacing: -0.025em;
+			gap: 0.2rem;
+		}
+
+		.hero__line {
+			flex-direction: column;
+			flex-wrap: nowrap;
+			row-gap: 0.06em;
+			width: 100%;
+		}
+
+		.hero__accent {
+			width: 100%;
+			font-size: 0.98em;
+			line-height: 1.22;
+			padding-bottom: 0.1em;
+		}
+
+		.hero__subtitle {
+			margin-top: 0.9rem;
+			max-width: none;
+			font-size: 0.94rem;
+			line-height: 1.55;
+		}
+
+		.hero__cta {
+			flex-direction: column;
+			align-items: stretch;
+			gap: 0.65rem;
+			margin-top: 1.25rem;
+			width: 100%;
+		}
+
+		.hero__btn {
+			width: 100%;
+			min-height: 2.85rem;
+			padding: 0.8rem 1rem;
+			font-size: 0.92rem;
+		}
+	}
+
+	@media (max-width: 380px) {
+		.hero__title {
+			font-size: 1.4rem;
+			line-height: 1.22;
+			gap: 0.25rem;
+		}
+
+		.hero__subtitle {
+			font-size: 0.9rem;
 		}
 	}
 </style>
