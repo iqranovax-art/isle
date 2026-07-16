@@ -4,5 +4,4 @@ Allow: /images/
 
 Disallow: /api/
 
-Sitemap: https://marauderscheats.com/sitemap-index.xml
-Sitemap: https://marauderscheats.com/sitemap-images.xml
+Sitemap: https://marauderscheats.com/sitemap.xml

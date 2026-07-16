@@ -57,32 +57,41 @@ export const mainNav = [
 ] as const;
 
 export const footerNav = [
-	{ label: 'Updates', href: '/updates/' },
-	{ label: 'Support', href: '/support/' },
-	{ label: 'Refund Policy', href: '/refund-policy/' },
-	{ label: 'Privacy Policy', href: '/privacy-policy/' },
-	{ label: 'Terms', href: '/terms/' },
+	{ label: 'Product updates log', href: '/updates/' },
+	{ label: 'Contact support team', href: '/support/' },
+	{ label: 'Refund policy details', href: '/refund-policy/' },
+	{ label: 'Privacy policy details', href: '/privacy-policy/' },
+	{ label: 'Terms of use', href: '/terms/' },
+] as const;
+
+export const footerExplore = [
+	{ label: 'Site overview', href: '/' },
+	{ label: 'Aimbot product page', href: '/marauders-aimbot/' },
+	{ label: 'ESP product page', href: '/marauders-esp/' },
+	{ label: 'Full feature breakdown', href: '/features/' },
+	{ label: 'Package pricing plans', href: '/pricing/' },
+	{ label: 'Common questions hub', href: '/faq/' },
 ] as const;
 
 export const homeFaqs = [
 	{
 		question: 'What is included with Marauders Cheats?',
 		answer:
-			'Marauders Cheats includes ESP and Aimbot feature sets, plus access to product updates and support for setup questions. See the Features and Pricing pages for package details.',
+			'Marauders Cheats includes ESP and Aimbot feature sets, plus access to product updates and support for setup questions. ESP covers player overlays, loot markers, distance readouts, and toggleable categories. Aimbot covers assisted targeting, smoothness controls, target priority, and hotkey toggles. See the Features and Pricing pages for the full package breakdown.',
 	},
 	{
 		question: 'How are licenses delivered?',
 		answer:
-			'After payment is confirmed, license details are delivered digitally. Delivery timing can vary by payment method and order review.',
+			'After payment is confirmed, license details are delivered digitally. Delivery timing can vary by payment method and order review. Keep your order confirmation available when contacting support so the team can locate your purchase quickly.',
 	},
 	{
 		question: 'Where can I check product updates?',
 		answer:
-			'Product maintenance notes are published on the Updates page whenever a new build or compatibility notice is available.',
+			'Product maintenance notes are published on the Updates page whenever a new build or compatibility notice is available. Checking that page after Marauders patches is the fastest way to confirm whether a maintenance release has been posted.',
 	},
 	{
 		question: 'How do I contact support?',
 		answer:
-			'Use the Support page to reach the team by email. Include your order details and a clear description of the issue so replies can be faster.',
+			'Use the Support page to reach the team by email. Include your order details and a clear description of the issue so replies can be faster. For policy questions before buying, review the refund, privacy, and terms pages first.',
 	},
 ] as const;

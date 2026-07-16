@@ -21,7 +21,9 @@ const img = (path: string, title: string, caption: string): SitemapImage => ({
 	caption,
 });
 
-/** Canonical page → image map for Google Image Sitemap discovery */
+/**
+ * Canonical page → image map for the public sitemap at /sitemap.xml
+ */
 export const pageSitemapEntries: PageSitemapEntry[] = [
 	{
 		path: '/',
@@ -138,12 +140,6 @@ export const pageSitemapEntries: PageSitemapEntry[] = [
 		],
 	},
 ];
-
-export function getEntryForUrl(pageUrl: string): PageSitemapEntry | undefined {
-	const pathname = new URL(pageUrl).pathname;
-	const normalized = pathname.endsWith('/') || pathname === '/' ? pathname : `${pathname}/`;
-	return pageSitemapEntries.find((entry) => entry.path === normalized);
-}
 
 export function absolutePageUrl(path: string): string {
 	return abs(path);

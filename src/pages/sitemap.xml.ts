@@ -10,7 +10,11 @@ function escapeXml(value: string): string {
 		.replaceAll("'", '&apos;');
 }
 
+export const prerender = true;
+
 export const GET: APIRoute = () => {
+	const lastmod = new Date().toISOString().slice(0, 10);
+
 	const urls = pageSitemapEntries
 		.map((entry) => {
 			const images = entry.images
@@ -23,8 +27,11 @@ export const GET: APIRoute = () => {
 				)
 				.join('\n');
 
-			return `  <url>
+    			return `  <url>
     <loc>${escapeXml(absolutePageUrl(entry.path))}</loc>
+    <lastmod>${lastmod}</lastmod>
+    <changefreq>${entry.changefreq}</changefreq>
+    <priority>${Number.isInteger(entry.priority) ? entry.priority.toFixed(1) : String(entry.priority)}</priority>
 ${images}
   </url>`;
 		})

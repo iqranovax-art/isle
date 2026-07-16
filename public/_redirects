@@ -1,0 +1,9 @@
+# Force apex HTTPS host (Cloudflare Pages / Netlify)
+https://www.marauderscheats.com/* https://marauderscheats.com/:splat 301
+http://www.marauderscheats.com/* https://marauderscheats.com/:splat 301
+http://marauderscheats.com/* https://marauderscheats.com/:splat 301
+
+# Legacy Astro sitemap paths → canonical sitemap.xml
+/sitemap-index.xml /sitemap.xml 301
+/sitemap-0.xml /sitemap.xml 301
+/sitemap-images.xml /sitemap.xml 301

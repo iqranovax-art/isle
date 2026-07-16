@@ -1,38 +1,108 @@
 ---
-import { homeFaqs, productInfo } from '../data/site';
+import { homeFaqs, productInfo, siteConfig } from '../data/site';
+
+const shareUrl = encodeURIComponent(siteConfig.url + '/');
+const shareText = encodeURIComponent(
+	'Marauders Cheats – ESP & Aimbot tools for Marauders players',
+);
 ---
 
 <section class="home-seo shell" aria-labelledby="home-seo-title">
 	<div class="home-seo__panel card-surface">
-		<h2 id="home-seo-title">Marauders Cheats for ESP and Aimbot</h2>
+		<h2 id="home-seo-title">Marauders Cheats ESP and Aimbot overview</h2>
 		<p>
-			{productInfo.summary} Use this site to review feature details, compare packages on
-			<a href="/pricing/">Pricing</a>, and check maintenance notes on
-			<a href="/updates/">Updates</a>.
+			{productInfo.summary} This page is the main entry point for players comparing Marauders Cheats
+			before purchase. You can review what ESP covers, how Aimbot controls are presented, which package
+			lengths are available, and where to find updates or support after checkout.
+		</p>
+		<p>
+			Marauders is a fast extraction-style game where information density matters. Clearer on-screen
+			context and predictable aim-assist settings can make package evaluation easier when you are
+			deciding between a short monthly license and a longer lifetime option. Use the sections below,
+			then open the dedicated product pages for deeper detail.
 		</p>
 
 		<div class="home-seo__grid">
 			<article>
-				<h3><a href="/marauders-esp/">Marauders ESP</a></h3>
-				<p>Improve on-screen player and loot visibility with configurable ESP overlays.</p>
+				<h3><a href="/marauders-esp/">Marauders ESP visibility tools</a></h3>
+				<p>
+					ESP options focus on readable player and loot awareness so you can understand nearby threats
+					and item opportunities without guessing from incomplete screen cues alone.
+				</p>
 			</article>
 			<article>
-				<h3><a href="/marauders-aimbot/">Marauders Aimbot</a></h3>
-				<p>Review aim assist options, smoothness controls, and hotkey toggles.</p>
+				<h3><a href="/marauders-aimbot/">Marauders Aimbot control options</a></h3>
+				<p>
+					Aimbot settings cover targeting behavior, smoothness, priority choices, and hotkey toggles so
+					you can review how assisted aiming is configured before buying.
+				</p>
 			</article>
 			<article>
-				<h3><a href="/features/">Full feature list</a></h3>
-				<p>See ESP, Aimbot, and general package options in one place.</p>
+				<h3><a href="/features/">Complete Marauders Cheats feature list</a></h3>
+				<p>
+					The features page groups ESP, Aimbot, and general package tools in one place so you can scan
+					capabilities without jumping between marketing blurbs.
+				</p>
 			</article>
 			<article>
-				<h3><a href="/support/">Support</a></h3>
-				<p>Get help with delivery questions, setup, and order issues.</p>
+				<h3><a href="/support/">Marauders Cheats customer support</a></h3>
+				<p>
+					Support handles delivery questions, setup help, and order issues. Include your order details
+					and a clear description of the problem for faster replies.
+				</p>
 			</article>
 		</div>
 	</div>
 
+	<div class="home-seo__panel card-surface">
+		<h2>What Marauders Cheats includes</h2>
+		<p>
+			Marauders Cheats is sold as a Windows PC software package with ESP and Aimbot feature sets. ESP
+			overlays help with player spotting, loot markers, distance readouts, and category toggles. Aimbot
+			tools focus on assisted targeting, sensitivity and smoothness controls, target priority, and quick
+			on/off hotkeys. General package options include in-client toggles, monthly and lifetime plans,
+			update notices, and a support channel for setup or billing questions.
+		</p>
+		<ul>
+			{productInfo.features.esp.map((item) => <li>{item}</li>)}
+			{productInfo.features.aimbot.map((item) => <li>{item}</li>)}
+			{productInfo.features.general.map((item) => <li>{item}</li>)}
+		</ul>
+		<p>
+			Package pricing is listed on the
+			<a href="/pricing/">Marauders Cheats pricing page</a>
+			so you can compare duration against budget. Maintenance notes appear on
+			<a href="/updates/">product update notices</a>
+			whenever a build or compatibility change is published. If you need policy details before buying,
+			read the refund, privacy, and terms pages linked in the footer.
+		</p>
+	</div>
+
+	<div class="home-seo__panel card-surface">
+		<h2>How to evaluate ESP and Aimbot for Marauders</h2>
+		<p>
+			Start with the combat information you care about most. If raid awareness and loot routing are your
+			priority, open the ESP page and confirm which overlay categories match your play style. If assisted
+			aiming controls matter more, review Aimbot settings for smoothness, targeting priority, and hotkey
+			behavior. Many players check both pages, then use the feature list as a final checklist before
+			choosing a monthly or lifetime license.
+		</p>
+		<p>
+			Delivery is digital after payment confirmation. Timing can vary by payment method and order review.
+			After purchase, watch the Updates page for maintenance notes tied to Marauders patches, and contact
+			support if license delivery or setup needs clarification. Platforms supported today:
+			{productInfo.platforms.join(', ')}. Market availability: {siteConfig.market}.
+		</p>
+		<p>
+			This site is designed for clear product research rather than vague claims. Each internal page has a
+			focused job: ESP explains visibility tools, Aimbot explains aiming controls, Features summarizes the
+			full package, Pricing compares plan lengths, FAQ answers common purchase questions, and Support is
+			the contact path when something needs a human reply.
+		</p>
+	</div>
+
 	<section class="home-seo__faq" aria-labelledby="home-faq-title">
-		<h2 id="home-faq-title">Frequently asked questions</h2>
+		<h2 id="home-faq-title">Frequently asked questions about Marauders Cheats</h2>
 		<div class="home-seo__faq-list">
 			{
 				homeFaqs.map((item) => (
@@ -44,11 +114,42 @@ import { homeFaqs, productInfo } from '../data/site';
 			}
 		</div>
 		<p class="home-seo__more">
-			More answers are on the <a href="/faq/">FAQ page</a>. Policy details are in
-			<a href="/refund-policy/">Refund Policy</a>,
-			<a href="/privacy-policy/">Privacy Policy</a>, and
-			<a href="/terms/">Terms</a>.
+			More answers are on the <a href="/faq/">Marauders Cheats FAQ</a>. Policy details are in
+			<a href="/refund-policy/">refund policy details</a>,
+			<a href="/privacy-policy/">privacy policy details</a>, and
+			<a href="/terms/">terms of use</a>.
 		</p>
+	</section>
+
+	<section class="home-seo__share" aria-labelledby="share-title">
+		<h2 id="share-title">Share Marauders Cheats</h2>
+		<p>Pass this page along if someone else is comparing ESP and Aimbot options for Marauders.</p>
+		<div class="home-seo__share-row">
+			<a
+				class="share-link"
+				href={`https://twitter.com/intent/tweet?url=${shareUrl}&text=${shareText}`}
+				target="_blank"
+				rel="noopener noreferrer"
+			>
+				Share on X
+			</a>
+			<a
+				class="share-link"
+				href={`https://www.facebook.com/sharer/sharer.php?u=${shareUrl}`}
+				target="_blank"
+				rel="noopener noreferrer"
+			>
+				Share on Facebook
+			</a>
+			<a
+				class="share-link"
+				href={`https://www.reddit.com/submit?url=${shareUrl}&title=${shareText}`}
+				target="_blank"
+				rel="noopener noreferrer"
+			>
+				Share on Reddit
+			</a>
+		</div>
 	</section>
 </section>
 
@@ -77,6 +178,37 @@ import { homeFaqs, productInfo } from '../data/site';
 		margin: 0.85rem 0 0;
 		color: var(--color-muted);
 		line-height: 1.65;
+	}
+
+	.home-seo ul {
+		margin: 1rem 0 0;
+		padding: 0;
+		list-style: none;
+		display: grid;
+		gap: 0.45rem;
+	}
+
+	.home-seo li {
+		position: relative;
+		padding: 0.55rem 0.75rem 0.55rem 1.85rem;
+		border-radius: 0.65rem;
+		border: 1px solid rgba(168, 85, 247, 0.1);
+		background: rgba(10, 6, 18, 0.35);
+		color: #d4cae6;
+		font-size: 0.94rem;
+		line-height: 1.5;
+	}
+
+	.home-seo li::before {
+		content: '';
+		position: absolute;
+		left: 0.75rem;
+		top: 50%;
+		width: 0.35rem;
+		height: 0.35rem;
+		border-radius: 999px;
+		background: var(--color-orchid);
+		transform: translateY(-50%);
 	}
 
 	.home-seo a {
@@ -138,6 +270,42 @@ import { homeFaqs, productInfo } from '../data/site';
 
 	.home-seo__more {
 		font-size: 0.92rem;
+	}
+
+	.home-seo__share {
+		padding: clamp(1.1rem, 2.5vw, 1.5rem);
+		border-radius: var(--radius-card);
+		border: 1px solid rgba(168, 85, 247, 0.14);
+		background: rgba(18, 16, 26, 0.55);
+	}
+
+	.home-seo__share-row {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.65rem;
+		margin-top: 1rem;
+	}
+
+	.share-link {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		min-height: 2.5rem;
+		padding: 0.55rem 0.95rem;
+		border-radius: 0.7rem;
+		border: 1px solid rgba(192, 132, 252, 0.25);
+		background: rgba(34, 28, 48, 0.85);
+		color: var(--color-ink) !important;
+		font-size: 0.88rem;
+		font-weight: 700;
+		transition:
+			border-color 0.2s ease,
+			background 0.2s ease;
+	}
+
+	.share-link:hover {
+		border-color: rgba(192, 132, 252, 0.5);
+		background: rgba(48, 36, 72, 0.9);
 	}
 
 	@media (max-width: 720px) {

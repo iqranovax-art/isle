@@ -8,25 +8,25 @@ interface Props {
 }
 
 const {
-	title = 'Marauders Cheats for',
+	title = 'Marauders Cheats –',
 	accent = 'ESP & Aimbot',
 	subtitle = 'Review Marauders Cheats features, package options, and support resources. Explore ESP and Aimbot tools built for clearer combat decisions.',
 } = Astro.props;
 ---
 
 <section class="hero" aria-label="Hero">
-	<div class="hero__media" aria-hidden="true">
+	<div class="hero__media">
 		<img
 			src={maraudersImages.hero}
-			alt=""
+			alt="Marauders Cheats ESP and Aimbot gameplay showcase background"
 			class="hero__bg"
 			width="1400"
 			height="788"
 			fetchpriority="high"
 			decoding="async"
 		/>
-		<div class="hero__splash"></div>
-		<div class="hero__veil"></div>
+		<div class="hero__splash" aria-hidden="true"></div>
+		<div class="hero__veil" aria-hidden="true"></div>
 	</div>
 
 	<div class="hero__inner">
@@ -38,8 +38,8 @@ const {
 			</h1>
 			<p class="hero__subtitle">{subtitle}</p>
 			<div class="hero__cta">
-				<a href="/pricing/" class="hero__btn hero__btn--primary bg-brand">View Pricing</a>
-				<a href="/features/" class="hero__btn hero__btn--ghost">See Features</a>
+				<a href="/pricing/" class="hero__btn hero__btn--primary bg-brand">Compare package pricing</a>
+				<a href="/features/" class="hero__btn hero__btn--ghost">Browse ESP &amp; Aimbot features</a>
 			</div>
 		</div>
 	</div>
@@ -134,13 +134,13 @@ const {
 	.hero__line,
 	.hero__accent {
 		display: block;
-		white-space: nowrap;
 	}
 
 	.hero__accent {
 		background-size: 200% 100%;
 		animation: shimmer 4s ease-in-out infinite;
 		width: fit-content;
+		white-space: nowrap;
 	}
 
 	.hero__subtitle {

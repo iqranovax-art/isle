@@ -1,5 +1,5 @@
 ---
-import { footerNav, mainNav, siteConfig } from '../data/site';
+import { footerExplore, footerNav, siteConfig } from '../data/site';
 ---
 
 <footer class="footer" id="support-footer">
@@ -12,14 +12,14 @@ import { footerNav, mainNav, siteConfig } from '../data/site';
 			<div>
 				<p class="footer__label">Explore</p>
 				<ul>
-					{mainNav.map((link) => <li><a href={link.href}>{link.label}</a></li>)}
+					{footerExplore.map((link) => <li><a href={link.href}>{link.label}</a></li>)}
 				</ul>
 			</div>
 			<div>
 				<p class="footer__label">Help</p>
 				<ul>
 					{footerNav.map((link) => <li><a href={link.href}>{link.label}</a></li>)}
-					<li><a href={`mailto:${siteConfig.supportEmail}`}>Contact</a></li>
+					<li><a href={`mailto:${siteConfig.supportEmail}`}>Email support inbox</a></li>
 				</ul>
 			</div>
 		</nav>
