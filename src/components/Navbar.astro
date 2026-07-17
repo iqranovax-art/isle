@@ -9,7 +9,7 @@ const isActive = (href: string) =>
 
 <header class="nav" data-nav>
 	<div class="nav__bar">
-		<a href="/" class="nav__brand" aria-label="Marauders Cheats Home">
+		<a href="/" class="nav__brand" aria-label="Marauders Cheats home page">
 			<img
 				src={maraudersImages.logo}
 				alt={siteConfig.name}
@@ -21,7 +21,7 @@ const isActive = (href: string) =>
 			<span class="nav__name">Marauders</span>
 		</a>
 
-		<nav class="nav__links" aria-label="Primary">
+		<nav class="nav__links" id="nav-panel" data-nav-panel aria-label="Primary">
 			{
 				mainNav.map((link) => (
 					<a href={link.href} class:list={['nav__link', { 'is-active': isActive(link.href) }]}>
@@ -29,34 +29,19 @@ const isActive = (href: string) =>
 					</a>
 				))
 			}
-		</nav>
-
-		<div class="nav__end">
 			<a href={siteConfig.checkoutUrl} class="nav__cta">Get Access</a>
-			<button
-				type="button"
-				class="nav__toggle"
-				aria-label="Open menu"
-				aria-expanded="false"
-				aria-controls="nav-panel"
-				data-nav-toggle
-			>
-				<span class="nav__toggle-icon" aria-hidden="true"></span>
-			</button>
-		</div>
-	</div>
-
-	<div class="nav__panel" id="nav-panel" data-nav-panel hidden>
-		<nav class="nav__panel-links" aria-label="Mobile">
-			{
-				mainNav.map((link) => (
-					<a href={link.href} class:list={['nav__panel-link', { 'is-active': isActive(link.href) }]}>
-						{link.label}
-					</a>
-				))
-			}
-			<a href={siteConfig.checkoutUrl} class="nav__panel-cta">Get Access</a>
 		</nav>
+
+		<button
+			type="button"
+			class="nav__toggle"
+			aria-label="Open menu"
+			aria-expanded="false"
+			aria-controls="nav-panel"
+			data-nav-toggle
+		>
+			<span class="nav__toggle-icon" aria-hidden="true"></span>
+		</button>
 	</div>
 </header>
 
@@ -69,7 +54,7 @@ const isActive = (href: string) =>
 		const setOpen = (open: boolean) => {
 			toggle?.setAttribute('aria-expanded', String(open));
 			toggle?.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
-			if (panel instanceof HTMLElement) panel.hidden = !open;
+			nav.classList.toggle('is-open', open);
 			document.body.classList.toggle('nav-open', open);
 		};
 
@@ -82,7 +67,7 @@ const isActive = (href: string) =>
 		});
 
 		document.addEventListener('keydown', (event) => {
-			if (event.key === 'Escape' && panel instanceof HTMLElement && !panel.hidden) {
+			if (event.key === 'Escape' && nav.classList.contains('is-open')) {
 				setOpen(false);
 			}
 		});
@@ -209,19 +194,12 @@ const isActive = (href: string) =>
 		transform: scaleX(1);
 	}
 
-	.nav__end {
-		display: flex;
-		align-items: center;
-		gap: 0.5rem;
-		flex-shrink: 0;
-		margin-left: auto;
-	}
-
 	.nav__cta {
 		display: inline-flex;
 		align-items: center;
 		justify-content: center;
 		height: 2.15rem;
+		margin-left: auto;
 		padding: 0 1rem;
 		border-radius: 999px;
 		background: var(--color-ink);
@@ -245,6 +223,7 @@ const isActive = (href: string) =>
 		place-items: center;
 		width: 2.15rem;
 		height: 2.15rem;
+		flex-shrink: 0;
 		border: 0;
 		border-radius: 999px;
 		background: rgba(168, 85, 247, 0.12);
@@ -303,83 +282,81 @@ const isActive = (href: string) =>
 		transform: rotate(-45deg);
 	}
 
-	.nav__panel {
-		position: fixed;
-		inset: 0;
-		z-index: 79;
-		display: grid;
-		align-content: start;
-		padding: calc(4.5rem + env(safe-area-inset-top, 0px)) var(--page-gutter) 2rem;
-		background: rgba(10, 6, 18, 0.55);
-		backdrop-filter: blur(6px);
-		pointer-events: auto;
-		animation: nav-fade 0.2s ease;
-	}
-
-	.nav__panel[hidden] {
-		display: none;
-	}
-
-	.nav__panel-links {
-		display: grid;
-		gap: 0.35rem;
-		width: min(100%, 22rem);
-		margin: 0 auto;
-		padding: 0.85rem;
-		border-radius: 1rem;
-		border: 1px solid rgba(168, 85, 247, 0.16);
-		background: rgba(16, 12, 26, 0.96);
-		box-shadow: 0 20px 48px rgba(0, 0, 0, 0.4);
-	}
-
-	.nav__panel-link {
-		padding: 0.85rem 1rem;
-		border-radius: 0.65rem;
-		color: var(--color-muted);
-		font-size: 1rem;
-		font-weight: 500;
-		transition:
-			color 0.2s ease,
-			background 0.2s ease;
-	}
-
-	.nav__panel-link:hover,
-	.nav__panel-link.is-active {
-		color: var(--color-ink);
-		background: rgba(168, 85, 247, 0.1);
-	}
-
-	.nav__panel-cta {
-		margin-top: 0.35rem;
-		padding: 0.9rem 1rem;
-		border-radius: 0.65rem;
-		background: var(--color-ink);
-		color: var(--color-midnight);
-		font-size: 0.95rem;
-		font-weight: 700;
-		text-align: center;
-	}
-
-	@keyframes nav-fade {
-		from {
-			opacity: 0;
-		}
-		to {
-			opacity: 1;
-		}
-	}
-
 	@media (max-width: 900px) {
+		.nav__bar {
+			position: relative;
+			z-index: 2;
+		}
+
 		.nav__links {
+			position: fixed;
+			inset: 0;
+			z-index: 1;
+			display: grid;
+			align-content: start;
+			gap: 0.35rem;
+			width: min(100% - (var(--page-gutter) * 2), 22rem);
+			height: fit-content;
+			margin: calc(4.5rem + env(safe-area-inset-top, 0px)) auto 2rem;
+			padding: 0.85rem;
+			border-radius: 1rem;
+			border: 1px solid rgba(168, 85, 247, 0.16);
+			background: rgba(16, 12, 26, 0.96);
+			box-shadow: 0 20px 48px rgba(0, 0, 0, 0.4);
+			opacity: 0;
+			visibility: hidden;
+			pointer-events: none;
+			transform: translateY(-8px);
+			transition:
+				opacity 0.2s ease,
+				transform 0.2s ease,
+				visibility 0.2s ease;
+		}
+
+		.nav.is-open .nav__links {
+			opacity: 1;
+			visibility: visible;
+			pointer-events: auto;
+			transform: translateY(0);
+		}
+
+		.nav.is-open::before {
+			content: '';
+			position: fixed;
+			inset: 0;
+			z-index: 0;
+			background: rgba(10, 6, 18, 0.55);
+			backdrop-filter: blur(6px);
+			pointer-events: auto;
+		}
+
+		.nav__link {
+			padding: 0.85rem 1rem;
+			border-radius: 0.65rem;
+			font-size: 1rem;
+		}
+
+		.nav__link::after {
 			display: none;
+		}
+
+		.nav__link.is-active,
+		.nav__link:hover {
+			background: rgba(168, 85, 247, 0.1);
 		}
 
 		.nav__cta {
-			display: none;
+			width: 100%;
+			height: auto;
+			margin: 0.35rem 0 0;
+			padding: 0.9rem 1rem;
+			border-radius: 0.65rem;
+			font-size: 0.95rem;
 		}
 
 		.nav__toggle {
 			display: grid;
+			margin-left: auto;
 		}
 	}
 

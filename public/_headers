@@ -4,8 +4,11 @@
   Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
   X-Frame-Options: DENY
 
-/*.html
+/
   Content-Type: text/html; charset=utf-8
 
-/
+/*/
+  Content-Type: text/html; charset=utf-8
+
+/*.html
   Content-Type: text/html; charset=utf-8

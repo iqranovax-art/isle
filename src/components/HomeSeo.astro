@@ -2,9 +2,7 @@
 import { homeFaqs, productInfo, siteConfig } from '../data/site';
 
 const shareUrl = encodeURIComponent(siteConfig.url + '/');
-const shareText = encodeURIComponent(
-	'Marauders Cheats – ESP & Aimbot tools for Marauders players',
-);
+const shareText = encodeURIComponent('Marauders Cheats - ESP & Aimbot tools for Marauders players');
 ---
 
 <section class="home-seo shell" aria-labelledby="home-seo-title">
@@ -20,6 +18,13 @@ const shareText = encodeURIComponent(
 			context and predictable aim-assist settings can make package evaluation easier when you are
 			deciding between a short monthly license and a longer lifetime option. Use the sections below,
 			then open the dedicated product pages for deeper detail.
+		</p>
+		<p>
+			Players searching for Marauders Cheats usually want a clear answer to three questions: which ESP
+			overlays are included, how Aimbot targeting is configured, and which license length fits their
+			budget. This homepage answers those questions with package context, then points to focused pages
+			for ESP, Aimbot, features, pricing, FAQ, and support so you can research without guessing from
+			vague marketing copy.
 		</p>
 
 		<div class="home-seo__grid">
@@ -148,6 +153,14 @@ const shareText = encodeURIComponent(
 				rel="noopener noreferrer"
 			>
 				Share on Reddit
+			</a>
+			<a
+				class="share-link"
+				href={`https://www.linkedin.com/sharing/share-offsite/?url=${shareUrl}`}
+				target="_blank"
+				rel="noopener noreferrer"
+			>
+				Share on LinkedIn
 			</a>
 		</div>
 	</section>
