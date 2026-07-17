@@ -7,6 +7,10 @@ export default defineConfig({
 	site: 'https://islecheats.net',
 	trailingSlash: 'always',
 	compressHTML: true,
+	server: {
+		host: true,
+		port: 4321,
+	},
 	build: {
 		inlineStylesheets: 'auto',
 		format: 'directory',
