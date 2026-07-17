@@ -1,4 +1,6 @@
 ---
+import { productInfo, siteConfig } from '../data/site';
+
 interface Crumb {
 	label: string;
 	href?: string;
@@ -12,7 +14,7 @@ const {
 	items = [
 		{ label: 'Main page', href: '/' },
 		{ label: 'Store packages', href: '/pricing/' },
-		{ label: 'The Isle Cheats' },
+		{ label: siteConfig.name },
 	],
 } = Astro.props;
 ---

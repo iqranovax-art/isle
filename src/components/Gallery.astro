@@ -1,5 +1,6 @@
 ---
 import { theIsleImages } from '../data/theisle';
+import { siteConfig } from '../data/site';
 
 const featured =
 	theIsleImages.gallery.find((image) => 'featured' in image && image.featured) ??
@@ -24,7 +25,7 @@ const cheatHighlights = [
 
 <section class="gallery" id="gallery" aria-labelledby="gallery-title">
 	<header class="gallery__head">
-		<p class="gallery__eyebrow">The Isle Cheats</p>
+		<p class="gallery__eyebrow">{siteConfig.name}</p>
 		<h2 id="gallery-title" class="gallery__title">Game Context Gallery</h2>
 		<p class="gallery__sub">
 			Short visual previews paired with feature context so the section explains the cheat set instead of only
@@ -36,7 +37,7 @@ const cheatHighlights = [
 		<div class="gallery__content">
 			<div class="gallery__summary">
 				<p class="gallery__lead">
-					The Isle Cheats combines survival awareness and combat support into a tighter overlay package built
+					{siteConfig.name} combines survival awareness and combat support into a tighter overlay package built
 					around readable visuals.
 				</p>
 

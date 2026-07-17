@@ -16,7 +16,7 @@ interface Props {
 }
 
 const {
-	name = 'The Isle Cheats',
+	name = productInfo.name,
 	plans = productInfo.plans.map((plan) => ({ ...plan, stock: 'Available' })),
 	defaultPlan = 'monthly',
 } = Astro.props;
@@ -71,7 +71,7 @@ const active = plans.find((plan) => plan.id === defaultPlan) ?? plans[0];
 						stroke-width="1.6"
 						stroke-linejoin="round"></path>
 				</svg>
-				The Isle
+				{productInfo.game}
 			</span>
 			<span class="badge">
 				<svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true">

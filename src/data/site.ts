@@ -1,5 +1,5 @@
 export const siteConfig = {
-	name: 'Theisle cheats',
+	name: 'The Isle Cheats',
 	url: 'https://islecheats.net',
 	locale: 'en',
 	market: 'Worldwide',
@@ -7,16 +7,18 @@ export const siteConfig = {
 	logo: '/images/zadeyo-logo.png',
 	checkoutUrl: 'https://zadeyo.com/products/theisle-cheats',
 	defaultOgImage: '/images/hero.webp',
-	metaDescription: 'Theisle cheats',
-	keywords: 'Theisle cheats',
+	metaDescription:
+		'The Isle Cheats offers ESP and Aimbot tools for The Isle on Windows PC. Compare features, pricing, updates, and support at islecheats.net.',
+	keywords:
+		'The Isle Cheats, The Isle cheats, isle cheats, ESP, aimbot, the isle, dinosaur survival, islecheats.net',
 } as const;
 
 export const productInfo = {
-	name: 'Theisle cheats',
-	shortName: 'Theisle cheats',
+	name: 'The Isle Cheats',
+	shortName: 'The Isle Cheats',
 	tagline: 'ESP and Aimbot tools for The Isle',
 	summary:
-		'Theisle cheats is a software package that includes ESP and Aimbot options for players who want clearer survival information and assisted combat controls in The Isle.',
+		'The Isle Cheats is a software package that includes ESP and Aimbot options for players who want clearer survival information and assisted combat controls in The Isle.',
 	game: 'The Isle',
 	delivery: 'Digital license delivery after purchase confirmation',
 	platforms: ['Windows PC'],
@@ -77,9 +79,9 @@ export const footerExplore = [
 
 export const homeFaqs = [
 	{
-		question: 'What is included with Theisle cheats?',
+		question: 'What is included with The Isle Cheats?',
 		answer:
-			'Theisle cheats includes ESP and Aimbot feature sets, plus access to product updates and support for setup questions. ESP covers player and dinosaur overlays, species markers, distance readouts, and toggleable categories. Aimbot covers assisted targeting, smoothness controls, target priority, and hotkey toggles. See the Features and Pricing pages for the full package breakdown.',
+			'The Isle Cheats includes ESP and Aimbot feature sets, plus access to product updates and support for setup questions. ESP covers player and dinosaur overlays, species markers, distance readouts, and toggleable categories. Aimbot covers assisted targeting, smoothness controls, target priority, and hotkey toggles. See the Features and Pricing pages for the full package breakdown.',
 	},
 	{
 		question: 'How are licenses delivered?',

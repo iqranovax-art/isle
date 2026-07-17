@@ -1,6 +1,6 @@
 # islecheats.net
 
-Theisle cheats marketing site built with Astro.
+The Isle Cheats marketing site built with Astro.
 
 ## Commands
 

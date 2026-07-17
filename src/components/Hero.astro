@@ -1,5 +1,6 @@
 ---
 import { theIsleImages } from '../data/theisle';
+import { productInfo, siteConfig } from '../data/site';
 
 interface Props {
 	accent?: string;
@@ -8,7 +9,7 @@ interface Props {
 
 const {
 	accent = 'ESP & Aimbot',
-	subtitle = 'Review The Isle Cheats features, package options, and support resources. Explore ESP and Aimbot tools built for clearer survival and combat decisions.',
+	subtitle = `Review ${siteConfig.name} features, package options, and support resources. Explore ESP and Aimbot tools built for clearer survival and combat decisions.`,
 } = Astro.props;
 ---
 
@@ -16,7 +17,7 @@ const {
 	<div class="hero__media">
 		<img
 			src={theIsleImages.hero}
-			alt="The Isle Cheats ESP and Aimbot gameplay showcase"
+			alt={`${siteConfig.name} ESP and Aimbot gameplay showcase`}
 			class="hero__bg"
 			width="1400"
 			height="788"
@@ -29,10 +30,10 @@ const {
 
 	<div class="hero__inner">
 		<div class="hero__copy">
-			<p class="hero__eyebrow">The Isle Cheats</p>
+			<p class="hero__eyebrow">{siteConfig.name}</p>
 			<h1 class="hero__title">
 				<span class="hero__line">
-					<span class="hero__word">The Isle</span>
+					<span class="hero__word">{productInfo.game}</span>
 					<span class="hero__word">Cheats</span>
 					<span class="hero__word hero__word--for">for</span>
 				</span>

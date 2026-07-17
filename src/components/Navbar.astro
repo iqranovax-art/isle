@@ -1,6 +1,6 @@
 ---
 import { theIsleImages } from '../data/theisle';
-import { mainNav, siteConfig } from '../data/site';
+import { mainNav, productInfo, siteConfig } from '../data/site';
 
 const current = Astro.url.pathname;
 const isActive = (href: string) =>
@@ -9,7 +9,7 @@ const isActive = (href: string) =>
 
 <header class="nav" data-nav>
 	<div class="nav__bar">
-		<a href="/" class="nav__brand" aria-label="The Isle Cheats home page">
+		<a href="/" class="nav__brand" aria-label={`${siteConfig.name} home page`}>
 			<img
 				src={theIsleImages.logo}
 				alt={siteConfig.name}
@@ -18,7 +18,7 @@ const isActive = (href: string) =>
 				class="nav__logo"
 				decoding="async"
 			/>
-			<span class="nav__name">The Isle</span>
+			<span class="nav__name">{productInfo.game}</span>
 		</a>
 
 		<nav class="nav__links" id="nav-panel" data-nav-panel aria-label="Primary">
