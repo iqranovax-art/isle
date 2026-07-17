@@ -3,7 +3,7 @@ import PageLayout from '../../layouts/PageLayout.astro';
 import { productInfo, siteConfig } from '../../data/site';
 import { theIsleImages } from '../../data/theisle';
 
-const title = 'The Isle ESP - Player & Dinosaur Visibility';
+const title = 'The Isle ESP - Visuals & World ESP';
 const description = siteConfig.metaDescription;
 ---
 
@@ -12,32 +12,31 @@ const description = siteConfig.metaDescription;
 	description={description}
 	canonicalPath="/theisle-esp/"
 	heading="The Isle ESP"
-	intro="The Isle ESP focuses on on-screen information: players, dinosaurs, and distance cues that help you read an encounter before you commit."
+	intro="Visuals ESP and World ESP for entity awareness, resource tracking, and environment readouts. Both are included in the Cloud-DMA option."
 	heroImage={theIsleImages.product[2].src}
 	heroAlt="The Isle ESP visibility preview"
 	gallery={theIsleImages.product.slice(0, 3)}
 	ctaPrimary={{ href: '/pricing/', label: 'View Pricing' }}
-	ctaSecondary={{ href: '/theisle-aimbot/', label: 'See Aimbot' }}
+	ctaSecondary={{ href: '/theisle-exploits/', label: 'See Exploits' }}
 >
 	<section class="card-panel">
-		<h2>ESP feature areas</h2>
+		<h2>Visuals ESP (WH)</h2>
 		<ul>
-			{productInfo.features.esp.map((item) => <li>{item}</li>)}
+			{productInfo.features.visualsEsp.map((item) => <li>{item}</li>)}
 		</ul>
 	</section>
 
-	<section class="card-panel">
-		<h2>Player ESP and dinosaur ESP</h2>
-		<p>
-			Player ESP helps you track nearby survivors. Dinosaur ESP highlights nearby carnivores and herbivores.
-			Both can be toggled in the interface so you keep only the information you need for the current hunt.
-		</p>
+	<section class="card-panel" id="world-esp">
+		<h2>World ESP (Environment)</h2>
+		<ul>
+			{productInfo.features.worldEsp.map((item) => <li>{item}</li>)}
+		</ul>
 	</section>
 
 	<section class="card-panel">
 		<h2>Related pages</h2>
 		<ul>
-			<li><a href="/theisle-aimbot/">The Isle Aimbot controls</a></li>
+			<li><a href="/theisle-exploits/">The Isle Exploits</a></li>
 			<li><a href="/features/">All The Isle Cheats features</a></li>
 			<li><a href="/pricing/">Pricing and package lengths</a></li>
 			<li><a href="/faq/">ESP and delivery FAQ</a></li>

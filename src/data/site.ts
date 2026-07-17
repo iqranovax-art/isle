@@ -8,17 +8,24 @@ export const siteConfig = {
 	checkoutUrl: 'https://zadeyo.com/products/theisle-cheats',
 	defaultOgImage: '/images/hero.webp',
 	metaDescription:
-		'The Isle Cheats offers ESP and Aimbot tools for The Isle on Windows PC. Compare features, pricing, updates, and support at islecheats.net.',
+		'The Isle Cheats offers Cloud-DMA, Visuals ESP, World ESP, and Exploits for The Isle on Windows PC. Compare features, pricing, updates, and support at islecheats.net.',
 	keywords:
-		'The Isle Cheats, The Isle cheats, isle cheats, ESP, aimbot, the isle, dinosaur survival, islecheats.net',
+		'The Isle Cheats, The Isle cheats, isle cheats, ESP, exploits, Cloud-DMA, instant rotation, the isle, dinosaur survival, islecheats.net',
+} as const;
+
+export const cloudDmaOption = {
+	label: 'Cloud-DMA',
+	summary:
+		'Cloud-DMA package includes Visuals ESP, World ESP, Exploits, and Other tools. Aimbot is not included in the Cloud-DMA option.',
+	excludes: ['Aimbot'],
 } as const;
 
 export const productInfo = {
 	name: 'The Isle Cheats',
 	shortName: 'The Isle Cheats',
-	tagline: 'ESP and Aimbot tools for The Isle',
+	tagline: 'Cloud-DMA, ESP, and Exploits for The Isle',
 	summary:
-		'The Isle Cheats is a software package that includes ESP and Aimbot options for players who want clearer survival information and assisted combat controls in The Isle.',
+		'The Isle Cheats is a software package with Cloud-DMA support, Visuals ESP, World ESP, Exploits, and utility tools for players who want clearer survival information and advanced control options in The Isle.',
 	game: 'The Isle',
 	delivery: 'Digital license delivery after purchase confirmation',
 	platforms: ['Windows PC'],
@@ -30,19 +37,74 @@ export const productInfo = {
 	],
 	currency: 'USD',
 	features: {
-		esp: [
-			'Player and dinosaur ESP overlays for nearby threat awareness',
-			'Species identification markers for carnivores and herbivores',
-			'Distance readouts to help with engagement and escape decisions',
-			'Toggleable ESP categories in the interface',
-		],
 		aimbot: [
-			'Aim assist targeting for visible opponents during combat',
-			'Sensitivity and smoothness controls',
-			'Target-priority options in the settings panel',
-			'On/off hotkey support for quick control',
+			'Aimbot — Automatic aiming at players',
+			'Aim Key — Keys to activate automatic aiming',
+			'Lock Target — Stay locked on the target until it is destroyed',
+			'Distance — Activation distance of the aimbot',
+			'FOV — Field of view for the aimbot',
+			'Smooth — Smoothing of aimbot movements',
+			'Draw FOV — Display the aimbot working area as a circle',
+			'Filled FOV — Visual fill style for the FOV circle',
+			'Color FOV — Set your preferred FOV color',
+			'Draw Arrows — Arrows around the aiming area',
+			'Head Only — Aim targets the head only',
+		],
+		visualsEsp: [
+			'Show Entities — Enable ESP to display entities',
+			'BOX — ESP boxes around entities',
+			'Box Type — Full or corner box style',
+			'Snaplines — Lines to entities',
+			'Snaplines Style — Line display type',
+			'Distance — Distance to targets in meters',
+			'Health — HP level (bar or text)',
+			'Names — Entity name display',
+			'Growth — Growth percentage',
+			'Weight — Entity weight in kg',
+			'Classname — Current class of the entity',
+			'Ignore Team — Ignore allies',
+			'Show All — Show everything in range',
+			'Max Distance — ESP range (up to 2000 m)',
+			'Custom Colors — Custom colors for ESP elements',
+			'Bite Radius — Show bite radius',
+			'Head Dot — Dot on the head',
+			'Show Stamina — Stamina level',
+			'Show Blood — Blood level',
+			'Show Bleeding — Blood loss level',
+		],
+		worldEsp: [
+			'Show Objects — Toggle environment object ESP',
+			'Bodies — Bodies of the deceased',
+			'Meat — Meat pickups',
+			'Fruits — Fruit resources',
+			'Medicinal herbs — Herb pickups',
+			'Mushrooms — Mushroom resources',
+			'Water — Water sources',
+			'Max Distance — Object display range in meters',
+		],
+		exploits: [
+			'No Cost Ability — Abilities require no point expenditure',
+			'No Cooldown Attack — Removes cooldown between attacks',
+			'No Fractured — Disables fractures',
+			'Omnimovement — Removes movement constraints for dinos',
+			'Instant Rotation — Instant rotation of your dino',
+			'Auto-Attack — Automatically attacks in your attack area',
+			'Unlock Zoom — Zoom in and out beyond default limits',
+		],
+		other: [
+			'Radar — Window showing all dinos within radius',
+			'Disable Shadows — Turn off in-game shadows',
+			'FOV Changer — Increase field of view',
+			'Change Sky — Sky brightness and moon settings',
+			'No Fog — Remove fog',
+			'Crosshair — Custom center-screen crosshair',
+			'Menu Key — Bindable key to open the menu',
+			'Font Settings — Configure ESP font size',
+			'Configs — Save and load settings profiles',
+			'Languages — English and Russian',
 		],
 		general: [
+			'Cloud-DMA option available (ESP, World ESP, Exploits, and Other — no Aimbot)',
 			'In-client feature toggles',
 			'Monthly and lifetime package options',
 			'Product update notices on the Updates page',
@@ -51,10 +113,18 @@ export const productInfo = {
 	},
 } as const;
 
+export const featureCategories = [
+	{ id: 'visualsEsp', title: 'Visuals ESP (WH)', href: '/theisle-esp/' },
+	{ id: 'worldEsp', title: 'World ESP (Environment)', href: '/theisle-esp/#world-esp' },
+	{ id: 'exploits', title: 'Exploits', href: '/theisle-exploits/' },
+	{ id: 'other', title: 'Other (The Isle)', href: '/features/#other' },
+	{ id: 'aimbot', title: 'Aimbot', href: '/features/#aimbot', cloudDmaExcluded: true },
+] as const;
+
 export const mainNav = [
 	{ label: 'Home', href: '/' },
-	{ label: 'Aimbot', href: '/theisle-aimbot/' },
 	{ label: 'ESP', href: '/theisle-esp/' },
+	{ label: 'Exploits', href: '/theisle-exploits/' },
 	{ label: 'Features', href: '/features/' },
 	{ label: 'Pricing', href: '/pricing/' },
 	{ label: 'FAQ', href: '/faq/' },
@@ -70,8 +140,8 @@ export const footerNav = [
 
 export const footerExplore = [
 	{ label: 'Site overview', href: '/' },
-	{ label: 'Aimbot product page', href: '/theisle-aimbot/' },
-	{ label: 'ESP product page', href: '/theisle-esp/' },
+	{ label: 'Visuals ESP page', href: '/theisle-esp/' },
+	{ label: 'Exploits page', href: '/theisle-exploits/' },
 	{ label: 'Full feature breakdown', href: '/features/' },
 	{ label: 'Package pricing plans', href: '/pricing/' },
 	{ label: 'Common questions hub', href: '/faq/' },
@@ -81,7 +151,12 @@ export const homeFaqs = [
 	{
 		question: 'What is included with The Isle Cheats?',
 		answer:
-			'The Isle Cheats includes ESP and Aimbot feature sets, plus access to product updates and support for setup questions. ESP covers player and dinosaur overlays, species markers, distance readouts, and toggleable categories. Aimbot covers assisted targeting, smoothness controls, target priority, and hotkey toggles. See the Features and Pricing pages for the full package breakdown.',
+			'The Isle Cheats includes Visuals ESP, World ESP, Exploits, and Other utility tools. The Cloud-DMA option covers ESP, World ESP, Exploits, and Other features without Aimbot. Full packages can include the complete feature list on the Features page, including optional Aimbot controls for buyers who need them.',
+	},
+	{
+		question: 'What is the Cloud-DMA option?',
+		answer:
+			'Cloud-DMA is the package option focused on ESP, World ESP, Exploits, and Other tools such as Instant Rotation, Radar, and FOV Changer. Aimbot is not included in the Cloud-DMA option.',
 	},
 	{
 		question: 'How are licenses delivered?',

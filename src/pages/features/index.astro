@@ -1,9 +1,9 @@
 ---
 import PageLayout from '../../layouts/PageLayout.astro';
-import { productInfo, siteConfig } from '../../data/site';
+import { cloudDmaOption, productInfo, siteConfig } from '../../data/site';
 import { theIsleImages } from '../../data/theisle';
 
-const title = 'The Isle Cheats Features - ESP, Aimbot & More';
+const title = 'The Isle Cheats Features - Cloud-DMA, ESP & Exploits';
 const description = siteConfig.metaDescription;
 ---
 
@@ -12,7 +12,7 @@ const description = siteConfig.metaDescription;
 	description={description}
 	canonicalPath="/features/"
 	heading="The Isle Cheats Features"
-	intro="Compare ESP, Aimbot, and general package options in one place before choosing a duration on Pricing."
+	intro="Compare Cloud-DMA, Visuals ESP, World ESP, Exploits, and Other tools in one place before choosing a duration on Pricing."
 	heroImage={theIsleImages.hero}
 	heroAlt="The Isle Cheats features overview visual"
 	gallery={theIsleImages.gallery.slice(1, 4)}
@@ -20,9 +20,21 @@ const description = siteConfig.metaDescription;
 	ctaSecondary={{ href: '/faq/', label: 'Read FAQ' }}
 >
 	<section class="card-panel">
-		<h2>ESP features</h2>
+		<h2>{cloudDmaOption.label} option</h2>
+		<p>{cloudDmaOption.summary}</p>
 		<ul>
-			{productInfo.features.esp.map((item) => <li>{item}</li>)}
+			<li>Visuals ESP (WH)</li>
+			<li>World ESP (Environment)</li>
+			<li>Exploits (Instant Rotation, Auto-Attack, and more)</li>
+			<li>Other (The Isle) utilities</li>
+			<li>Not included: {cloudDmaOption.excludes.join(', ')}</li>
+		</ul>
+	</section>
+
+	<section class="card-panel">
+		<h2>Visuals ESP (WH)</h2>
+		<ul>
+			{productInfo.features.visualsEsp.map((item) => <li>{item}</li>)}
 		</ul>
 		<div class="cta-row">
 			<a class="cta-btn cta-btn--ghost" href="/theisle-esp/">ESP details</a>
@@ -30,13 +42,35 @@ const description = siteConfig.metaDescription;
 	</section>
 
 	<section class="card-panel">
-		<h2>Aimbot features</h2>
+		<h2>World ESP (Environment)</h2>
+		<ul>
+			{productInfo.features.worldEsp.map((item) => <li>{item}</li>)}
+		</ul>
+	</section>
+
+	<section class="card-panel">
+		<h2>Exploits</h2>
+		<ul>
+			{productInfo.features.exploits.map((item) => <li>{item}</li>)}
+		</ul>
+		<div class="cta-row">
+			<a class="cta-btn cta-btn--ghost" href="/theisle-exploits/">Exploits details</a>
+		</div>
+	</section>
+
+	<section class="card-panel" id="other">
+		<h2>Other (The Isle)</h2>
+		<ul>
+			{productInfo.features.other.map((item) => <li>{item}</li>)}
+		</ul>
+	</section>
+
+	<section class="card-panel" id="aimbot">
+		<h2>Aimbot (not in Cloud-DMA)</h2>
+		<p>Aimbot is available outside the Cloud-DMA option. Cloud-DMA buyers receive ESP, Exploits, and Other tools only.</p>
 		<ul>
 			{productInfo.features.aimbot.map((item) => <li>{item}</li>)}
 		</ul>
-		<div class="cta-row">
-			<a class="cta-btn cta-btn--ghost" href="/theisle-aimbot/">Aimbot details</a>
-		</div>
 	</section>
 
 	<section class="card-panel">

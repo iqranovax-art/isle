@@ -12,7 +12,7 @@ const description = siteConfig.metaDescription;
 	description={description}
 	canonicalPath="/pricing/"
 	heading="The Isle Cheats Pricing"
-	intro="Packages are sold in USD and include the The Isle Cheats ESP and Aimbot product line."
+	intro="Packages are sold in USD and include the The Isle Cheats Cloud-DMA, ESP, and Exploits product line."
 	heroImage={theIsleImages.cover}
 	heroAlt="The Isle Cheats pricing visual"
 	gallery={[theIsleImages.product[1], theIsleImages.product[3], theIsleImages.product[5]]}
@@ -27,7 +27,7 @@ const description = siteConfig.metaDescription;
 					<article class:list={['price-card', { 'is-featured': plan.id === 'lifetime' }]}>
 						<span class="price-card__label">{plan.label}</span>
 						<span class="price-card__price">${plan.price}</span>
-						<span class="price-card__meta">{productInfo.currency} · ESP + Aimbot</span>
+						<span class="price-card__meta">{productInfo.currency} · Cloud-DMA · ESP</span>
 					</article>
 				))
 			}
@@ -38,7 +38,7 @@ const description = siteConfig.metaDescription;
 		<h2>What each package includes</h2>
 		<p>
 			Each package includes access to the The Isle Cheats feature set described on
-			<a href="/features/">Features</a>, including ESP and Aimbot options. Delivery method:
+			<a href="/features/">Features</a>, including Cloud-DMA, Visuals ESP, World ESP, and Exploits. Delivery method:
 			{productInfo.delivery}.
 		</p>
 	</section>

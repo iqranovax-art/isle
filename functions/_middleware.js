@@ -6,8 +6,10 @@ const PATH_REDIRECTS = {
 	'/sitemap-index.xml': '/sitemap.xml',
 	'/sitemap-0.xml': '/sitemap.xml',
 	'/sitemap-images.xml': '/sitemap.xml',
-	'/marauders-aimbot': '/theisle-aimbot/',
-	'/marauders-aimbot/': '/theisle-aimbot/',
+	'/marauders-aimbot': '/theisle-exploits/',
+	'/marauders-aimbot/': '/theisle-exploits/',
+	'/theisle-aimbot': '/theisle-exploits/',
+	'/theisle-aimbot/': '/theisle-exploits/',
 	'/marauders-esp': '/theisle-esp/',
 	'/marauders-esp/': '/theisle-esp/',
 };

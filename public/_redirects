@@ -10,7 +10,9 @@
 /sitemap-0.xml /sitemap.xml 301
 /sitemap-images.xml /sitemap.xml 301
 
-/marauders-aimbot /theisle-aimbot/ 301
-/marauders-aimbot/ /theisle-aimbot/ 301
+/marauders-aimbot /theisle-exploits/ 301
+/marauders-aimbot/ /theisle-exploits/ 301
+/theisle-aimbot /theisle-exploits/ 301
+/theisle-aimbot/ /theisle-exploits/ 301
 /marauders-esp /theisle-esp/ 301
 /marauders-esp/ /theisle-esp/ 301

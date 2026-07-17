@@ -1,52 +1,50 @@
 ---
-import { homeFaqs, productInfo, siteConfig } from '../data/site';
+import { cloudDmaOption, homeFaqs, productInfo, siteConfig } from '../data/site';
 
 const shareUrl = encodeURIComponent(siteConfig.url + '/');
-const shareText = encodeURIComponent('The Isle Cheats - ESP & Aimbot tools for The Isle players');
+const shareText = encodeURIComponent('The Isle Cheats - Cloud-DMA, ESP, and Exploits for The Isle players');
 ---
 
 <section class="home-seo shell" aria-labelledby="home-seo-title">
 	<div class="home-seo__panel card-surface">
-		<h2 id="home-seo-title">The Isle Cheats ESP and Aimbot overview</h2>
+		<h2 id="home-seo-title">The Isle Cheats Cloud-DMA and ESP overview</h2>
 		<p>
 			{productInfo.summary} This page is the main entry point for players comparing The Isle Cheats
-			before purchase. You can review what ESP covers, how Aimbot controls are presented, which package
-			lengths are available, and where to find updates or support after checkout.
+			before purchase. You can review Visuals ESP, World ESP, Exploits, Cloud-DMA options, package
+			lengths, and where to find updates or support after checkout.
 		</p>
 		<p>
-			The Isle is a dinosaur survival game where awareness and positioning matter. Clearer on-screen
-			context and predictable aim-assist settings can make package evaluation easier when you are
-			deciding between a short monthly license and a longer lifetime option. Use the sections below,
-			then open the dedicated product pages for deeper detail.
+			The Isle is a dinosaur survival game where awareness and positioning matter. Cloud-DMA focuses on
+			ESP, World ESP, Exploits such as Instant Rotation, and utility tools without Aimbot. Use the sections
+			below, then open the dedicated product pages for deeper detail.
 		</p>
 		<p>
 			Players searching for The Isle Cheats usually want a clear answer to three questions: which ESP
-			overlays are included, how Aimbot targeting is configured, and which license length fits their
+			overlays are included, which Exploit options are available, and which license length fits their
 			budget. This homepage answers those questions with package context, then points to focused pages
-			for ESP, Aimbot, features, pricing, FAQ, and support so you can research without guessing from
-			vague marketing copy.
+			for ESP, Exploits, features, pricing, FAQ, and support.
 		</p>
 
 		<div class="home-seo__grid">
 			<article>
 				<h3><a href="/theisle-esp/">The Isle ESP visibility tools</a></h3>
 				<p>
-					ESP options focus on readable player and dinosaur awareness so you can understand nearby threats
-					and survival opportunities without guessing from incomplete screen cues alone.
+					Visuals ESP and World ESP cover entities, health, growth, resources, bodies, meat, fruits, herbs,
+					mushrooms, and water with configurable range and colors.
 				</p>
 			</article>
 			<article>
-				<h3><a href="/theisle-aimbot/">The Isle Aimbot control options</a></h3>
+				<h3><a href="/theisle-exploits/">The Isle Exploit options</a></h3>
 				<p>
-					Aimbot settings cover targeting behavior, smoothness, priority choices, and hotkey toggles so
-					you can review how assisted aiming is configured before buying.
+					Exploits include Instant Rotation, Auto-Attack, Omnimovement, No Cooldown Attack, Unlock Zoom, and
+					other movement and combat tools included in Cloud-DMA.
 				</p>
 			</article>
 			<article>
 				<h3><a href="/features/">Complete The Isle Cheats feature list</a></h3>
 				<p>
-					The features page groups ESP, Aimbot, and general package tools in one place so you can scan
-					capabilities without jumping between marketing blurbs.
+					The features page groups Cloud-DMA, Visuals ESP, World ESP, Exploits, Other tools, and optional
+					Aimbot details in one place.
 				</p>
 			</article>
 			<article>
@@ -62,15 +60,14 @@ const shareText = encodeURIComponent('The Isle Cheats - ESP & Aimbot tools for T
 	<div class="home-seo__panel card-surface">
 		<h2>What The Isle Cheats includes</h2>
 		<p>
-			The Isle Cheats is sold as a Windows PC software package with ESP and Aimbot feature sets. ESP
-			overlays help with player and dinosaur spotting, species markers, distance readouts, and category
-			toggles. Aimbot tools focus on assisted targeting, sensitivity and smoothness controls, target
-			priority, and quick on/off hotkeys. General package options include in-client toggles, monthly and
-			lifetime plans, update notices, and a support channel for setup or billing questions.
+			The Isle Cheats is sold as a Windows PC software package with Visuals ESP, World ESP, Exploits, and
+			Other utility tools. The {cloudDmaOption.label} option includes ESP, World ESP, Exploits, and Other
+			features without Aimbot. Packages also support configs, English and Russian languages, and in-client
+			toggles.
 		</p>
 		<ul>
-			{productInfo.features.esp.map((item) => <li>{item}</li>)}
-			{productInfo.features.aimbot.map((item) => <li>{item}</li>)}
+			{productInfo.features.visualsEsp.slice(0, 6).map((item) => <li>{item}</li>)}
+			{productInfo.features.exploits.map((item) => <li>{item}</li>)}
 			{productInfo.features.general.map((item) => <li>{item}</li>)}
 		</ul>
 		<p>
@@ -78,19 +75,18 @@ const shareText = encodeURIComponent('The Isle Cheats - ESP & Aimbot tools for T
 			<a href="/pricing/">The Isle Cheats pricing page</a>
 			so you can compare duration against budget. Maintenance notes appear on
 			<a href="/updates/">product update notices</a>
-			whenever a build or compatibility change is published. If you need policy details before buying,
-			read the refund, privacy, and terms pages linked in the footer.
+			whenever a build or compatibility change is published.
 		</p>
 	</div>
 
 	<div class="home-seo__panel card-surface">
-		<h2>How to evaluate ESP and Aimbot for The Isle</h2>
+		<h2>How to evaluate Cloud-DMA and ESP for The Isle</h2>
 		<p>
 			Start with the survival information you care about most. If threat awareness and map reading are your
-			priority, open the ESP page and confirm which overlay categories match your play style. If assisted
-			aiming controls matter more, review Aimbot settings for smoothness, targeting priority, and hotkey
-			behavior. Many players check both pages, then use the feature list as a final checklist before
-			choosing a monthly or lifetime license.
+			priority, open the ESP page and confirm which Visuals ESP and World ESP categories match your play
+			style. If movement and combat tools matter more, review Exploits for Instant Rotation, Auto-Attack,
+			and Omnimovement. Many players check both pages, then use the feature list as a final checklist
+			before choosing a monthly or lifetime license.
 		</p>
 		<p>
 			Delivery is digital after payment confirmation. Timing can vary by payment method and order review.
@@ -100,9 +96,9 @@ const shareText = encodeURIComponent('The Isle Cheats - ESP & Aimbot tools for T
 		</p>
 		<p>
 			This site is designed for clear product research rather than vague claims. Each internal page has a
-			focused job: ESP explains visibility tools, Aimbot explains aiming controls, Features summarizes the
-			full package, Pricing compares plan lengths, FAQ answers common purchase questions, and Support is
-			the contact path when something needs a human reply.
+			focused job: ESP explains visibility tools, Exploits explains movement and combat options, Features
+			summarizes the full package, Pricing compares plan lengths, FAQ answers common purchase questions,
+			and Support is the contact path when something needs a human reply.
 		</p>
 	</div>
 
@@ -128,7 +124,7 @@ const shareText = encodeURIComponent('The Isle Cheats - ESP & Aimbot tools for T
 
 	<section class="home-seo__share" aria-labelledby="share-title">
 		<h2 id="share-title">Share The Isle Cheats</h2>
-		<p>Pass this page along if someone else is comparing ESP and Aimbot options for The Isle.</p>
+		<p>Pass this page along if someone else is comparing Cloud-DMA, ESP, and Exploit options for The Isle.</p>
 		<div class="home-seo__share-row">
 			<a
 				class="share-link"
