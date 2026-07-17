@@ -1,16 +1,16 @@
 ---
 import PageLayout from '../../layouts/PageLayout.astro';
 import { homeFaqs, siteConfig } from '../../data/site';
-import { maraudersImages } from '../../data/marauders';
+import { theIsleImages } from '../../data/theisle';
 
-const title = 'Marauders Cheats FAQ - Delivery, Features & Support';
+const title = 'The Isle Cheats FAQ - Delivery, Features & Support';
 const description =
-	'Find answers about Marauders Cheats features, pricing packages, digital delivery, updates, and support.';
+	'Find answers about The Isle Cheats features, pricing packages, digital delivery, updates, and support.';
 
 const faqs = [
 	...homeFaqs,
 	{
-		question: 'Do Marauders Cheats include both ESP and Aimbot?',
+		question: 'Do The Isle Cheats include both ESP and Aimbot?',
 		answer:
 			'Yes. The product line covers ESP and Aimbot feature groups. See the ESP and Aimbot pages for the controls each area includes.',
 	},
@@ -44,11 +44,11 @@ const faqSchema = {
 	title={title}
 	description={description}
 	canonicalPath="/faq/"
-	heading="Marauders Cheats FAQ"
-	intro="Straight answers about Marauders Cheats features, packages, delivery, and support."
-	heroImage={maraudersImages.product[3].src}
-	heroAlt="Marauders Cheats FAQ visual"
-	gallery={maraudersImages.product.slice(2, 5)}
+	heading="The Isle Cheats FAQ"
+	intro="Straight answers about The Isle Cheats features, packages, delivery, and support."
+	heroImage={theIsleImages.product[3].src}
+	heroAlt="The Isle Cheats FAQ visual"
+	gallery={theIsleImages.product.slice(2, 5)}
 	ctaPrimary={{ href: '/support/', label: 'Open Support' }}
 	ctaSecondary={{ href: '/pricing/', label: 'View Pricing' }}
 >

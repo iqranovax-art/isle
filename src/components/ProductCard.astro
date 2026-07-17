@@ -1,5 +1,5 @@
 ---
-import { maraudersImages } from '../data/marauders';
+import { theIsleImages } from '../data/theisle';
 import { productInfo, siteConfig } from '../data/site';
 
 interface Plan {
@@ -16,12 +16,12 @@ interface Props {
 }
 
 const {
-	name = 'Marauders Cheats',
+	name = 'The Isle Cheats',
 	plans = productInfo.plans.map((plan) => ({ ...plan, stock: 'Available' })),
 	defaultPlan = 'monthly',
 } = Astro.props;
 
-const images = maraudersImages.product;
+const images = theIsleImages.product;
 const main = images[0];
 const active = plans.find((plan) => plan.id === defaultPlan) ?? plans[0];
 ---
@@ -71,7 +71,7 @@ const active = plans.find((plan) => plan.id === defaultPlan) ?? plans[0];
 						stroke-width="1.6"
 						stroke-linejoin="round"></path>
 				</svg>
-				Marauders
+				The Isle
 			</span>
 			<span class="badge">
 				<svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true">

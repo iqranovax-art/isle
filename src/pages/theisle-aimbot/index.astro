@@ -1,27 +1,27 @@
 ---
 import PageLayout from '../../layouts/PageLayout.astro';
 import { productInfo } from '../../data/site';
-import { maraudersImages } from '../../data/marauders';
+import { theIsleImages } from '../../data/theisle';
 
-const title = 'Marauders Aimbot - Settings & Controls';
+const title = 'The Isle Aimbot - Settings & Controls';
 const description =
-	'Learn how Marauders Aimbot works, including targeting controls, smoothness options, and hotkey toggles. Compare packages and support options.';
+	'Learn how The Isle Aimbot works, including targeting controls, smoothness options, and hotkey toggles. Compare packages and support options.';
 ---
 
 <PageLayout
 	title={title}
 	description={description}
-	canonicalPath="/marauders-aimbot/"
-	heading="Marauders Aimbot"
-	intro="Marauders Aimbot is the aim-assist feature set inside Marauders Cheats. This page explains the controls players usually evaluate before choosing a package."
-	heroImage={maraudersImages.product[0].src}
-	heroAlt="Marauders Aimbot combat preview"
-	gallery={[maraudersImages.product[0], maraudersImages.product[1], maraudersImages.product[4]]}
+	canonicalPath="/theisle-aimbot/"
+	heading="The Isle Aimbot"
+	intro="The Isle Aimbot is the aim-assist feature set inside The Isle Cheats. This page explains the controls players usually evaluate before choosing a package."
+	heroImage={theIsleImages.product[0].src}
+	heroAlt="The Isle Aimbot combat preview"
+	gallery={[theIsleImages.product[0], theIsleImages.product[1], theIsleImages.product[4]]}
 	ctaPrimary={{ href: '/pricing/', label: 'Choose a Package' }}
-	ctaSecondary={{ href: '/marauders-esp/', label: 'Explore ESP' }}
+	ctaSecondary={{ href: '/theisle-esp/', label: 'Explore ESP' }}
 >
 	<section class="card-panel">
-		<h2>What Marauders Aimbot includes</h2>
+		<h2>What The Isle Aimbot includes</h2>
 		<ul>
 			{productInfo.features.aimbot.map((item) => <li>{item}</li>)}
 		</ul>
@@ -31,8 +31,8 @@ const description =
 		<h2>Who this page is for</h2>
 		<p>
 			Use this page if you are comparing aim assist behavior, configuration options, and whether Aimbot
-			belongs in your Marauders Cheats package. For visibility tools, see
-			<a href="/marauders-esp/">Marauders ESP</a>.
+			belongs in your The Isle Cheats package. For visibility tools, see
+			<a href="/theisle-esp/">The Isle ESP</a>.
 		</p>
 	</section>
 

@@ -1,21 +1,21 @@
 export const siteConfig = {
-	name: 'Marauders Cheats',
-	url: 'https://marauderscheats.com',
+	name: 'The Isle Cheats',
+	url: 'https://theislecheats.com',
 	locale: 'en',
 	market: 'Worldwide',
-	supportEmail: 'support@marauderscheats.com',
+	supportEmail: 'support@theislecheats.com',
 	logo: '/images/zadeyo-logo.png',
-	checkoutUrl: 'https://zadeyo.com/products/marauders-cheats',
+	checkoutUrl: 'https://zadeyo.com/products/theisle-cheats',
 	defaultOgImage: '/images/hero.webp',
 } as const;
 
 export const productInfo = {
-	name: 'Marauders Cheats',
-	shortName: 'Marauders Cheats',
-	tagline: 'ESP and Aimbot tools for Marauders',
+	name: 'The Isle Cheats',
+	shortName: 'The Isle Cheats',
+	tagline: 'ESP and Aimbot tools for The Isle',
 	summary:
-		'Marauders Cheats is a software package that includes ESP and Aimbot options for players who want clearer combat information and assisted aiming controls in Marauders.',
-	game: 'Marauders',
+		'The Isle Cheats is a software package that includes ESP and Aimbot options for players who want clearer survival information and assisted combat controls in The Isle.',
+	game: 'The Isle',
 	delivery: 'Digital license delivery after purchase confirmation',
 	platforms: ['Windows PC'],
 	updateCadence: 'Updates are published when game patches require maintenance',
@@ -27,13 +27,13 @@ export const productInfo = {
 	currency: 'USD',
 	features: {
 		esp: [
-			'Player ESP overlays for reading nearby combatants',
-			'Loot ESP markers for nearby item visibility',
-			'Distance readouts to help with engagement decisions',
+			'Player and dinosaur ESP overlays for nearby threat awareness',
+			'Species identification markers for carnivores and herbivores',
+			'Distance readouts to help with engagement and escape decisions',
 			'Toggleable ESP categories in the interface',
 		],
 		aimbot: [
-			'Aim assist targeting for visible opponents',
+			'Aim assist targeting for visible opponents during combat',
 			'Sensitivity and smoothness controls',
 			'Target-priority options in the settings panel',
 			'On/off hotkey support for quick control',
@@ -49,8 +49,8 @@ export const productInfo = {
 
 export const mainNav = [
 	{ label: 'Home', href: '/' },
-	{ label: 'Aimbot', href: '/marauders-aimbot/' },
-	{ label: 'ESP', href: '/marauders-esp/' },
+	{ label: 'Aimbot', href: '/theisle-aimbot/' },
+	{ label: 'ESP', href: '/theisle-esp/' },
 	{ label: 'Features', href: '/features/' },
 	{ label: 'Pricing', href: '/pricing/' },
 	{ label: 'FAQ', href: '/faq/' },
@@ -66,8 +66,8 @@ export const footerNav = [
 
 export const footerExplore = [
 	{ label: 'Site overview', href: '/' },
-	{ label: 'Aimbot product page', href: '/marauders-aimbot/' },
-	{ label: 'ESP product page', href: '/marauders-esp/' },
+	{ label: 'Aimbot product page', href: '/theisle-aimbot/' },
+	{ label: 'ESP product page', href: '/theisle-esp/' },
 	{ label: 'Full feature breakdown', href: '/features/' },
 	{ label: 'Package pricing plans', href: '/pricing/' },
 	{ label: 'Common questions hub', href: '/faq/' },
@@ -75,9 +75,9 @@ export const footerExplore = [
 
 export const homeFaqs = [
 	{
-		question: 'What is included with Marauders Cheats?',
+		question: 'What is included with The Isle Cheats?',
 		answer:
-			'Marauders Cheats includes ESP and Aimbot feature sets, plus access to product updates and support for setup questions. ESP covers player overlays, loot markers, distance readouts, and toggleable categories. Aimbot covers assisted targeting, smoothness controls, target priority, and hotkey toggles. See the Features and Pricing pages for the full package breakdown.',
+			'The Isle Cheats includes ESP and Aimbot feature sets, plus access to product updates and support for setup questions. ESP covers player and dinosaur overlays, species markers, distance readouts, and toggleable categories. Aimbot covers assisted targeting, smoothness controls, target priority, and hotkey toggles. See the Features and Pricing pages for the full package breakdown.',
 	},
 	{
 		question: 'How are licenses delivered?',
@@ -87,7 +87,7 @@ export const homeFaqs = [
 	{
 		question: 'Where can I check product updates?',
 		answer:
-			'Product maintenance notes are published on the Updates page whenever a new build or compatibility notice is available. Checking that page after Marauders patches is the fastest way to confirm whether a maintenance release has been posted.',
+			'Product maintenance notes are published on the Updates page whenever a new build or compatibility notice is available. Checking that page after The Isle patches is the fastest way to confirm whether a maintenance release has been posted.',
 	},
 	{
 		question: 'How do I contact support?',

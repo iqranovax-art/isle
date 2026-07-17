@@ -1,22 +1,22 @@
 ---
 import PageLayout from '../../layouts/PageLayout.astro';
 import { productInfo } from '../../data/site';
-import { maraudersImages } from '../../data/marauders';
+import { theIsleImages } from '../../data/theisle';
 
-const title = 'Marauders Cheats Features - ESP, Aimbot & More';
+const title = 'The Isle Cheats Features - ESP, Aimbot & More';
 const description =
-	'Browse Marauders Cheats features including ESP, Aimbot, interface toggles, package options, and update access.';
+	'Browse The Isle Cheats features including ESP, Aimbot, interface toggles, package options, and update access.';
 ---
 
 <PageLayout
 	title={title}
 	description={description}
 	canonicalPath="/features/"
-	heading="Marauders Cheats Features"
+	heading="The Isle Cheats Features"
 	intro="Compare ESP, Aimbot, and general package options in one place before choosing a duration on Pricing."
-	heroImage={maraudersImages.hero}
-	heroAlt="Marauders Cheats features overview visual"
-	gallery={maraudersImages.gallery.slice(1, 4)}
+	heroImage={theIsleImages.hero}
+	heroAlt="The Isle Cheats features overview visual"
+	gallery={theIsleImages.gallery.slice(1, 4)}
 	ctaPrimary={{ href: '/pricing/', label: 'Compare Pricing' }}
 	ctaSecondary={{ href: '/faq/', label: 'Read FAQ' }}
 >
@@ -26,7 +26,7 @@ const description =
 			{productInfo.features.esp.map((item) => <li>{item}</li>)}
 		</ul>
 		<div class="cta-row">
-			<a class="cta-btn cta-btn--ghost" href="/marauders-esp/">ESP details</a>
+			<a class="cta-btn cta-btn--ghost" href="/theisle-esp/">ESP details</a>
 		</div>
 	</section>
 
@@ -36,7 +36,7 @@ const description =
 			{productInfo.features.aimbot.map((item) => <li>{item}</li>)}
 		</ul>
 		<div class="cta-row">
-			<a class="cta-btn cta-btn--ghost" href="/marauders-aimbot/">Aimbot details</a>
+			<a class="cta-btn cta-btn--ghost" href="/theisle-aimbot/">Aimbot details</a>
 		</div>
 	</section>
 

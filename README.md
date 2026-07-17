@@ -1,6 +1,6 @@
-# maraudercheats
+# theislecheats
 
-Marauders Cheats marketing site built with Astro.
+The Isle Cheats marketing site built with Astro.
 
 ## Commands
 

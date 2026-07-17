@@ -1,0 +1,47 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import { productInfo } from '../../data/site';
+import { theIsleImages } from '../../data/theisle';
+
+const title = 'The Isle ESP - Player & Dinosaur Visibility';
+const description =
+	'Explore The Isle ESP features for player visibility, dinosaur markers, and distance readouts. See how ESP fits into The Isle Cheats packages.';
+---
+
+<PageLayout
+	title={title}
+	description={description}
+	canonicalPath="/theisle-esp/"
+	heading="The Isle ESP"
+	intro="The Isle ESP focuses on on-screen information: players, dinosaurs, and distance cues that help you read an encounter before you commit."
+	heroImage={theIsleImages.product[2].src}
+	heroAlt="The Isle ESP visibility preview"
+	gallery={theIsleImages.product.slice(0, 3)}
+	ctaPrimary={{ href: '/pricing/', label: 'View Pricing' }}
+	ctaSecondary={{ href: '/theisle-aimbot/', label: 'See Aimbot' }}
+>
+	<section class="card-panel">
+		<h2>ESP feature areas</h2>
+		<ul>
+			{productInfo.features.esp.map((item) => <li>{item}</li>)}
+		</ul>
+	</section>
+
+	<section class="card-panel">
+		<h2>Player ESP and dinosaur ESP</h2>
+		<p>
+			Player ESP helps you track nearby survivors. Dinosaur ESP highlights nearby carnivores and herbivores.
+			Both can be toggled in the interface so you keep only the information you need for the current hunt.
+		</p>
+	</section>
+
+	<section class="card-panel">
+		<h2>Related pages</h2>
+		<ul>
+			<li><a href="/theisle-aimbot/">The Isle Aimbot controls</a></li>
+			<li><a href="/features/">All The Isle Cheats features</a></li>
+			<li><a href="/pricing/">Pricing and package lengths</a></li>
+			<li><a href="/faq/">ESP and delivery FAQ</a></li>
+		</ul>
+	</section>
+</PageLayout>

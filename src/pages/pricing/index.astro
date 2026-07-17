@@ -1,22 +1,22 @@
 ---
 import PageLayout from '../../layouts/PageLayout.astro';
 import { productInfo, siteConfig } from '../../data/site';
-import { maraudersImages } from '../../data/marauders';
+import { theIsleImages } from '../../data/theisle';
 
-const title = 'Marauders Cheats Pricing - Monthly & Lifetime';
+const title = 'The Isle Cheats Pricing - Monthly & Lifetime';
 const description =
-	'Compare Marauders Cheats pricing for Monthly and Lifetime packages. Review delivery details and support options before purchase.';
+	'Compare The Isle Cheats pricing for Monthly and Lifetime packages. Review delivery details and support options before purchase.';
 ---
 
 <PageLayout
 	title={title}
 	description={description}
 	canonicalPath="/pricing/"
-	heading="Marauders Cheats Pricing"
-	intro="Packages are sold in USD and include the Marauders Cheats ESP and Aimbot product line."
-	heroImage={maraudersImages.cover}
-	heroAlt="Marauders Cheats pricing visual"
-	gallery={[maraudersImages.product[1], maraudersImages.product[3], maraudersImages.product[5]]}
+	heading="The Isle Cheats Pricing"
+	intro="Packages are sold in USD and include the The Isle Cheats ESP and Aimbot product line."
+	heroImage={theIsleImages.cover}
+	heroAlt="The Isle Cheats pricing visual"
+	gallery={[theIsleImages.product[1], theIsleImages.product[3], theIsleImages.product[5]]}
 	ctaPrimary={{ href: '/#product', label: 'Open Product Card' }}
 	ctaSecondary={{ href: '/features/', label: 'See Features' }}
 >
@@ -38,7 +38,7 @@ const description =
 	<section class="card-panel">
 		<h2>What each package includes</h2>
 		<p>
-			Each package includes access to the Marauders Cheats feature set described on
+			Each package includes access to the The Isle Cheats feature set described on
 			<a href="/features/">Features</a>, including ESP and Aimbot options. Delivery method:
 			{productInfo.delivery}.
 		</p>

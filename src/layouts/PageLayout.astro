@@ -2,7 +2,7 @@
 import Layout from './Layout.astro';
 import Navbar from '../components/Navbar.astro';
 import SiteFooter from '../components/SiteFooter.astro';
-import { maraudersImages } from '../data/marauders';
+import { theIsleImages } from '../data/theisle';
 
 interface Props {
 	title: string;
@@ -24,10 +24,10 @@ const {
 	canonicalPath = '/',
 	heading,
 	intro,
-	eyebrow = 'Marauders Cheats',
-	heroImage = maraudersImages.hero,
-	heroAlt = 'Marauders Cheats page visual',
-	gallery = maraudersImages.product.slice(0, 3),
+	eyebrow = 'The Isle Cheats',
+	heroImage = theIsleImages.hero,
+	heroAlt = 'The Isle Cheats page visual',
+	gallery = theIsleImages.product.slice(0, 3),
 	ctaPrimary,
 	ctaSecondary,
 } = Astro.props;

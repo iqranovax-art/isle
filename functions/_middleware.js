@@ -1,11 +1,15 @@
-const CANONICAL_ORIGIN = 'https://marauderscheats.com';
-const APEX_HOST = 'marauderscheats.com';
-const WWW_HOST = 'www.marauderscheats.com';
+const CANONICAL_ORIGIN = 'https://theislecheats.com';
+const APEX_HOST = 'theislecheats.com';
+const WWW_HOST = 'www.theislecheats.com';
 
 const PATH_REDIRECTS = {
 	'/sitemap-index.xml': '/sitemap.xml',
 	'/sitemap-0.xml': '/sitemap.xml',
 	'/sitemap-images.xml': '/sitemap.xml',
+	'/marauders-aimbot': '/theisle-aimbot/',
+	'/marauders-aimbot/': '/theisle-aimbot/',
+	'/marauders-esp': '/theisle-esp/',
+	'/marauders-esp/': '/theisle-esp/',
 };
 
 /**

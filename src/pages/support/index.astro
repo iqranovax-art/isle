@@ -1,22 +1,22 @@
 ---
 import PageLayout from '../../layouts/PageLayout.astro';
 import { productInfo, siteConfig } from '../../data/site';
-import { maraudersImages } from '../../data/marauders';
+import { theIsleImages } from '../../data/theisle';
 
-const title = 'Marauders Cheats Support - Contact & Help';
+const title = 'The Isle Cheats Support - Contact & Help';
 const description =
-	'Contact Marauders Cheats support for delivery, billing, and setup questions related to ESP and Aimbot packages.';
+	'Contact The Isle Cheats support for delivery, billing, and setup questions related to ESP and Aimbot packages.';
 ---
 
 <PageLayout
 	title={title}
 	description={description}
 	canonicalPath="/support/"
-	heading="Marauders Cheats Support"
-	intro="Get help with orders, digital delivery, or package setup for Marauders Cheats."
-	heroImage={maraudersImages.product[4].src}
-	heroAlt="Marauders Cheats support visual"
-	gallery={[maraudersImages.product[4], maraudersImages.product[0], maraudersImages.cover]}
+	heading="The Isle Cheats Support"
+	intro="Get help with orders, digital delivery, or package setup for The Isle Cheats."
+	heroImage={theIsleImages.product[4].src}
+	heroAlt="The Isle Cheats support visual"
+	gallery={[theIsleImages.product[4], theIsleImages.product[0], theIsleImages.cover]}
 	ctaPrimary={{ href: `mailto:${siteConfig.supportEmail}`, label: 'Email Support' }}
 	ctaSecondary={{ href: '/faq/', label: 'Browse FAQ' }}
 >

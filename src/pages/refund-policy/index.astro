@@ -1,11 +1,11 @@
 ---
 import PageLayout from '../../layouts/PageLayout.astro';
 import { siteConfig } from '../../data/site';
-import { maraudersImages } from '../../data/marauders';
+import { theIsleImages } from '../../data/theisle';
 
-const title = 'Refund Policy - Marauders Cheats';
+const title = 'Refund Policy - The Isle Cheats';
 const description =
-	'Read the Marauders Cheats refund policy, including eligibility conditions and how to request a review.';
+	'Read the The Isle Cheats refund policy, including eligibility conditions and how to request a review.';
 ---
 
 <PageLayout
@@ -13,11 +13,11 @@ const description =
 	description={description}
 	canonicalPath="/refund-policy/"
 	heading="Refund Policy"
-	intro="When Marauders Cheats purchases may be reviewed for a refund, and how to request a review."
+	intro="When The Isle Cheats purchases may be reviewed for a refund, and how to request a review."
 	eyebrow="Legal"
-	heroImage={maraudersImages.product[5].src}
-	heroAlt="Marauders Cheats refund policy visual"
-	gallery={[maraudersImages.cover, maraudersImages.product[5], maraudersImages.product[3]]}
+	heroImage={theIsleImages.product[5].src}
+	heroAlt="The Isle Cheats refund policy visual"
+	gallery={[theIsleImages.cover, theIsleImages.product[5], theIsleImages.product[3]]}
 	ctaPrimary={{ href: `mailto:${siteConfig.supportEmail}`, label: 'Request Review' }}
 	ctaSecondary={{ href: '/support/', label: 'Support Page' }}
 >
