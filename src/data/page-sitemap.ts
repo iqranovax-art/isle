@@ -31,8 +31,8 @@ export const pageSitemapEntries: PageSitemapEntry[] = [
 		changefreq: 'daily',
 		images: [
 			img('/images/hero.webp', 'The Isle Cheats hero', 'Homepage banner for The Isle Cheats Cloud-DMA, ESP, and Exploits'),
-			img('/images/product-2.webp', 'The Isle Cheats product preview', 'Primary product visual on the The Isle Cheats homepage'),
-			img('/images/product-3.webp', 'The Isle combat preview', 'Gameplay context image on the The Isle Cheats homepage'),
+			img('/images/product-2.webp', 'The Isle Cheats product preview', 'Primary product visual on The Isle Cheats homepage'),
+			img('/images/product-3.webp', 'The Isle combat preview', 'Gameplay context image on The Isle Cheats homepage'),
 			img('/images/product-4.webp', 'The Isle environment preview', 'Environment visual used in the homepage product gallery'),
 			img('/images/product-1.webp', 'The Isle gameplay preview', 'Additional product gallery image on the homepage'),
 			img('/images/product-6.webp', 'The Isle dinosaur encounter preview', 'Homepage gallery image showing The Isle dinosaur combat'),
@@ -44,9 +44,9 @@ export const pageSitemapEntries: PageSitemapEntry[] = [
 		priority: 0.9,
 		changefreq: 'weekly',
 		images: [
-			img('/images/product-2.webp', 'The Isle Exploits preview', 'Main visual for the The Isle Exploits page'),
-			img('/images/product-3.webp', 'The Isle Exploits combat scene', 'Combat reference image on the Exploits page'),
-			img('/images/product-6.webp', 'The Isle Exploits gallery image', 'Supporting visual for The Isle Exploits'),
+			img('/images/product-2.webp', 'The Isle Cheats Exploits preview', 'Main visual for The Isle Cheats Exploits page'),
+			img('/images/product-3.webp', 'The Isle Cheats Exploits combat scene', 'Combat reference image on The Isle Cheats Exploits page'),
+			img('/images/product-6.webp', 'The Isle Cheats Exploits gallery image', 'Supporting visual for The Isle Cheats Exploits'),
 		],
 	},
 	{
@@ -54,9 +54,9 @@ export const pageSitemapEntries: PageSitemapEntry[] = [
 		priority: 0.9,
 		changefreq: 'weekly',
 		images: [
-			img('/images/product-4.webp', 'The Isle ESP preview', 'Main visual for the The Isle ESP page'),
-			img('/images/product-2.webp', 'The Isle ESP player visibility', 'Supporting ESP page visual'),
-			img('/images/product-3.webp', 'The Isle ESP dinosaur context', 'Gallery image for the The Isle ESP page'),
+			img('/images/product-4.webp', 'The Isle Cheats ESP preview', 'Main visual for The Isle Cheats ESP page'),
+			img('/images/product-2.webp', 'The Isle Cheats ESP player visibility', 'Supporting ESP page visual'),
+			img('/images/product-3.webp', 'The Isle Cheats ESP dinosaur context', 'Gallery image for The Isle Cheats ESP page'),
 		],
 	},
 	{
@@ -116,8 +116,8 @@ export const pageSitemapEntries: PageSitemapEntry[] = [
 		priority: 0.4,
 		changefreq: 'monthly',
 		images: [
-			img('/images/cover.webp', 'Refund policy visual', 'Main image for the refund policy page'),
-			img('/images/product-1.webp', 'Refund policy gallery image', 'Supporting refund policy visual'),
+			img('/images/cover.webp', 'The Isle Cheats refund policy visual', 'Main image for The Isle Cheats refund policy page'),
+			img('/images/product-1.webp', 'The Isle Cheats refund policy gallery image', 'Supporting refund policy visual'),
 		],
 	},
 	{
@@ -125,8 +125,8 @@ export const pageSitemapEntries: PageSitemapEntry[] = [
 		priority: 0.4,
 		changefreq: 'monthly',
 		images: [
-			img('/images/product-2.webp', 'Privacy policy visual', 'Main image for the privacy policy page'),
-			img('/images/hero.webp', 'Privacy policy gallery image', 'Supporting privacy policy visual'),
+			img('/images/product-2.webp', 'The Isle Cheats privacy policy visual', 'Main image for The Isle Cheats privacy policy page'),
+			img('/images/hero.webp', 'The Isle Cheats privacy policy gallery image', 'Supporting privacy policy visual'),
 		],
 	},
 	{
@@ -134,9 +134,9 @@ export const pageSitemapEntries: PageSitemapEntry[] = [
 		priority: 0.4,
 		changefreq: 'monthly',
 		images: [
-			img('/images/product-3.webp', 'Terms of use visual', 'Main image for the terms page'),
-			img('/images/product-6.webp', 'Terms page gallery image', 'Supporting terms page visual'),
-			img('/images/cover.webp', 'Terms page cover image', 'Cover visual on the terms page'),
+			img('/images/product-3.webp', 'The Isle Cheats terms of use visual', 'Main image for The Isle Cheats terms page'),
+			img('/images/product-6.webp', 'The Isle Cheats terms page gallery image', 'Supporting terms page visual'),
+			img('/images/cover.webp', 'The Isle Cheats terms page cover image', 'Cover visual on The Isle Cheats terms page'),
 		],
 	},
 ];

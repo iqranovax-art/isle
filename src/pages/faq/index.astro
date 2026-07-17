@@ -1,10 +1,10 @@
 ---
 import PageLayout from '../../layouts/PageLayout.astro';
-import { homeFaqs, siteConfig } from '../../data/site';
+import { homeFaqs, siteConfig, getPageDescription } from '../../data/site';
 import { theIsleImages } from '../../data/theisle';
 
 const title = 'The Isle Cheats FAQ - Delivery, Features & Support';
-const description = siteConfig.metaDescription;
+const description = getPageDescription('/faq/');
 
 const faqs = [
 	...homeFaqs,

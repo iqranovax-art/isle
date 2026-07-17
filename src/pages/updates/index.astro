@@ -1,10 +1,10 @@
 ---
 import PageLayout from '../../layouts/PageLayout.astro';
-import { siteConfig } from '../../data/site';
+import { getPageDescription } from '../../data/site';
 import { theIsleImages } from '../../data/theisle';
 
 const title = 'The Isle Cheats Updates - Changelog & Notices';
-const description = siteConfig.metaDescription;
+const description = getPageDescription('/updates/');
 ---
 
 <PageLayout
@@ -23,7 +23,7 @@ const description = siteConfig.metaDescription;
 		<h2>Latest notice</h2>
 		<h3>Site and package information refresh</h3>
 		<p>
-			The product pages for The Isle ESP, The Isle Exploits, pricing, and support are organized into dedicated
+			The product pages for The Isle Cheats ESP, The Isle Cheats Exploits, pricing, and support are organized into dedicated
 			URLs so players can review information by intent. Future build-specific notes will be posted here as they
 			are released.
 		</p>

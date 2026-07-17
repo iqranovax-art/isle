@@ -1,17 +1,17 @@
 ---
 import PageLayout from '../../layouts/PageLayout.astro';
-import { productInfo, siteConfig } from '../../data/site';
+import { productInfo, getPageDescription } from '../../data/site';
 import { theIsleImages } from '../../data/theisle';
 
-const title = 'The Isle ESP - Visuals & World ESP';
-const description = siteConfig.metaDescription;
+const title = 'The Isle Cheats ESP - Visuals & World ESP';
+const description = getPageDescription('/theisle-esp/');
 ---
 
 <PageLayout
 	title={title}
 	description={description}
 	canonicalPath="/theisle-esp/"
-	heading="The Isle ESP"
+	heading="The Isle Cheats ESP"
 	intro="Visuals ESP and World ESP for entity awareness, resource tracking, and environment readouts. Both are included in the Cloud-DMA option."
 	heroImage={theIsleImages.product[2].src}
 	heroAlt="The Isle ESP visibility preview"
@@ -36,7 +36,7 @@ const description = siteConfig.metaDescription;
 	<section class="card-panel">
 		<h2>Related pages</h2>
 		<ul>
-			<li><a href="/theisle-exploits/">The Isle Exploits</a></li>
+			<li><a href="/theisle-exploits/">The Isle Cheats Exploits</a></li>
 			<li><a href="/features/">All The Isle Cheats features</a></li>
 			<li><a href="/pricing/">Pricing and package lengths</a></li>
 			<li><a href="/faq/">ESP and delivery FAQ</a></li>

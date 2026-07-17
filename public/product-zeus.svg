@@ -29,7 +29,7 @@
   <circle cx="320" cy="360" r="168" stroke="#c084fc" stroke-width="1" opacity="0.25"/>
   <path d="M350 90 L250 360 H310 L270 710 L420 320 H350 L390 90 Z" fill="url(#bolt)" filter="url(#soft)" opacity="0.55"/>
   <path d="M350 90 L250 360 H310 L270 710 L420 320 H350 L390 90 Z" fill="url(#bolt)"/>
-  <text x="320" y="620" text-anchor="middle" fill="#f5f3ff" font-family="Arial Black, Arial, sans-serif" font-size="72" font-weight="900" letter-spacing="8">ZEUS</text>
-  <text x="320" y="660" text-anchor="middle" fill="#c084fc" font-family="Arial, sans-serif" font-size="22" font-weight="700" letter-spacing="14">MARAUDERS</text>
+  <text x="320" y="620" text-anchor="middle" fill="#f5f3ff" font-family="Arial Black, Arial, sans-serif" font-size="56" font-weight="900" letter-spacing="6">THE ISLE</text>
+  <text x="320" y="660" text-anchor="middle" fill="#c084fc" font-family="Arial, sans-serif" font-size="22" font-weight="700" letter-spacing="14">CHEATS</text>
   <rect x="210" y="680" width="220" height="3" rx="2" fill="url(#bolt)" opacity="0.8"/>
 </svg>

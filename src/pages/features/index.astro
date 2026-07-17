@@ -1,10 +1,10 @@
 ---
 import PageLayout from '../../layouts/PageLayout.astro';
-import { cloudDmaOption, productInfo, siteConfig } from '../../data/site';
+import { cloudDmaOption, productInfo, getPageDescription } from '../../data/site';
 import { theIsleImages } from '../../data/theisle';
 
 const title = 'The Isle Cheats Features - Cloud-DMA, ESP & Exploits';
-const description = siteConfig.metaDescription;
+const description = getPageDescription('/features/');
 ---
 
 <PageLayout

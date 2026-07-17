@@ -13,6 +13,36 @@ export const siteConfig = {
 		'The Isle Cheats, The Isle cheats, isle cheats, ESP, exploits, Cloud-DMA, instant rotation, the isle, dinosaur survival, islecheats.net',
 } as const;
 
+export const pageDescriptions = {
+	'/': siteConfig.metaDescription,
+	'/theisle-esp/':
+		'The Isle Cheats ESP — Visuals ESP and World ESP for entity awareness, resource tracking, and environment readouts on Windows PC. Part of the Cloud-DMA package at islecheats.net.',
+	'/theisle-exploits/':
+		'The Isle Cheats Exploits — Instant Rotation, Auto-Attack, Omnimovement, No Cooldown Attack, and other Cloud-DMA combat and movement tools for The Isle.',
+	'/features/':
+		'Full The Isle Cheats feature list — compare Cloud-DMA, Visuals ESP, World ESP, Exploits, and utility tools before choosing monthly or lifetime packages.',
+	'/pricing/':
+		'The Isle Cheats pricing — monthly and lifetime Cloud-DMA, ESP, and Exploits packages in USD. Compare plan lengths and included features at islecheats.net.',
+	'/updates/':
+		'The Isle Cheats updates — product changelog, maintenance notices, and compatibility updates published after The Isle patches.',
+	'/faq/':
+		'The Isle Cheats FAQ — answers about Cloud-DMA, ESP, Exploits, digital delivery, refund policy, and customer support.',
+	'/support/':
+		'Contact The Isle Cheats support for delivery, setup, and billing help. Email support@islecheats.net with your order details.',
+	'/refund-policy/':
+		'The Isle Cheats refund policy — review eligibility, conditions, and timelines before purchasing Cloud-DMA or ESP packages.',
+	'/privacy-policy/':
+		'The Isle Cheats privacy policy — how islecheats.net handles visitor data, cookies, and order-related information.',
+	'/terms/':
+		'The Isle Cheats terms of use — license terms, acceptable use, and purchase conditions for islecheats.net packages.',
+} as const;
+
+export type PagePath = keyof typeof pageDescriptions;
+
+export function getPageDescription(path: PagePath): string {
+	return pageDescriptions[path];
+}
+
 export const cloudDmaOption = {
 	label: 'Cloud-DMA',
 	summary:

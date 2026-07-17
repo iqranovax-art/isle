@@ -1,10 +1,10 @@
 ---
 import PageLayout from '../../layouts/PageLayout.astro';
-import { productInfo, siteConfig } from '../../data/site';
+import { productInfo, siteConfig, getPageDescription } from '../../data/site';
 import { theIsleImages } from '../../data/theisle';
 
 const title = 'The Isle Cheats Pricing - Monthly & Lifetime';
-const description = siteConfig.metaDescription;
+const description = getPageDescription('/pricing/');
 ---
 
 <PageLayout
@@ -12,7 +12,7 @@ const description = siteConfig.metaDescription;
 	description={description}
 	canonicalPath="/pricing/"
 	heading="The Isle Cheats Pricing"
-	intro="Packages are sold in USD and include the The Isle Cheats Cloud-DMA, ESP, and Exploits product line."
+	intro="Packages are sold in USD and include The Isle Cheats Cloud-DMA, ESP, and Exploits product line."
 	heroImage={theIsleImages.cover}
 	heroAlt="The Isle Cheats pricing visual"
 	gallery={[theIsleImages.product[1], theIsleImages.product[3], theIsleImages.product[5]]}
@@ -37,7 +37,7 @@ const description = siteConfig.metaDescription;
 	<section class="card-panel">
 		<h2>What each package includes</h2>
 		<p>
-			Each package includes access to the The Isle Cheats feature set described on
+			Each package includes access to The Isle Cheats feature set described on
 			<a href="/features/">Features</a>, including Cloud-DMA, Visuals ESP, World ESP, and Exploits. Delivery method:
 			{productInfo.delivery}.
 		</p>
