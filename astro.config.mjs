@@ -4,7 +4,7 @@ import tailwindcss from '@tailwindcss/vite';
 
 // https://astro.build/config
 export default defineConfig({
-	site: 'https://theislecheats.com',
+	site: 'https://islecheats.net',
 	trailingSlash: 'always',
 	compressHTML: true,
 	build: {

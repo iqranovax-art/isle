@@ -2,6 +2,7 @@
 import Layout from './Layout.astro';
 import Navbar from '../components/Navbar.astro';
 import SiteFooter from '../components/SiteFooter.astro';
+import { siteConfig } from '../data/site';
 import { theIsleImages } from '../data/theisle';
 
 interface Props {
@@ -24,9 +25,9 @@ const {
 	canonicalPath = '/',
 	heading,
 	intro,
-	eyebrow = 'The Isle Cheats',
+	eyebrow = siteConfig.name,
 	heroImage = theIsleImages.hero,
-	heroAlt = 'The Isle Cheats page visual',
+	heroAlt = `${siteConfig.name} page visual`,
 	gallery = theIsleImages.product.slice(0, 3),
 	ctaPrimary,
 	ctaSecondary,

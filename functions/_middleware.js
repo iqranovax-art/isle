@@ -1,6 +1,6 @@
-const CANONICAL_ORIGIN = 'https://theislecheats.com';
-const APEX_HOST = 'theislecheats.com';
-const WWW_HOST = 'www.theislecheats.com';
+const CANONICAL_ORIGIN = 'https://islecheats.net';
+const APEX_HOST = 'islecheats.net';
+const WWW_HOST = 'www.islecheats.net';
 
 const PATH_REDIRECTS = {
 	'/sitemap-index.xml': '/sitemap.xml',

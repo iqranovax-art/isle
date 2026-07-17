@@ -1,20 +1,22 @@
 export const siteConfig = {
-	name: 'The Isle Cheats',
-	url: 'https://theislecheats.com',
+	name: 'Theisle cheats',
+	url: 'https://islecheats.net',
 	locale: 'en',
 	market: 'Worldwide',
-	supportEmail: 'support@theislecheats.com',
+	supportEmail: 'support@islecheats.net',
 	logo: '/images/zadeyo-logo.png',
 	checkoutUrl: 'https://zadeyo.com/products/theisle-cheats',
 	defaultOgImage: '/images/hero.webp',
+	metaDescription: 'Theisle cheats',
+	keywords: 'Theisle cheats',
 } as const;
 
 export const productInfo = {
-	name: 'The Isle Cheats',
-	shortName: 'The Isle Cheats',
+	name: 'Theisle cheats',
+	shortName: 'Theisle cheats',
 	tagline: 'ESP and Aimbot tools for The Isle',
 	summary:
-		'The Isle Cheats is a software package that includes ESP and Aimbot options for players who want clearer survival information and assisted combat controls in The Isle.',
+		'Theisle cheats is a software package that includes ESP and Aimbot options for players who want clearer survival information and assisted combat controls in The Isle.',
 	game: 'The Isle',
 	delivery: 'Digital license delivery after purchase confirmation',
 	platforms: ['Windows PC'],
@@ -75,9 +77,9 @@ export const footerExplore = [
 
 export const homeFaqs = [
 	{
-		question: 'What is included with The Isle Cheats?',
+		question: 'What is included with Theisle cheats?',
 		answer:
-			'The Isle Cheats includes ESP and Aimbot feature sets, plus access to product updates and support for setup questions. ESP covers player and dinosaur overlays, species markers, distance readouts, and toggleable categories. Aimbot covers assisted targeting, smoothness controls, target priority, and hotkey toggles. See the Features and Pricing pages for the full package breakdown.',
+			'Theisle cheats includes ESP and Aimbot feature sets, plus access to product updates and support for setup questions. ESP covers player and dinosaur overlays, species markers, distance readouts, and toggleable categories. Aimbot covers assisted targeting, smoothness controls, target priority, and hotkey toggles. See the Features and Pricing pages for the full package breakdown.',
 	},
 	{
 		question: 'How are licenses delivered?',

@@ -4,4 +4,4 @@ Allow: /images/
 
 Disallow: /api/
 
-Sitemap: https://theislecheats.com/sitemap.xml
+Sitemap: https://islecheats.net/sitemap.xml

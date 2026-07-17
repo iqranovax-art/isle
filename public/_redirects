@@ -3,7 +3,7 @@
 # (http to https, www to apex). Those require:
 # 1) functions/_middleware.js (deployed with this project)
 # 2) Cloudflare SSL/TLS -> Always Use HTTPS
-# 3) Bulk Redirect: www.theislecheats.com -> https://theislecheats.com
+# 3) Bulk Redirect: www.islecheats.net -> https://islecheats.net
 #    plus a proxied DNS A record for www -> 192.0.2.1
 
 /sitemap-index.xml /sitemap.xml 301
