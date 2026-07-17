@@ -4,7 +4,7 @@ export const siteConfig = {
 	locale: 'en',
 	market: 'Worldwide',
 	supportEmail: 'support@islecheats.net',
-	logo: '/images/zadeyo-logo.webp',
+	logo: '/images/zadeyo-logo.png',
 	checkoutUrl: 'https://zadeyo.com/products/theisle-cheats',
 	defaultOgImage: '/images/hero.webp',
 	metaDescription:
