@@ -1,6 +1,6 @@
 ---
 import { theIsleImages } from '../data/theisle';
-import { productInfo, siteConfig } from '../data/site';
+import { siteConfig } from '../data/site';
 
 interface Props {
 	accent?: string;
@@ -32,11 +32,7 @@ const {
 		<div class="hero__copy">
 			<p class="hero__eyebrow">{siteConfig.name}</p>
 			<h1 class="hero__title">
-				<span class="hero__line">
-					<span class="hero__word">{productInfo.game}</span>
-					<span class="hero__word">Cheats</span>
-					<span class="hero__word hero__word--for">for</span>
-				</span>
+				<span class="hero__line">{siteConfig.name}</span>
 				<span class="text-gradient hero__accent">{accent}</span>
 			</h1>
 			<p class="hero__subtitle">{subtitle}</p>
@@ -140,20 +136,9 @@ const {
 	}
 
 	.hero__line {
-		display: flex;
-		flex-wrap: wrap;
-		column-gap: 0.28em;
-		row-gap: 0.02em;
+		display: block;
 		max-width: 100%;
-	}
-
-	.hero__word {
-		display: inline-block;
-	}
-
-	.hero__word--for {
-		font-weight: 700;
-		opacity: 0.9;
+		white-space: nowrap;
 	}
 
 	.hero__accent {
@@ -163,6 +148,7 @@ const {
 		animation: shimmer 4s ease-in-out infinite;
 		width: fit-content;
 		padding-bottom: 0.06em;
+		white-space: nowrap;
 	}
 
 	.hero__subtitle {
@@ -300,11 +286,9 @@ const {
 			gap: 0.2rem;
 		}
 
-		.hero__line {
-			flex-direction: column;
-			flex-wrap: nowrap;
-			row-gap: 0.06em;
-			width: 100%;
+		.hero__line,
+		.hero__accent {
+			white-space: normal;
 		}
 
 		.hero__accent {
