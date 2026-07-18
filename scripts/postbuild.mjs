@@ -1,27 +1,5 @@
-import { spawnSync } from 'node:child_process';
+import { writeFileSync } from 'node:fs';
 
-const args = process.argv.slice(2);
-
-if (args.includes('--deploy-only')) {
-	runDeploy();
-	process.exit(0);
-}
-
-// Local builds only compile the site.
-if (!process.env.WORKERS_CI) {
-	process.exit(0);
-}
-
-runDeploy();
-
-function runDeploy() {
-	const result = spawnSync(
-		'wrangler',
-		['pages', 'deploy', 'dist', '--project-name=isle', '--commit-dirty=true'],
-		{ stdio: 'inherit', shell: true },
-	);
-
-	if (result.status !== 0) {
-		process.exit(result.status ?? 1);
-	}
-}
+// dist/_worker.js is copied from public/ for Pages compatibility, but must not
+// be published as a static asset when using wrangler deploy with [assets].
+writeFileSync('dist/.assetsignore', '_worker.js\n');

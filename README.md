@@ -5,12 +5,11 @@ The Isle Cheats marketing site built with Astro.
 Live site: https://islecheats.net
 
 Cloudflare checklist for SEO (HTTP / www redirects):
-1. Set Workers Builds **deploy command** to `npm run deploy` (see `DEPLOY.md`)
-2. Build with `npm run build` (deploys on CI via `scripts/postbuild.mjs` when deploy is `true`)
-3. Add DNS **CNAME** `www` → `islecheats.net` (proxied / orange cloud)
-4. Attach **both** `islecheats.net` and `www.islecheats.net` to the Pages project
-5. Enable **SSL/TLS → Always Use HTTPS**
-6. Import `cloudflare/bulk-redirects.csv` as a Bulk Redirect backup (see `cloudflare/README.md`)
+1. Workers Builds: build `npm run build`, deploy `npx wrangler deploy` (see `DEPLOY.md`)
+2. Add DNS **CNAME** `www` → `islecheats.net` (proxied / orange cloud)
+3. Attach **both** `islecheats.net` and `www.islecheats.net` to the project
+4. Enable **SSL/TLS → Always Use HTTPS**
+5. Import `cloudflare/bulk-redirects.csv` as a Bulk Redirect backup (see `cloudflare/README.md`)
 
 Verify after deploy:
 

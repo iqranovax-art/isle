@@ -1,26 +1,12 @@
-# Cloudflare deployment fix
+# Cloudflare deployment
 
-This project is a **Cloudflare Pages** site (static Astro + `public/_worker.js`).
+This site deploys with **Workers Builds** using:
 
-`npx wrangler deploy` does **not** work for Pages projects. Use Pages deploy instead.
+- **Build command:** `npm run build`
+- **Deploy command:** `npx wrangler deploy` (default)
 
-## Required Workers Builds settings
-
-In Cloudflare dashboard → Workers & Pages → **isle** → Settings → Builds:
-
-| Setting | Value |
-| ------- | ----- |
-| **Build command** | `npm run build` |
-| **Deploy command** | `npm run deploy` |
-
-Alternative (deploy during build, skip deploy step):
-
-| Setting | Value |
-| ------- | ----- |
-| **Build command** | `npm run build` |
-| **Deploy command** | `true` |
-
-The build script runs `scripts/postbuild.mjs`, which deploys automatically when `WORKERS_CI=1`.
+`wrangler.toml` configures a Worker (`public/_worker.js`) plus static assets (`dist/`).
+The postbuild step writes `dist/.assetsignore` so `_worker.js` is not uploaded as a public file.
 
 ## Manual deploy
 
@@ -28,11 +14,3 @@ The build script runs `scripts/postbuild.mjs`, which deploys automatically when 
 npm run build
 npm run deploy
 ```
-
-## Verify
-
-```sh
-curl -I https://islecheats.net/
-```
-
-You should see the updated hero subtitle `[Visuals, ESP, Radar]` after a successful deploy.
