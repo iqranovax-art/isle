@@ -39,10 +39,7 @@ import { homeVideo } from '../data/site';
 </div>
 
 <script define:vars={{ videoSrc: homeVideo.src }}>
-	const root = document.querySelector('[data-home-video]');
-	if (!root) {
-		// no-op
-	} else {
+	document.querySelectorAll('[data-home-video]').forEach((root) => {
 		const trigger = root.querySelector('[data-video-trigger]');
 		const player = root.querySelector('[data-video-player]');
 
@@ -61,7 +58,7 @@ import { homeVideo } from '../data/site';
 				});
 			}
 		});
-	}
+	});
 </script>
 
 <style>
