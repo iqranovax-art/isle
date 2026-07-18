@@ -12,9 +12,11 @@ const currentHash = Astro.url.hash.replace('#', '');
 			<img
 				src={theIsleImages.logo}
 				alt={siteConfig.name}
-				width="40"
-				height="40"
+				width="44"
+				height="44"
 				class="nav__logo"
+				loading="eager"
+				fetchpriority="high"
 				decoding="async"
 			/>
 			<span class="nav__name">{siteConfig.name}</span>
@@ -250,9 +252,14 @@ const currentHash = Astro.url.hash.replace('#', '');
 
 	.nav__logo {
 		display: block;
-		width: 2.1rem;
-		height: 2.1rem;
+		width: 2.75rem;
+		height: 2.75rem;
 		object-fit: contain;
+		border-radius: 0.65rem;
+		background: rgba(168, 85, 247, 0.14);
+		border: 1px solid rgba(192, 132, 252, 0.28);
+		box-shadow: 0 0 18px rgba(124, 58, 237, 0.22);
+		padding: 0.2rem;
 	}
 
 	.nav__name {

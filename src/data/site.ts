@@ -4,7 +4,7 @@ export const siteConfig = {
 	locale: 'en',
 	market: 'Worldwide',
 	supportEmail: 'support@islecheats.net',
-	logo: '/images/zadeyo-logo.png',
+	logo: '/images/zadeyo-logo.webp',
 	checkoutUrl: 'https://zadeyo.com/go/QRH?to=%2Fproducts%2Fthe-isle-novaxware',
 	defaultOgImage: '/images/hero.webp',
 	metaDescription:
