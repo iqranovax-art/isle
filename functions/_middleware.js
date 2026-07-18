@@ -16,30 +16,67 @@ const PATH_REDIRECTS = {
 	'/marauders-esp/': '/theisle-esp/',
 };
 
-/**
- * Cloudflare Pages middleware (runs for every request).
- * Domain-level redirects are NOT supported in public/_redirects on Pages,
- * so host + HTTPS canonicalization must live here (plus Cloudflare
- * "Always Use HTTPS" and a Bulk Redirect for www → apex).
- *
- * Note: when Functions middleware is present, public/_headers is not applied
- * to these responses — set security/charset headers here.
- */
-export async function onRequest(context) {
-	const url = new URL(context.request.url);
-	const host = url.hostname.toLowerCase();
-	const proto = (
-		context.request.headers.get('x-forwarded-proto') ||
+const SECURITY_HEADERS = {
+	'Strict-Transport-Security': 'max-age=31536000; includeSubDomains; preload',
+	'X-Content-Type-Options': 'nosniff',
+	'Referrer-Policy': 'strict-origin-when-cross-origin',
+	'X-Frame-Options': 'DENY',
+};
+
+function resolveProtocol(request, url) {
+	const cfVisitor = request.headers.get('cf-visitor');
+	if (cfVisitor) {
+		try {
+			const visitor = JSON.parse(cfVisitor);
+			if (visitor.scheme) return visitor.scheme.toLowerCase();
+		} catch {
+			// Ignore malformed Cloudflare visitor headers.
+		}
+	}
+
+	return (
+		request.headers.get('x-forwarded-proto') ||
 		url.protocol.replace(':', '')
 	).toLowerCase();
+}
 
-	const isProductionHost = host === APEX_HOST || host === WWW_HOST;
-	const needsHostRedirect = host === WWW_HOST;
-	const needsHttpsRedirect = isProductionHost && proto === 'http';
+function resolveHost(request, url) {
+	return (
+		request.headers.get('x-forwarded-host') ||
+		request.headers.get('host') ||
+		url.hostname
+	)
+		.toLowerCase()
+		.split(':')[0];
+}
 
-	if (needsHostRedirect || needsHttpsRedirect) {
-		const target = new URL(url.pathname + url.search, CANONICAL_ORIGIN);
-		return Response.redirect(target.toString(), 301);
+function isIsleDomain(host) {
+	return host === APEX_HOST || host === WWW_HOST || host.endsWith('.islecheats.net');
+}
+
+function redirectToCanonical(url, status = 301) {
+	const target = new URL(url.pathname + url.search, CANONICAL_ORIGIN).toString();
+	return new Response(null, {
+		status,
+		headers: {
+			Location: target,
+			...SECURITY_HEADERS,
+		},
+	});
+}
+
+/**
+ * Cloudflare Pages middleware (runs for every request).
+ * Canonicalizes http/www traffic to https://islecheats.net.
+ */
+export async function onRequest(context) {
+	const request = context.request;
+	const url = new URL(request.url);
+	const host = resolveHost(request, url);
+	const proto = resolveProtocol(request, url);
+
+	if (isIsleDomain(host) && (host !== APEX_HOST || proto !== 'https')) {
+		return redirectToCanonical(url);
 	}
 
 	const pathRedirect = PATH_REDIRECTS[url.pathname];
@@ -51,14 +88,12 @@ export async function onRequest(context) {
 	const headers = new Headers(response.headers);
 	const contentType = headers.get('Content-Type') || '';
 
-	if (contentType.includes('text/html')) {
-		if (!/charset=/i.test(contentType)) {
-			headers.set('Content-Type', 'text/html; charset=utf-8');
-		}
-		headers.set('Strict-Transport-Security', 'max-age=31536000; includeSubDomains; preload');
-		headers.set('X-Content-Type-Options', 'nosniff');
-		headers.set('Referrer-Policy', 'strict-origin-when-cross-origin');
-		headers.set('X-Frame-Options', 'DENY');
+	Object.entries(SECURITY_HEADERS).forEach(([key, value]) => {
+		headers.set(key, value);
+	});
+
+	if (contentType.includes('text/html') && !/charset=/i.test(contentType)) {
+		headers.set('Content-Type', 'text/html; charset=utf-8');
 	}
 
 	return new Response(response.body, {

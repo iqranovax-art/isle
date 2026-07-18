@@ -8,9 +8,14 @@ export const siteConfig = {
 	checkoutUrl: 'https://zadeyo.com/go/QRH?to=%2Fproducts%2Fthe-isle-novaxware',
 	defaultOgImage: '/images/hero.webp',
 	metaDescription:
-		'The Isle Cheats offers Cloud-DMA, Visuals ESP, World ESP, and Cheats for The Isle on Windows PC. Compare features, pricing, updates, and support at islecheats.net.',
+		'Compare ESP, World ESP, and survival hacks for The Isle on Windows PC. Review packages, pricing, and support at islecheats.net.',
 	keywords:
-		'The Isle Cheats, The Isle cheats, isle cheats, ESP, cheats, Cloud-DMA, instant rotation, the isle, dinosaur survival, islecheats.net',
+		'The Isle Cheats, The Isle cheats, isle cheats, ESP, hacks, instant rotation, the isle, dinosaur survival, islecheats.net',
+} as const;
+
+export const homeSeo = {
+	title: 'The Isle Cheats — ESP & Hacks for Windows PC',
+	description: siteConfig.metaDescription,
 } as const;
 
 export const pageDescriptions = {

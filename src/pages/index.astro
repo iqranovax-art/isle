@@ -7,10 +7,10 @@ import ProductCard from '../components/ProductCard.astro';
 import Gallery from '../components/Gallery.astro';
 import HomeSeo from '../components/HomeSeo.astro';
 import SiteFooter from '../components/SiteFooter.astro';
-import { homeFaqs, productInfo, siteConfig, getPageDescription } from '../data/site';
+import { homeFaqs, homeSeo, productInfo, siteConfig } from '../data/site';
 
-const title = 'The Isle Cheats - ESP · Cheats';
-const description = getPageDescription('/');
+const title = homeSeo.title;
+const description = homeSeo.description;
 
 const productSchema = {
 	'@context': 'https://schema.org',

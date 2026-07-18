@@ -1,10 +1,6 @@
 # Path redirects only.
-# Cloudflare Pages does NOT support domain-level redirects here
-# (http to https, www to apex). Those require:
-# 1) functions/_middleware.js (deployed with this project)
-# 2) Cloudflare SSL/TLS -> Always Use HTTPS
-# 3) Bulk Redirect: www.islecheats.net -> https://islecheats.net
-#    plus a proxied DNS A record for www -> 192.0.2.1
+# Host-level redirects (http→https, www→apex) are handled by functions/_middleware.js.
+# In Cloudflare, also enable SSL/TLS → Always Use HTTPS and proxy the www DNS record.
 
 /sitemap-index.xml /sitemap.xml 301
 /sitemap-0.xml /sitemap.xml 301
