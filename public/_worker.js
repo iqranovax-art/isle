@@ -1,6 +1,5 @@
 const CANONICAL_ORIGIN = 'https://islecheats.net';
 const APEX_HOST = 'islecheats.net';
-const WWW_HOST = 'www.islecheats.net';
 
 const PATH_REDIRECTS = {
 	'/sitemap-index.xml': '/sitemap.xml',
@@ -23,41 +22,26 @@ const SECURITY_HEADERS = {
 	'X-Frame-Options': 'DENY',
 };
 
-function resolveProtocol(request, url) {
-	const cfVisitor = request.headers.get('cf-visitor');
-	if (cfVisitor) {
-		try {
-			const visitor = JSON.parse(cfVisitor);
-			if (visitor.scheme) return visitor.scheme.toLowerCase();
-		} catch {
-			// Ignore malformed Cloudflare visitor headers.
-		}
+function isIsleDomain(host) {
+	return host === APEX_HOST || host === `www.${APEX_HOST}` || host.endsWith('.islecheats.net');
+}
+
+function shouldRedirectToCanonical(url) {
+	const host = url.hostname.toLowerCase();
+	const isHttps = url.protocol === 'https:';
+
+	if (!isIsleDomain(host)) {
+		return false;
 	}
 
-	return (
-		request.headers.get('x-forwarded-proto') ||
-		url.protocol.replace(':', '')
-	).toLowerCase();
+	return host !== APEX_HOST || !isHttps;
 }
 
-function resolveHost(request, url) {
-	return (
-		request.headers.get('x-forwarded-host') ||
-		request.headers.get('host') ||
-		url.hostname
-	)
-		.toLowerCase()
-		.split(':')[0];
-}
-
-function isIsleDomain(host) {
-	return host === APEX_HOST || host === WWW_HOST || host.endsWith('.islecheats.net');
-}
-
-function redirectToCanonical(url) {
+function redirectToCanonical(url, status = 301) {
 	const target = new URL(url.pathname + url.search, CANONICAL_ORIGIN).toString();
+
 	return new Response(null, {
-		status: 301,
+		status,
 		headers: {
 			Location: target,
 			...SECURITY_HEADERS,
@@ -86,21 +70,19 @@ function withSecurityHeaders(response) {
 
 /**
  * Cloudflare Pages advanced mode worker.
- * Canonicalizes http/www traffic and serves static assets from dist/.
+ * Canonicalizes http/www traffic to https://islecheats.net.
  */
 export default {
 	async fetch(request, env) {
 		const url = new URL(request.url);
-		const host = resolveHost(request, url);
-		const proto = resolveProtocol(request, url);
 
-		if (isIsleDomain(host) && (host !== APEX_HOST || proto !== 'https')) {
+		if (shouldRedirectToCanonical(url)) {
 			return redirectToCanonical(url);
 		}
 
 		const pathRedirect = PATH_REDIRECTS[url.pathname];
 		if (pathRedirect) {
-			return Response.redirect(new URL(pathRedirect, CANONICAL_ORIGIN).toString(), 301);
+			return redirectToCanonical(new URL(pathRedirect + url.search, CANONICAL_ORIGIN));
 		}
 
 		return withSecurityHeaders(await env.ASSETS.fetch(request));

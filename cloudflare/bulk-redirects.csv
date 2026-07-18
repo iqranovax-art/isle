@@ -1,0 +1,4 @@
+source_url,target_url,status,preserve_query_string,include_subdomains,subpath_matching,preserve_path_suffix
+http://islecheats.net,https://islecheats.net,301,true,false,true,true
+http://www.islecheats.net,https://islecheats.net,301,true,true,true,true
+https://www.islecheats.net,https://islecheats.net,301,true,true,true,true
