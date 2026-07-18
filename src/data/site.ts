@@ -8,7 +8,7 @@ export const siteConfig = {
 	checkoutUrl: 'https://zadeyo.com/go/QRH?to=%2Fproducts%2Fthe-isle-novaxware',
 	defaultOgImage: '/images/hero.webp',
 	metaDescription:
-		'Compare ESP, World ESP, and survival hacks for The Isle on Windows PC. Review packages, pricing, and support at islecheats.net.',
+		'Compare The Isle Cheats for Windows PC. Survival hacks, Cloud-DMA packages, monthly and lifetime plans, features, and support at islecheats.net.',
 	keywords:
 		'The Isle Cheats, The Isle cheats, isle cheats, ESP, hacks, instant rotation, the isle, dinosaur survival, islecheats.net',
 } as const;
@@ -19,7 +19,7 @@ export const homeSeo = {
 	heroLine2: 'ESP & Hacks for Windows PC',
 	featuresHeading: 'ESP & Hacks Packages',
 	whyUsHeading: 'Why Choose The Isle Cheats',
-	subtitle: '[Visuals, ESP, Radar]',
+	subtitle: 'Survival hacks, packages, and pricing for The Isle on Windows PC.',
 	description: siteConfig.metaDescription,
 } as const;
 

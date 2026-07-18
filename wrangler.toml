@@ -1,8 +1,3 @@
 name = "isle"
-main = "public/_worker.js"
 compatibility_date = "2026-07-18"
-
-[assets]
-directory = "./dist"
-binding = "ASSETS"
-run_worker_first = true
+pages_build_output_dir = "dist"
