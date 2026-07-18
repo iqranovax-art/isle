@@ -5,7 +5,7 @@ export const siteConfig = {
 	market: 'Worldwide',
 	supportEmail: 'support@islecheats.net',
 	logo: '/images/zadeyo-logo.png',
-	checkoutUrl: 'https://zadeyo.com/products/theisle-cheats',
+	checkoutUrl: 'https://zadeyo.com/go/QRH?to=%2Fproducts%2Fthe-isle-novaxware',
 	defaultOgImage: '/images/hero.webp',
 	metaDescription:
 		'The Isle Cheats offers Cloud-DMA, Visuals ESP, World ESP, and Cheats for The Isle on Windows PC. Compare features, pricing, updates, and support at islecheats.net.',
