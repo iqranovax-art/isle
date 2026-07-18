@@ -20,7 +20,7 @@ export const pageDescriptions = {
 	'/cheats/':
 		'The Isle Cheats — Instant Rotation, Auto-Attack, Omnimovement, No Cooldown Attack, and other Cloud-DMA combat and movement cheats for The Isle.',
 	'/features/':
-		'Full The Isle Cheats feature list — compare Cloud-DMA, Visuals ESP, World ESP, Cheats, and utility tools before choosing monthly or lifetime packages.',
+		'Full The Isle Cheats feature list — compare Cloud-DMA, Visuals ESP, World ESP, Cheats, and utility hacks before choosing monthly or lifetime packages.',
 	'/pricing/':
 		'The Isle Cheats pricing — monthly and lifetime Cloud-DMA, ESP, and Cheats packages in USD. Compare plan lengths and included features at islecheats.net.',
 	'/updates/':
@@ -46,7 +46,7 @@ export function getPageDescription(path: PagePath): string {
 export const cloudDmaOption = {
 	label: 'Cloud-DMA',
 	summary:
-		'Cloud-DMA package includes Visuals ESP, World ESP, Cheats, and Other tools. Aimbot is not included in the Cloud-DMA option.',
+		'Cloud-DMA package includes Visuals ESP, World ESP, Cheats, and Other hacks. Aimbot is not included in the Cloud-DMA option.',
 	excludes: ['Aimbot'],
 } as const;
 
@@ -55,7 +55,7 @@ export const productInfo = {
 	shortName: 'The Isle Cheats',
 	tagline: 'Cloud-DMA, ESP, and Cheats for The Isle',
 	summary:
-		'The Isle Cheats is a software package with Cloud-DMA support, Visuals ESP, World ESP, Cheats, and utility tools for players who want clearer survival information and advanced control options in The Isle.',
+		'The Isle Cheats is a software package with Cloud-DMA support, Visuals ESP, World ESP, Cheats, and utility hacks for players who want clearer survival information and advanced control options in The Isle.',
 	game: 'The Isle',
 	delivery: 'Digital license delivery after purchase confirmation',
 	platforms: ['Windows PC'],
@@ -181,12 +181,12 @@ export const homeFaqs = [
 	{
 		question: 'What is included with The Isle Cheats?',
 		answer:
-			'The Isle Cheats includes Visuals ESP, World ESP, Cheats, and Other utility tools. The Cloud-DMA option covers ESP, World ESP, Cheats, and Other features without Aimbot. Full packages can include the complete feature list on the Features page, including optional Aimbot controls for buyers who need them.',
+			'The Isle Cheats includes Visuals ESP, World ESP, Cheats, and Other utility hacks. The Cloud-DMA option covers ESP, World ESP, Cheats, and Other features without Aimbot. Full packages can include the complete feature list on the Features page, including optional Aimbot controls for buyers who need them.',
 	},
 	{
 		question: 'What is the Cloud-DMA option?',
 		answer:
-			'Cloud-DMA is the package option focused on ESP, World ESP, Cheats, and Other tools such as Instant Rotation, Radar, and FOV Changer. Aimbot is not included in the Cloud-DMA option.',
+			'Cloud-DMA is the package option focused on ESP, World ESP, Cheats, and Other hacks such as Instant Rotation, Radar, and FOV Changer. Aimbot is not included in the Cloud-DMA option.',
 	},
 	{
 		question: 'How are licenses delivered?',
