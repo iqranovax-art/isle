@@ -22,7 +22,7 @@ import { homeSeo, siteConfig } from '../data/site';
 		<div class="hero__copy">
 			<p class="hero__eyebrow">{siteConfig.name}</p>
 			<h1 class="hero__title">{homeSeo.heroTitle}</h1>
-			<h2 class="hero__description">{homeSeo.heroDescription}</h2>
+			<h2 class="hero__subtitle text-gradient">{homeSeo.heroSubtitle}</h2>
 			<div class="hero__cta">
 				<a href="/pricing/" class="hero__btn hero__btn--primary bg-brand">Compare packages</a>
 				<a href="/features/" class="hero__btn hero__btn--ghost">Explore features</a>
@@ -119,15 +119,18 @@ import { homeSeo, siteConfig } from '../data/site';
 		hyphens: none;
 	}
 
-	.hero__description {
-		margin: 1.2rem 0 0;
-		max-width: 38rem;
-		font-family: var(--font-body);
-		font-size: clamp(1rem, 1.8vw, 1.2rem);
-		font-weight: 500;
-		line-height: 1.65;
-		color: #c8bdd8;
-		animation: rise-in 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.1s both;
+	.hero__subtitle {
+		margin: 0.35em 0 0;
+		font-family: var(--font-display);
+		font-size: clamp(1.35rem, 3.2vw, 2.35rem);
+		font-weight: 800;
+		line-height: 1.2;
+		letter-spacing: -0.02em;
+		background-size: 200% 100%;
+		animation:
+			rise-in 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.1s both,
+			shimmer 4s ease-in-out infinite;
+		text-wrap: balance;
 	}
 
 	.hero__cta {
@@ -266,11 +269,10 @@ import { homeSeo, siteConfig } from '../data/site';
 			letter-spacing: -0.025em;
 		}
 
-		.hero__description {
-			margin-top: 0.9rem;
-			max-width: none;
-			font-size: 0.94rem;
-			line-height: 1.55;
+		.hero__subtitle {
+			margin-top: 0.4rem;
+			font-size: clamp(1.15rem, 5.5vw, 1.65rem);
+			line-height: 1.22;
 		}
 
 		.hero__cta {
@@ -295,8 +297,8 @@ import { homeSeo, siteConfig } from '../data/site';
 			line-height: 1.22;
 		}
 
-		.hero__description {
-			font-size: 0.9rem;
+		.hero__subtitle {
+			font-size: 1.1rem;
 		}
 	}
 </style>
