@@ -22,6 +22,13 @@ export const homeSeo = {
 	description: siteConfig.metaDescription,
 } as const;
 
+export const homeVideo = {
+	src: 'https://ooszazcwzmwhitdxwtom.supabase.co/storage/v1/object/public/ef/0605.mp4',
+	thumbnail: '/images/hero.webp',
+	thumbnailAlt: 'The Isle Cheats demo video thumbnail',
+	title: 'The Isle Cheats demo video',
+} as const;
+
 export const pageDescriptions = {
 	'/': siteConfig.metaDescription,
 	'/theisle-esp/':

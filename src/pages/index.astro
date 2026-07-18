@@ -2,6 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 import Navbar from '../components/Navbar.astro';
 import Hero from '../components/Hero.astro';
+import HomeVideoPlayer from '../components/HomeVideoPlayer.astro';
 import ProductCard from '../components/ProductCard.astro';
 import Gallery from '../components/Gallery.astro';
 import HomeSeo from '../components/HomeSeo.astro';
@@ -50,7 +51,10 @@ const faqSchema = {
 		<Hero />
 		<section class="site__section" id="features" data-nav-section="features" aria-label="Product packages">
 			<div class="shell">
-				<ProductCard />
+				<div class="features-split">
+					<HomeVideoPlayer />
+					<ProductCard />
+				</div>
 			</div>
 		</section>
 		<section class="site__section site__section--seo" id="why-us" data-nav-section="why-us">
@@ -81,5 +85,18 @@ const faqSchema = {
 	.site__section--gallery {
 		padding-top: 0.5rem;
 		padding-bottom: 2rem;
+	}
+
+	.features-split {
+		display: grid;
+		grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+		gap: clamp(1.25rem, 2.5vw, 2rem);
+		align-items: stretch;
+	}
+
+	@media (max-width: 900px) {
+		.features-split {
+			grid-template-columns: 1fr;
+		}
 	}
 </style>

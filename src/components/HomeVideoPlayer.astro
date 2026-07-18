@@ -1,0 +1,193 @@
+---
+import { homeVideo } from '../data/site';
+---
+
+<div class="home-video surface-card" data-home-video>
+	<button
+		type="button"
+		class="home-video__trigger"
+		data-video-trigger
+		aria-label={`Play ${homeVideo.title}`}
+	>
+		<img
+			src={homeVideo.thumbnail}
+			alt={homeVideo.thumbnailAlt}
+			width="1280"
+			height="720"
+			class="home-video__thumb"
+			loading="lazy"
+			decoding="async"
+		/>
+		<span class="home-video__overlay" aria-hidden="true"></span>
+		<span class="home-video__play" aria-hidden="true">
+			<svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+				<path d="M8 5.14v13.72L19 12 8 5.14z"></path>
+			</svg>
+		</span>
+		<span class="home-video__label">Watch demo</span>
+	</button>
+
+	<video
+		class="home-video__player"
+		data-video-player
+		controls
+		playsinline
+		preload="none"
+		hidden
+		aria-label={homeVideo.title}
+	></video>
+</div>
+
+<script define:vars={{ videoSrc: homeVideo.src }}>
+	const root = document.querySelector('[data-home-video]');
+	if (!root) {
+		// no-op
+	} else {
+		const trigger = root.querySelector('[data-video-trigger]');
+		const player = root.querySelector('[data-video-player]');
+
+		trigger?.addEventListener('click', () => {
+			if (!(player instanceof HTMLVideoElement)) return;
+
+			player.src = videoSrc;
+			player.hidden = false;
+			trigger.setAttribute('hidden', 'true');
+			root.classList.add('is-playing');
+
+			const playPromise = player.play();
+			if (playPromise) {
+				playPromise.catch(() => {
+					player.controls = true;
+				});
+			}
+		});
+	}
+</script>
+
+<style>
+	.home-video {
+		position: relative;
+		min-width: 0;
+		height: 100%;
+		padding: 0;
+		overflow: hidden;
+		border-radius: var(--radius-card);
+		animation: card-in 0.75s cubic-bezier(0.22, 1, 0.36, 1) 0.1s both;
+	}
+
+	.home-video__trigger {
+		position: relative;
+		display: grid;
+		place-items: center;
+		width: 100%;
+		height: 100%;
+		min-height: clamp(280px, 42vw, 520px);
+		padding: 0;
+		border: 0;
+		background: #0a0612;
+		cursor: pointer;
+		overflow: hidden;
+	}
+
+	.home-video__trigger:focus-visible {
+		outline: 2px solid var(--color-orchid);
+		outline-offset: 3px;
+	}
+
+	.home-video__thumb {
+		position: absolute;
+		inset: 0;
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		transform: scale(1.02);
+		transition: transform 0.45s ease;
+	}
+
+	.home-video__trigger:hover .home-video__thumb,
+	.home-video__trigger:focus-visible .home-video__thumb {
+		transform: scale(1.06);
+	}
+
+	.home-video__overlay {
+		position: absolute;
+		inset: 0;
+		background:
+			linear-gradient(180deg, rgba(10, 6, 18, 0.15) 0%, rgba(10, 6, 18, 0.55) 100%),
+			radial-gradient(circle at center, rgba(124, 58, 237, 0.18), transparent 65%);
+	}
+
+	.home-video__play {
+		position: relative;
+		z-index: 1;
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		width: 4.5rem;
+		height: 4.5rem;
+		border-radius: 999px;
+		color: #fff;
+		background: linear-gradient(135deg, rgba(124, 58, 237, 0.95), rgba(217, 70, 239, 0.92));
+		border: 1px solid rgba(255, 255, 255, 0.28);
+		box-shadow:
+			0 12px 32px rgba(0, 0, 0, 0.35),
+			0 0 28px rgba(168, 85, 247, 0.45);
+		transition:
+			transform 0.25s ease,
+			box-shadow 0.25s ease;
+	}
+
+	.home-video__play svg {
+		margin-left: 0.15rem;
+	}
+
+	.home-video__trigger:hover .home-video__play,
+	.home-video__trigger:focus-visible .home-video__play {
+		transform: scale(1.06);
+		box-shadow:
+			0 16px 36px rgba(0, 0, 0, 0.4),
+			0 0 36px rgba(192, 132, 252, 0.55);
+	}
+
+	.home-video__label {
+		position: absolute;
+		left: 1rem;
+		bottom: 1rem;
+		z-index: 1;
+		padding: 0.35rem 0.7rem;
+		border-radius: 999px;
+		background: rgba(10, 6, 18, 0.72);
+		border: 1px solid rgba(192, 132, 252, 0.25);
+		color: #d8c9ef;
+		font-size: 0.72rem;
+		font-weight: 700;
+		letter-spacing: 0.06em;
+		text-transform: uppercase;
+		backdrop-filter: blur(6px);
+	}
+
+	.home-video__player {
+		display: block;
+		width: 100%;
+		height: 100%;
+		min-height: clamp(280px, 42vw, 520px);
+		background: #000;
+		object-fit: contain;
+	}
+
+	.home-video.is-playing {
+		background: #000;
+	}
+
+	@media (max-width: 900px) {
+		.home-video__trigger,
+		.home-video__player {
+			min-height: clamp(220px, 56vw, 360px);
+		}
+
+		.home-video__play {
+			width: 3.75rem;
+			height: 3.75rem;
+		}
+	}
+</style>
