@@ -15,11 +15,11 @@ export const siteConfig = {
 
 export const homeSeo = {
 	title: 'The Isle Cheats — ESP & Hacks for Windows PC',
-	heroLine1: 'The Isle Cheats',
-	heroLine2: 'ESP & Hacks for Windows PC',
+	heroTitle: 'TheIsleCheats Premium Access',
+	heroDescription:
+		'Review The Isle cheat features, all-in-one package options, and built-in HWID spoofers. Explore advanced dino ESP and radar tools built for absolute survival dominance.',
 	featuresHeading: 'ESP & Hacks Packages',
 	whyUsHeading: 'Why Choose The Isle Cheats',
-	subtitle: 'Survival hacks, packages, and pricing for The Isle on Windows PC.',
 	description: siteConfig.metaDescription,
 } as const;
 

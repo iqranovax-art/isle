@@ -1,14 +1,6 @@
 ---
 import { theIsleImages } from '../data/theisle';
 import { homeSeo, siteConfig } from '../data/site';
-
-interface Props {
-	subtitle?: string;
-}
-
-const {
-	subtitle = homeSeo.subtitle,
-} = Astro.props;
 ---
 
 <section class="hero" id="home" data-nav-section="home" aria-label="Hero">
@@ -29,11 +21,8 @@ const {
 	<div class="hero__inner">
 		<div class="hero__copy">
 			<p class="hero__eyebrow">{siteConfig.name}</p>
-			<h1 class="hero__title">
-				<span class="hero__line">{homeSeo.heroLine1}</span>
-				<span class="text-gradient hero__accent">{homeSeo.heroLine2}</span>
-			</h1>
-			<p class="hero__subtitle">{subtitle}</p>
+			<h1 class="hero__title">{homeSeo.heroTitle}</h1>
+			<h2 class="hero__description">{homeSeo.heroDescription}</h2>
 			<div class="hero__cta">
 				<a href="/pricing/" class="hero__btn hero__btn--primary bg-brand">Compare packages</a>
 				<a href="/features/" class="hero__btn hero__btn--ghost">Explore features</a>
@@ -123,9 +112,6 @@ const {
 		font-weight: 800;
 		line-height: 1.15;
 		letter-spacing: -0.03em;
-		display: flex;
-		flex-direction: column;
-		gap: 0.18em;
 		text-shadow: 0 8px 32px rgba(10, 6, 18, 0.65);
 		text-wrap: balance;
 		overflow-wrap: break-word;
@@ -133,26 +119,12 @@ const {
 		hyphens: none;
 	}
 
-	.hero__line {
-		display: block;
-		max-width: 100%;
-		white-space: nowrap;
-	}
-
-	.hero__accent {
-		display: block;
-		max-width: 100%;
-		background-size: 200% 100%;
-		animation: shimmer 4s ease-in-out infinite;
-		width: fit-content;
-		padding-bottom: 0.06em;
-		white-space: nowrap;
-	}
-
-	.hero__subtitle {
+	.hero__description {
 		margin: 1.2rem 0 0;
-		max-width: 22rem;
-		font-size: clamp(0.95rem, 1.5vw, 1.05rem);
+		max-width: 38rem;
+		font-family: var(--font-body);
+		font-size: clamp(1rem, 1.8vw, 1.2rem);
+		font-weight: 500;
 		line-height: 1.65;
 		color: #c8bdd8;
 		animation: rise-in 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.1s both;
@@ -292,22 +264,9 @@ const {
 			font-size: clamp(1.5rem, 7.2vw, 2.1rem);
 			line-height: 1.2;
 			letter-spacing: -0.025em;
-			gap: 0.2rem;
 		}
 
-		.hero__line,
-		.hero__accent {
-			white-space: normal;
-		}
-
-		.hero__accent {
-			width: 100%;
-			font-size: 0.98em;
-			line-height: 1.22;
-			padding-bottom: 0.1em;
-		}
-
-		.hero__subtitle {
+		.hero__description {
 			margin-top: 0.9rem;
 			max-width: none;
 			font-size: 0.94rem;
@@ -334,10 +293,9 @@ const {
 		.hero__title {
 			font-size: 1.4rem;
 			line-height: 1.22;
-			gap: 0.25rem;
 		}
 
-		.hero__subtitle {
+		.hero__description {
 			font-size: 0.9rem;
 		}
 	}
