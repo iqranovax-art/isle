@@ -2,6 +2,8 @@
 
 The Isle Cheats marketing site built with Astro.
 
+Live site: https://islecheats.net
+
 ## Commands
 
 | Command           | Action                              |
