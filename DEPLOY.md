@@ -7,26 +7,14 @@ This site deploys to **Cloudflare Pages** (project: `isle`).
 | Setting | Value |
 | ------- | ----- |
 | **Build command** | `npm run build` |
-| **Deploy command** | `npm run deploy` |
+| **Deploy command** | `npx wrangler pages deploy ./dist` |
 
-Cloudflare Pages cannot use `npx wrangler deploy` (that command is for Workers).
-Use `npm run deploy`, which runs `wrangler pages deploy dist --project-name=isle`.
+Astro outputs static files to `./dist`, so the deploy step must use **Wrangler Pages**, not `npx wrangler deploy` (Workers).
 
-The repo also ships a local `wrangler` shim (`tools/wrangler`) so
-`npx wrangler deploy` redirects to the Pages deploy command after `npm install`.
-
-## If deploy still fails
-
-Set the deploy command in the Cloudflare dashboard to exactly:
+Equivalent npm script:
 
 ```text
 npm run deploy
-```
-
-Equivalent direct command:
-
-```text
-npx wrangler pages deploy dist --project-name=isle --commit-dirty=true
 ```
 
 ## Manual deploy
@@ -34,7 +22,7 @@ npx wrangler pages deploy dist --project-name=isle --commit-dirty=true
 ```sh
 npm install
 npm run build
-npm run deploy
+npx wrangler pages deploy ./dist
 ```
 
 ## Redirects

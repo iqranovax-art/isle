@@ -5,7 +5,7 @@ The Isle Cheats marketing site built with Astro.
 Live site: https://islecheats.net
 
 Cloudflare checklist for SEO (HTTP / www redirects):
-1. Workers Builds: build `npm run build`, deploy `npm run deploy` (see `DEPLOY.md`)
+1. Workers Builds: build `npm run build`, deploy `npx wrangler pages deploy ./dist` (see `DEPLOY.md`)
 2. Add DNS **CNAME** `www` → `islecheats.net` (proxied / orange cloud)
 3. Attach **both** `islecheats.net` and `www.islecheats.net` to the Pages project
 4. Enable **SSL/TLS → Always Use HTTPS**

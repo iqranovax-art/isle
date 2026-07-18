@@ -18,7 +18,7 @@ function run(commandArgs) {
 
 // Cloudflare Pages projects must use `wrangler pages deploy`, not `wrangler deploy`.
 if (args[0] === 'deploy') {
-	run(['pages', 'deploy', 'dist', '--project-name=isle', '--commit-dirty=true']);
+	run(['pages', 'deploy', './dist']);
 }
 
 run(args);
