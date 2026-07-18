@@ -49,6 +49,11 @@
 		text-size-adjust: 100%;
 	}
 
+	[id][data-nav-section],
+	[id].hero {
+		scroll-margin-top: calc(5.75rem + env(safe-area-inset-top, 0px));
+	}
+
 	html::-webkit-scrollbar {
 		display: none;
 		width: 0;

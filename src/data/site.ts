@@ -157,12 +157,12 @@ export const featureCategories = [
 ] as const;
 
 export const mainNav = [
-	{ label: 'Home', href: '/' },
-	{ label: 'ESP', href: '/theisle-esp/' },
-	{ label: 'Cheats', href: '/cheats/' },
-	{ label: 'Features', href: '/features/' },
-	{ label: 'Pricing', href: '/pricing/' },
-	{ label: 'FAQ', href: '/faq/' },
+	{ label: 'Home', href: '/#home', section: 'home' },
+	{ label: 'Why Us', href: '/#why-us', section: 'why-us' },
+	{ label: 'Features', href: '/#features', section: 'features' },
+	{ label: 'Demo', href: '/#demo', section: 'demo' },
+	{ label: 'Undetected', href: '/#undetected', section: 'undetected' },
+	{ label: 'Blog', href: '/#blog', section: 'blog' },
 ] as const;
 
 export const footerNav = [
