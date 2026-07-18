@@ -30,7 +30,7 @@ export const pageSitemapEntries: PageSitemapEntry[] = [
 		priority: 1,
 		changefreq: 'daily',
 		images: [
-			img('/images/hero.webp', 'The Isle Cheats hero', 'Homepage banner for The Isle Cheats Cloud-DMA, ESP, and Exploits'),
+			img('/images/hero.webp', 'The Isle Cheats hero', 'Homepage banner for The Isle Cheats Cloud-DMA, ESP, and Cheats'),
 			img('/images/product-2.webp', 'The Isle Cheats product preview', 'Primary product visual on The Isle Cheats homepage'),
 			img('/images/product-3.webp', 'The Isle combat preview', 'Gameplay context image on The Isle Cheats homepage'),
 			img('/images/product-4.webp', 'The Isle environment preview', 'Environment visual used in the homepage product gallery'),
@@ -40,13 +40,13 @@ export const pageSitemapEntries: PageSitemapEntry[] = [
 		],
 	},
 	{
-		path: '/theisle-exploits/',
+		path: '/cheats/',
 		priority: 0.9,
 		changefreq: 'weekly',
 		images: [
-			img('/images/product-2.webp', 'The Isle Cheats Exploits preview', 'Main visual for The Isle Cheats Exploits page'),
-			img('/images/product-3.webp', 'The Isle Cheats Exploits combat scene', 'Combat reference image on The Isle Cheats Exploits page'),
-			img('/images/product-6.webp', 'The Isle Cheats Exploits gallery image', 'Supporting visual for The Isle Cheats Exploits'),
+			img('/images/product-2.webp', 'The Isle Cheats preview', 'Main visual for The Isle Cheats page'),
+			img('/images/product-3.webp', 'The Isle Cheats combat scene', 'Combat reference image on The Isle Cheats page'),
+			img('/images/product-6.webp', 'The Isle Cheats gallery image', 'Supporting visual for The Isle Cheats'),
 		],
 	},
 	{

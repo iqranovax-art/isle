@@ -3,7 +3,7 @@ import PageLayout from '../../layouts/PageLayout.astro';
 import { cloudDmaOption, productInfo, getPageDescription } from '../../data/site';
 import { theIsleImages } from '../../data/theisle';
 
-const title = 'The Isle Cheats Features - Cloud-DMA, ESP & Exploits';
+const title = 'The Isle Cheats Features - Cloud-DMA, ESP & Cheats';
 const description = getPageDescription('/features/');
 ---
 
@@ -12,7 +12,7 @@ const description = getPageDescription('/features/');
 	description={description}
 	canonicalPath="/features/"
 	heading="The Isle Cheats Features"
-	intro="Compare Cloud-DMA, Visuals ESP, World ESP, Exploits, and Other tools in one place before choosing a duration on Pricing."
+	intro="Compare Cloud-DMA, Visuals ESP, World ESP, Cheats, and Other tools in one place before choosing a duration on Pricing."
 	heroImage={theIsleImages.hero}
 	heroAlt="The Isle Cheats features overview visual"
 	gallery={theIsleImages.gallery.slice(1, 4)}
@@ -25,7 +25,7 @@ const description = getPageDescription('/features/');
 		<ul>
 			<li>Visuals ESP (WH)</li>
 			<li>World ESP (Environment)</li>
-			<li>Exploits (Instant Rotation, Auto-Attack, and more)</li>
+			<li>Cheats (Instant Rotation, Auto-Attack, and more)</li>
 			<li>Other (The Isle) utilities</li>
 			<li>Not included: {cloudDmaOption.excludes.join(', ')}</li>
 		</ul>
@@ -49,12 +49,12 @@ const description = getPageDescription('/features/');
 	</section>
 
 	<section class="card-panel">
-		<h2>Exploits</h2>
+		<h2 id="cheats">Cheats</h2>
 		<ul>
-			{productInfo.features.exploits.map((item) => <li>{item}</li>)}
+			{productInfo.features.cheats.map((item) => <li>{item}</li>)}
 		</ul>
 		<div class="cta-row">
-			<a class="cta-btn cta-btn--ghost" href="/theisle-exploits/">Exploits details</a>
+			<a class="cta-btn cta-btn--ghost" href="/cheats/">Cheats details</a>
 		</div>
 	</section>
 
@@ -67,7 +67,7 @@ const description = getPageDescription('/features/');
 
 	<section class="card-panel" id="aimbot">
 		<h2>Aimbot (not in Cloud-DMA)</h2>
-		<p>Aimbot is available outside the Cloud-DMA option. Cloud-DMA buyers receive ESP, Exploits, and Other tools only.</p>
+		<p>Aimbot is available outside the Cloud-DMA option. Cloud-DMA buyers receive ESP, Cheats, and Other tools only.</p>
 		<ul>
 			{productInfo.features.aimbot.map((item) => <li>{item}</li>)}
 		</ul>

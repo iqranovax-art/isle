@@ -3,26 +3,26 @@ import PageLayout from '../../layouts/PageLayout.astro';
 import { cloudDmaOption, productInfo, getPageDescription } from '../../data/site';
 import { theIsleImages } from '../../data/theisle';
 
-const title = 'The Isle Cheats Exploits - Instant Rotation & More';
-const description = getPageDescription('/theisle-exploits/');
+const title = 'Cheats - Instant Rotation & More | The Isle Cheats';
+const description = getPageDescription('/cheats/');
 ---
 
 <PageLayout
 	title={title}
 	description={description}
-	canonicalPath="/theisle-exploits/"
-	heading="The Isle Cheats Exploits"
-	intro="Exploit tools inside The Isle Cheats, including Instant Rotation, Auto-Attack, Omnimovement, and other combat and movement options. Included in the Cloud-DMA package."
+	canonicalPath="/cheats/"
+	heading="Cheats"
+	intro="Cheat tools inside The Isle Cheats, including Instant Rotation, Auto-Attack, Omnimovement, and other combat and movement options. Included in the Cloud-DMA package."
 	heroImage={theIsleImages.product[0].src}
-	heroAlt="The Isle Cheats Exploits preview"
+	heroAlt="The Isle Cheats preview"
 	gallery={[theIsleImages.product[0], theIsleImages.product[1], theIsleImages.product[4]]}
 	ctaPrimary={{ href: '/pricing/', label: 'Choose a Package' }}
 	ctaSecondary={{ href: '/theisle-esp/', label: 'Explore ESP' }}
 >
 	<section class="card-panel">
-		<h2>Exploit features</h2>
+		<h2>Cheat features</h2>
 		<ul>
-			{productInfo.features.exploits.map((item) => <li>{item}</li>)}
+			{productInfo.features.cheats.map((item) => <li>{item}</li>)}
 		</ul>
 	</section>
 

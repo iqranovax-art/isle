@@ -8,25 +8,25 @@ export const siteConfig = {
 	checkoutUrl: 'https://zadeyo.com/products/theisle-cheats',
 	defaultOgImage: '/images/hero.webp',
 	metaDescription:
-		'The Isle Cheats offers Cloud-DMA, Visuals ESP, World ESP, and Exploits for The Isle on Windows PC. Compare features, pricing, updates, and support at islecheats.net.',
+		'The Isle Cheats offers Cloud-DMA, Visuals ESP, World ESP, and Cheats for The Isle on Windows PC. Compare features, pricing, updates, and support at islecheats.net.',
 	keywords:
-		'The Isle Cheats, The Isle cheats, isle cheats, ESP, exploits, Cloud-DMA, instant rotation, the isle, dinosaur survival, islecheats.net',
+		'The Isle Cheats, The Isle cheats, isle cheats, ESP, cheats, Cloud-DMA, instant rotation, the isle, dinosaur survival, islecheats.net',
 } as const;
 
 export const pageDescriptions = {
 	'/': siteConfig.metaDescription,
 	'/theisle-esp/':
 		'The Isle Cheats ESP — Visuals ESP and World ESP for entity awareness, resource tracking, and environment readouts on Windows PC. Part of the Cloud-DMA package at islecheats.net.',
-	'/theisle-exploits/':
-		'The Isle Cheats Exploits — Instant Rotation, Auto-Attack, Omnimovement, No Cooldown Attack, and other Cloud-DMA combat and movement tools for The Isle.',
+	'/cheats/':
+		'The Isle Cheats — Instant Rotation, Auto-Attack, Omnimovement, No Cooldown Attack, and other Cloud-DMA combat and movement cheats for The Isle.',
 	'/features/':
-		'Full The Isle Cheats feature list — compare Cloud-DMA, Visuals ESP, World ESP, Exploits, and utility tools before choosing monthly or lifetime packages.',
+		'Full The Isle Cheats feature list — compare Cloud-DMA, Visuals ESP, World ESP, Cheats, and utility tools before choosing monthly or lifetime packages.',
 	'/pricing/':
-		'The Isle Cheats pricing — monthly and lifetime Cloud-DMA, ESP, and Exploits packages in USD. Compare plan lengths and included features at islecheats.net.',
+		'The Isle Cheats pricing — monthly and lifetime Cloud-DMA, ESP, and Cheats packages in USD. Compare plan lengths and included features at islecheats.net.',
 	'/updates/':
 		'The Isle Cheats updates — product changelog, maintenance notices, and compatibility updates published after The Isle patches.',
 	'/faq/':
-		'The Isle Cheats FAQ — answers about Cloud-DMA, ESP, Exploits, digital delivery, refund policy, and customer support.',
+		'The Isle Cheats FAQ — answers about Cloud-DMA, ESP, Cheats, digital delivery, refund policy, and customer support.',
 	'/support/':
 		'Contact The Isle Cheats support for delivery, setup, and billing help. Email support@islecheats.net with your order details.',
 	'/refund-policy/':
@@ -46,16 +46,16 @@ export function getPageDescription(path: PagePath): string {
 export const cloudDmaOption = {
 	label: 'Cloud-DMA',
 	summary:
-		'Cloud-DMA package includes Visuals ESP, World ESP, Exploits, and Other tools. Aimbot is not included in the Cloud-DMA option.',
+		'Cloud-DMA package includes Visuals ESP, World ESP, Cheats, and Other tools. Aimbot is not included in the Cloud-DMA option.',
 	excludes: ['Aimbot'],
 } as const;
 
 export const productInfo = {
 	name: 'The Isle Cheats',
 	shortName: 'The Isle Cheats',
-	tagline: 'Cloud-DMA, ESP, and Exploits for The Isle',
+	tagline: 'Cloud-DMA, ESP, and Cheats for The Isle',
 	summary:
-		'The Isle Cheats is a software package with Cloud-DMA support, Visuals ESP, World ESP, Exploits, and utility tools for players who want clearer survival information and advanced control options in The Isle.',
+		'The Isle Cheats is a software package with Cloud-DMA support, Visuals ESP, World ESP, Cheats, and utility tools for players who want clearer survival information and advanced control options in The Isle.',
 	game: 'The Isle',
 	delivery: 'Digital license delivery after purchase confirmation',
 	platforms: ['Windows PC'],
@@ -112,7 +112,7 @@ export const productInfo = {
 			'Water — Water sources',
 			'Max Distance — Object display range in meters',
 		],
-		exploits: [
+		cheats: [
 			'No Cost Ability — Abilities require no point expenditure',
 			'No Cooldown Attack — Removes cooldown between attacks',
 			'No Fractured — Disables fractures',
@@ -134,7 +134,7 @@ export const productInfo = {
 			'Languages — English and Russian',
 		],
 		general: [
-			'Cloud-DMA option available (ESP, World ESP, Exploits, and Other — no Aimbot)',
+			'Cloud-DMA option available (ESP, World ESP, Cheats, and Other — no Aimbot)',
 			'In-client feature toggles',
 			'Monthly and lifetime package options',
 			'Product update notices on the Updates page',
@@ -146,7 +146,7 @@ export const productInfo = {
 export const featureCategories = [
 	{ id: 'visualsEsp', title: 'Visuals ESP (WH)', href: '/theisle-esp/' },
 	{ id: 'worldEsp', title: 'World ESP (Environment)', href: '/theisle-esp/#world-esp' },
-	{ id: 'exploits', title: 'Exploits', href: '/theisle-exploits/' },
+	{ id: 'cheats', title: 'Cheats', href: '/cheats/' },
 	{ id: 'other', title: 'Other (The Isle)', href: '/features/#other' },
 	{ id: 'aimbot', title: 'Aimbot', href: '/features/#aimbot', cloudDmaExcluded: true },
 ] as const;
@@ -154,7 +154,7 @@ export const featureCategories = [
 export const mainNav = [
 	{ label: 'Home', href: '/' },
 	{ label: 'ESP', href: '/theisle-esp/' },
-	{ label: 'Exploits', href: '/theisle-exploits/' },
+	{ label: 'Cheats', href: '/cheats/' },
 	{ label: 'Features', href: '/features/' },
 	{ label: 'Pricing', href: '/pricing/' },
 	{ label: 'FAQ', href: '/faq/' },
@@ -171,7 +171,7 @@ export const footerNav = [
 export const footerExplore = [
 	{ label: 'Site overview', href: '/' },
 	{ label: 'Visuals ESP page', href: '/theisle-esp/' },
-	{ label: 'Exploits page', href: '/theisle-exploits/' },
+	{ label: 'Cheats page', href: '/cheats/' },
 	{ label: 'Full feature breakdown', href: '/features/' },
 	{ label: 'Package pricing plans', href: '/pricing/' },
 	{ label: 'Common questions hub', href: '/faq/' },
@@ -181,12 +181,12 @@ export const homeFaqs = [
 	{
 		question: 'What is included with The Isle Cheats?',
 		answer:
-			'The Isle Cheats includes Visuals ESP, World ESP, Exploits, and Other utility tools. The Cloud-DMA option covers ESP, World ESP, Exploits, and Other features without Aimbot. Full packages can include the complete feature list on the Features page, including optional Aimbot controls for buyers who need them.',
+			'The Isle Cheats includes Visuals ESP, World ESP, Cheats, and Other utility tools. The Cloud-DMA option covers ESP, World ESP, Cheats, and Other features without Aimbot. Full packages can include the complete feature list on the Features page, including optional Aimbot controls for buyers who need them.',
 	},
 	{
 		question: 'What is the Cloud-DMA option?',
 		answer:
-			'Cloud-DMA is the package option focused on ESP, World ESP, Exploits, and Other tools such as Instant Rotation, Radar, and FOV Changer. Aimbot is not included in the Cloud-DMA option.',
+			'Cloud-DMA is the package option focused on ESP, World ESP, Cheats, and Other tools such as Instant Rotation, Radar, and FOV Changer. Aimbot is not included in the Cloud-DMA option.',
 	},
 	{
 		question: 'How are licenses delivered?',
