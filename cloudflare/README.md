@@ -2,7 +2,7 @@
 
 Seobility and other SEO tools require **one canonical URL**: `https://islecheats.net`.
 
-The site ships with `public/_worker.js` (advanced mode) to 301 redirect:
+The site ships with `worker/index.js` to 301 redirect:
 
 - `http://islecheats.net` → `https://islecheats.net`
 - `http://www.islecheats.net` → `https://islecheats.net`
@@ -22,9 +22,9 @@ Without a `www` DNS record, the www hostname cannot redirect and SEO tools will 
 
 Enable **Always Use HTTPS** under SSL/TLS → Edge Certificates.
 
-### 3. Custom domains (Pages)
+### 3. Custom domains (Workers)
 
-Attach **both** hostnames to the Pages project:
+Attach **both** hostnames to the Workers project:
 
 - `islecheats.net`
 - `www.islecheats.net`

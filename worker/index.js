@@ -69,8 +69,7 @@ function withSecurityHeaders(response) {
 }
 
 /**
- * Cloudflare Pages advanced mode worker.
- * Canonicalizes http/www traffic to https://islecheats.net.
+ * Cloudflare Worker for canonical http/www → https://islecheats.net redirects.
  */
 export default {
 	async fetch(request, env) {
