@@ -29,7 +29,10 @@ const {
 	<div class="hero__inner">
 		<div class="hero__copy">
 			<p class="hero__eyebrow">{siteConfig.name}</p>
-			<h1 class="hero__title">{homeSeo.title}</h1>
+			<h1 class="hero__title">
+				<span class="hero__line">{homeSeo.heroLine1}</span>
+				<span class="text-gradient hero__accent">{homeSeo.heroLine2}</span>
+			</h1>
 			<p class="hero__subtitle">{subtitle}</p>
 			<div class="hero__cta">
 				<a href="/pricing/" class="hero__btn hero__btn--primary bg-brand">Compare packages</a>
@@ -116,16 +119,34 @@ const {
 	.hero__title {
 		margin: 0;
 		font-family: var(--font-display);
-		font-size: clamp(1.65rem, 4vw, 3.25rem);
+		font-size: clamp(1.85rem, 4.6vw, 3.75rem);
 		font-weight: 800;
-		line-height: 1.18;
+		line-height: 1.15;
 		letter-spacing: -0.03em;
-		max-width: 14ch;
+		display: flex;
+		flex-direction: column;
+		gap: 0.18em;
 		text-shadow: 0 8px 32px rgba(10, 6, 18, 0.65);
 		text-wrap: balance;
 		overflow-wrap: break-word;
 		word-break: normal;
 		hyphens: none;
+	}
+
+	.hero__line {
+		display: block;
+		max-width: 100%;
+		white-space: nowrap;
+	}
+
+	.hero__accent {
+		display: block;
+		max-width: 100%;
+		background-size: 200% 100%;
+		animation: shimmer 4s ease-in-out infinite;
+		width: fit-content;
+		padding-bottom: 0.06em;
+		white-space: nowrap;
 	}
 
 	.hero__subtitle {
@@ -260,7 +281,19 @@ const {
 			font-size: clamp(1.5rem, 7.2vw, 2.1rem);
 			line-height: 1.2;
 			letter-spacing: -0.025em;
-			max-width: none;
+			gap: 0.2rem;
+		}
+
+		.hero__line,
+		.hero__accent {
+			white-space: normal;
+		}
+
+		.hero__accent {
+			width: 100%;
+			font-size: 0.98em;
+			line-height: 1.22;
+			padding-bottom: 0.1em;
 		}
 
 		.hero__subtitle {
@@ -290,6 +323,7 @@ const {
 		.hero__title {
 			font-size: 1.4rem;
 			line-height: 1.22;
+			gap: 0.25rem;
 		}
 
 		.hero__subtitle {

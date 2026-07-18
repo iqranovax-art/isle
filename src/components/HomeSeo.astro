@@ -1,5 +1,5 @@
 ---
-import { cloudDmaOption, homeFaqs, productInfo, siteConfig } from '../data/site';
+import { cloudDmaOption, homeFaqs, homeSeo, productInfo, siteConfig } from '../data/site';
 
 const shareUrl = encodeURIComponent(siteConfig.url + '/');
 const shareText = encodeURIComponent('The Isle Cheats - ESP and hacks for The Isle players');
@@ -7,7 +7,7 @@ const shareText = encodeURIComponent('The Isle Cheats - ESP and hacks for The Is
 
 <section class="home-seo shell" aria-labelledby="home-seo-title">
 	<div class="home-seo__panel card-surface">
-		<h2 id="home-seo-title">The Isle Cheats ESP and hacks overview</h2>
+		<h2 id="home-seo-title">{homeSeo.whyUsHeading}</h2>
 		<p>
 			{productInfo.summary} This page is the main entry point for players comparing The Isle Cheats
 			before purchase. You can review Visuals ESP, World ESP, Cheats, Cloud-DMA options, package

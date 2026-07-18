@@ -1,6 +1,6 @@
 ---
 import { theIsleImages } from '../data/theisle';
-import { productInfo, siteConfig } from '../data/site';
+import { homeSeo, productInfo, siteConfig } from '../data/site';
 
 interface Plan {
 	id: string;
@@ -10,13 +10,11 @@ interface Plan {
 }
 
 interface Props {
-	name?: string;
 	plans?: Plan[];
 	defaultPlan?: string;
 }
 
 const {
-	name = productInfo.name,
 	plans = productInfo.plans.map((plan) => ({ ...plan, stock: 'Available' })),
 	defaultPlan = 'monthly',
 } = Astro.props;
@@ -60,7 +58,7 @@ const active = plans.find((plan) => plan.id === defaultPlan) ?? plans[0];
 	</div>
 
 	<div class="product__details">
-		<h2 class="product__title">{name}</h2>
+		<h2 class="product__title">{homeSeo.featuresHeading}</h2>
 
 		<div class="product__badges">
 			<span class="badge">
