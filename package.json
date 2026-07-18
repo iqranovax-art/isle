@@ -7,9 +7,9 @@
   },
   "scripts": {
     "dev": "astro dev --host --port 3000",
-    "build": "astro build",
-    "preview": "npm run build && wrangler dev",
-    "deploy": "npm run build && wrangler deploy",
+    "build": "astro build && node scripts/postbuild.mjs",
+    "deploy": "node scripts/deploy.mjs",
+    "preview": "astro preview",
     "astro": "astro"
   },
   "dependencies": {
@@ -17,10 +17,10 @@
     "@fontsource-variable/syne": "^5.2.7",
     "@tailwindcss/vite": "^4.3.2",
     "astro": "^7.0.9",
-    "tailwindcss": "^4.3.2"
+    "tailwindcss": "^4.3.2",
+    "wrangler": "^4.112.0"
   },
   "devDependencies": {
-    "sharp": "^0.35.3",
-    "wrangler": "^4.112.0"
+    "sharp": "^0.35.3"
   }
 }

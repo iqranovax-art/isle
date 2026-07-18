@@ -1,5 +1,5 @@
 # Path redirects only.
-# Host-level redirects (http→https, www→apex) are handled by worker/index.js via wrangler.jsonc.
+# Host-level redirects (http→https, www→apex) are handled by public/_worker.js on Cloudflare Pages.
 
 /sitemap-index.xml /sitemap.xml 301
 /sitemap-0.xml /sitemap.xml 301
