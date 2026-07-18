@@ -19,7 +19,7 @@ export const homeSeo = {
 	heroLine2: 'ESP & Hacks for Windows PC',
 	featuresHeading: 'ESP & Hacks Packages',
 	whyUsHeading: 'Why Choose The Isle Cheats',
-	subtitle: 'Compare ESP, hacks, and packages for The Isle on Windows PC.',
+	subtitle: 'Compare packages, ESP, and pricing.',
 	description: siteConfig.metaDescription,
 } as const;
 
