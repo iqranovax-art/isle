@@ -51,7 +51,7 @@ const faqSchema = {
 		<Hero />
 		<section class="site__section" id="features" data-nav-section="features" aria-label="Product packages">
 			<div class="shell">
-				<div class="features-split">
+				<div class="grid grid-cols-1 items-stretch gap-5 lg:grid-cols-2 lg:gap-8">
 					<HomeVideoPlayer />
 					<ProductCard />
 				</div>
@@ -85,18 +85,5 @@ const faqSchema = {
 	.site__section--gallery {
 		padding-top: 0.5rem;
 		padding-bottom: 2rem;
-	}
-
-	.features-split {
-		display: grid;
-		grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-		gap: clamp(1.25rem, 2.5vw, 2rem);
-		align-items: stretch;
-	}
-
-	@media (max-width: 900px) {
-		.features-split {
-			grid-template-columns: 1fr;
-		}
 	}
 </style>
