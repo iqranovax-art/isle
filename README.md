@@ -4,7 +4,11 @@ The Isle Cheats marketing site built with Astro.
 
 Live site: https://islecheats.net
 
-Cloudflare checklist for SEO: enable **Always Use HTTPS**, proxy the `www` DNS record, and deploy the `functions/` middleware with the static build.
+Cloudflare checklist for SEO:
+1. Deploy with `dist/` + `public/_worker.js` (advanced mode handles www/http redirects)
+2. Add **both** `islecheats.net` and `www.islecheats.net` as custom domains on Pages
+3. Enable **SSL/TLS → Always Use HTTPS**
+4. Proxy the `www` DNS record (orange cloud)
 
 ## Commands
 

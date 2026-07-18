@@ -54,10 +54,10 @@ function isIsleDomain(host) {
 	return host === APEX_HOST || host === WWW_HOST || host.endsWith('.islecheats.net');
 }
 
-function redirectToCanonical(url, status = 301) {
+function redirectToCanonical(url) {
 	const target = new URL(url.pathname + url.search, CANONICAL_ORIGIN).toString();
 	return new Response(null, {
-		status,
+		status: 301,
 		headers: {
 			Location: target,
 			...SECURITY_HEADERS,
@@ -65,26 +65,7 @@ function redirectToCanonical(url, status = 301) {
 	});
 }
 
-/**
- * Cloudflare Pages middleware (runs for every request).
- * Canonicalizes http/www traffic to https://islecheats.net.
- */
-export async function onRequest(context) {
-	const request = context.request;
-	const url = new URL(request.url);
-	const host = resolveHost(request, url);
-	const proto = resolveProtocol(request, url);
-
-	if (isIsleDomain(host) && (host !== APEX_HOST || proto !== 'https')) {
-		return redirectToCanonical(url);
-	}
-
-	const pathRedirect = PATH_REDIRECTS[url.pathname];
-	if (pathRedirect) {
-		return Response.redirect(new URL(pathRedirect, CANONICAL_ORIGIN).toString(), 301);
-	}
-
-	const response = await context.next();
+function withSecurityHeaders(response) {
 	const headers = new Headers(response.headers);
 	const contentType = headers.get('Content-Type') || '';
 
@@ -102,3 +83,26 @@ export async function onRequest(context) {
 		headers,
 	});
 }
+
+/**
+ * Cloudflare Pages advanced mode worker.
+ * Canonicalizes http/www traffic and serves static assets from dist/.
+ */
+export default {
+	async fetch(request, env) {
+		const url = new URL(request.url);
+		const host = resolveHost(request, url);
+		const proto = resolveProtocol(request, url);
+
+		if (isIsleDomain(host) && (host !== APEX_HOST || proto !== 'https')) {
+			return redirectToCanonical(url);
+		}
+
+		const pathRedirect = PATH_REDIRECTS[url.pathname];
+		if (pathRedirect) {
+			return Response.redirect(new URL(pathRedirect, CANONICAL_ORIGIN).toString(), 301);
+		}
+
+		return withSecurityHeaders(await env.ASSETS.fetch(request));
+	},
+};

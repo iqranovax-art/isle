@@ -177,8 +177,8 @@ export const footerExplore = [
 	{ label: 'Site overview', href: '/' },
 	{ label: 'Visuals ESP page', href: '/theisle-esp/' },
 	{ label: 'Cheats page', href: '/cheats/' },
-	{ label: 'Full feature breakdown', href: '/features/' },
-	{ label: 'Package pricing plans', href: '/pricing/' },
+	{ label: 'All features and hacks', href: '/features/' },
+	{ label: 'Plans and pricing', href: '/pricing/' },
 	{ label: 'Common questions hub', href: '/faq/' },
 ] as const;
 
