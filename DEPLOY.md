@@ -7,25 +7,25 @@ This site deploys to **Cloudflare Pages** (project: `isle`).
 | Setting | Value |
 | ------- | ----- |
 | **Build command** | `npm run build` |
-| **Deploy command** | `npx wrangler pages deploy ./dist` |
+| **Deploy command** | `npm run deploy` |
 
-Astro outputs static files to `./dist`, so the deploy step must use **Wrangler Pages**, not `npx wrangler deploy` (Workers).
-
-Equivalent npm script:
+Equivalent direct command:
 
 ```text
-npm run deploy
+npx wrangler pages deploy ./dist --project-name=isle --commit-dirty=true
 ```
+
+Do **not** use `npx wrangler deploy` — that targets Workers, not Pages.
 
 ## Manual deploy
 
 ```sh
 npm install
 npm run build
-npx wrangler pages deploy ./dist
+npm run deploy
 ```
 
 ## Redirects
 
 HTTP/www → HTTPS apex redirects are handled by `public/_worker.js`
-(Pages advanced mode).
+(Pages advanced mode) and `public/_redirects`.
