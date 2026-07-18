@@ -78,7 +78,7 @@ export const pageSitemapEntries: PageSitemapEntry[] = [
 			img('/images/cover.webp', 'The Isle Cheats pricing visual', 'Main image for the pricing page'),
 			img('/images/product-3.webp', 'Pricing page gallery image', 'Supporting visual on pricing'),
 			img('/images/product-1.webp', 'Pricing page package visual', 'Supporting visual on pricing'),
-			img('/images/product-5.webp', 'Pricing page package context', 'Additional supporting visual on pricing'),
+			img('/images/product-5.webp', 'The Isle Cheats pricing package context', 'Additional The Isle Cheats pricing page visual'),
 		],
 	},
 	{

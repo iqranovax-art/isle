@@ -10,7 +10,7 @@ export const theIsleImages = {
 		{ src: '/images/product-4.webp', alt: 'The Isle environment preview for World ESP discussion' },
 		{ src: '/images/product-1.webp', alt: 'The Isle gameplay preview for cheat feature context' },
 		{ src: '/images/product-6.webp', alt: 'The Isle dinosaur encounter preview for ESP and Exploits overview' },
-		{ src: '/images/cover.webp', alt: 'The Isle survival scene preview for The Isle Cheats packaging' },
+		{ src: '/images/cover.webp', alt: 'The Isle dinosaur herd scene for The Isle Cheats package preview' },
 	],
 	gallery: [
 		{ src: '/images/hero.webp', alt: 'The Isle Cheats Cloud-DMA, ESP, and Exploits showcase preview', featured: true },
