@@ -1,6 +1,10 @@
-# Path redirects only.
-# Host-level redirects (http→https, www→apex) are handled by public/_worker.js on Cloudflare Pages.
+# Canonical host: HTTPS apex (https://islecheats.net)
+# Host-level 301 redirects (work even when _worker.js is unavailable)
+http://islecheats.net/* https://islecheats.net/:splat 301
+http://www.islecheats.net/* https://islecheats.net/:splat 301
+https://www.islecheats.net/* https://islecheats.net/:splat 301
 
+# Path redirects
 /sitemap-index.xml /sitemap.xml 301
 /sitemap-0.xml /sitemap.xml 301
 /sitemap-images.xml /sitemap.xml 301

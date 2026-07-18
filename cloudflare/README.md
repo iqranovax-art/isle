@@ -22,14 +22,22 @@ Without a `www` DNS record, the www hostname cannot redirect and SEO tools will 
 
 Enable **Always Use HTTPS** under SSL/TLS → Edge Certificates.
 
-### 3. Custom domains (Workers)
+### 3. Custom domains (Pages)
 
-Attach **both** hostnames to the Workers project:
+Attach **both** hostnames to the Pages project:
 
 - `islecheats.net`
 - `www.islecheats.net`
 
-### 4. Bulk Redirects (recommended backup)
+### 4. Redirect layers in this repo
+
+Redirects are configured in three places so SEO tools always see one canonical host:
+
+1. `public/_redirects` — Cloudflare Pages host + path 301 rules
+2. `public/_worker.js` — Pages advanced mode worker (http/www → apex HTTPS)
+3. `cloudflare/bulk-redirects.csv` — optional dashboard Bulk Redirect backup
+
+### 5. Bulk Redirects (recommended backup)
 
 Import `cloudflare/bulk-redirects.csv` under **Bulk Redirects**, then create a Bulk Redirect Rule that uses the list.
 
