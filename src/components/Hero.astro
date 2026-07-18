@@ -244,6 +244,17 @@ const {
 		}
 	}
 
+	@media (prefers-reduced-motion: reduce) {
+		.hero__bg,
+		.hero__splash,
+		.hero__copy,
+		.hero__subtitle,
+		.hero__cta,
+		.hero__accent {
+			animation: none;
+		}
+	}
+
 	@media (max-width: 760px) {
 		.hero {
 			min-height: min(72svh, 560px);
