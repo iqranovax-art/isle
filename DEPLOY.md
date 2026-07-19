@@ -9,13 +9,13 @@ This site deploys to **Cloudflare Pages** (project: `isle`).
 | **Build command** | `npm run build` |
 | **Deploy command** | `npm run deploy` |
 
-Equivalent direct command:
+Direct equivalent:
 
 ```text
 npx wrangler pages deploy ./dist --project-name=isle --commit-dirty=true
 ```
 
-Do **not** use `npx wrangler deploy` — that targets Workers, not Pages.
+**Do not use** `npx wrangler deploy` — that targets Workers and will fail.
 
 ## Manual deploy
 
