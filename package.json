@@ -1,14 +1,14 @@
 {
   "name": "islecheats",
   "type": "module",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "engines": {
     "node": ">=22.12.0"
   },
   "scripts": {
     "dev": "astro dev --host --port 3000",
     "build": "astro build",
-    "deploy": "wrangler pages deploy ./dist --project-name=isle --commit-dirty=true",
+    "deploy": "node scripts/deploy.mjs",
     "preview": "astro preview",
     "astro": "astro"
   },
