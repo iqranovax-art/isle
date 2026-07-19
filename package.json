@@ -1,7 +1,7 @@
 {
   "name": "islecheats",
   "type": "module",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "engines": {
     "node": ">=22.12.0"
   },
@@ -9,6 +9,7 @@
     "dev": "astro dev --host --port 3000",
     "build": "astro build",
     "deploy": "node scripts/deploy.mjs",
+    "postinstall": "node scripts/install-wrangler-shim.mjs",
     "preview": "astro preview",
     "astro": "astro"
   },

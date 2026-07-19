@@ -8,13 +8,9 @@ This site deploys to **Cloudflare Pages** (project: `isle`).
 | ------- | ----- |
 | **Production branch** | `main` |
 | **Build command** | `npm run build` |
-| **Deploy command** | `npm run deploy` |
+| **Deploy command** | `npx wrangler pages deploy ./dist --project-name=isle --commit-dirty=true` |
 
-Direct equivalent:
-
-```text
-npx wrangler pages deploy ./dist --project-name=isle --commit-dirty=true
-```
+You can also use `npm run deploy` — both work after `npm install` because a postinstall shim unsets an invalid `CLOUDFLARE_API_TOKEN` before Wrangler runs.
 
 **Do not use** `npx wrangler deploy` — that targets Workers and will fail.
 
@@ -35,6 +31,8 @@ the build is fine — the API token used in CI lacks **Pages deploy** permission
 2. **Delete** `CLOUDFLARE_API_TOKEN` if you added one manually
 3. Let Workers Builds use the built-in Cloudflare integration token
 4. **Clear build cache** and redeploy
+
+The repo also ships a Wrangler shim (`scripts/wrangler-shim.cjs`) installed via `postinstall` that unsets `CLOUDFLARE_API_TOKEN` before any `npx wrangler` call, so Git-linked credentials can be used even if the variable is still set.
 
 ### Option B: create a token with the right permissions
 
