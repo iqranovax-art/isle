@@ -5,6 +5,7 @@ import tailwindcss from '@tailwindcss/vite';
 // https://astro.build/config
 export default defineConfig({
 	site: 'https://islecheats.net',
+	output: 'static',
 	trailingSlash: 'always',
 	compressHTML: true,
 	server: {

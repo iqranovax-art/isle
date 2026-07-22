@@ -1,6 +1,6 @@
 # Cloudflare Workers deployment
 
-This site deploys as a **Cloudflare Worker** named `isle` with static assets from `./dist`.
+This site is a **static Astro build** deployed as Cloudflare Worker static assets.
 
 ## Workers Builds settings
 
@@ -10,33 +10,31 @@ This site deploys as a **Cloudflare Worker** named `isle` with static assets fro
 | **Root directory** | `/` |
 | **Build command** | `npm run build` |
 | **Deploy command** | `npx wrangler deploy` |
+| **Non-production deploy command** | `npx wrangler versions upload` |
 
-Do **not** use `npx wrangler pages deploy` — that targets the Pages API and needs separate Pages token scopes.
+For preview branches, `npx wrangler deploy` also works if Cloudflare accepts the same command for non-production builds.
 
 ## wrangler.toml
 
 ```toml
-name = "isle"
+name = "hamzaisle"
 compatibility_date = "2026-07-22"
 
 [assets]
 directory = "./dist"
 ```
 
-Do **not** use `pages_build_output_dir` — that is Pages-only.
+Do **not** use:
 
-Do **not** add `account_id` unless Cloudflare support instructs you to for a specific Workers setup.
+- `pages_build_output_dir` (Pages-only)
+- `main = "./dist/_worker.js"` (not needed for a static site)
+- `npx wrangler pages deploy`
 
-## Do not use
+## Static build
 
-- `npx wrangler pages deploy ./dist --project-name=isle` — Pages deploy, not Workers
-- A manual `CLOUDFLARE_API_TOKEN` env var with only Pages scopes — Workers Builds provides a Worker deploy token by default
+Astro is configured with `output: 'static'`. There is no Cloudflare adapter and no `dist/_worker.js` — only HTML, CSS, JS, and images in `dist/`.
 
-## Custom domain
-
-Attach `islecheats.net` and `www.islecheats.net` to the **Worker** `isle`:
-
-**Workers & Pages → isle → Settings → Domains & Routes**
+HTTP/www redirects can use **Bulk Redirects** in the Cloudflare dashboard (`cloudflare/bulk-redirects.csv`).
 
 ## Manual deploy
 

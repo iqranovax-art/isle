@@ -1,6 +1,6 @@
 # Path redirects only.
-# Host-level redirects (http→https, www→apex) are handled by public/_worker.js.
-# In Cloudflare Pages: add apex + www custom domains and enable Always Use HTTPS.
+# Host-level redirects (http→https, www→apex): use Cloudflare Bulk Redirects.
+# See cloudflare/bulk-redirects.csv
 
 /sitemap-index.xml /sitemap.xml 301
 /sitemap-0.xml /sitemap.xml 301
