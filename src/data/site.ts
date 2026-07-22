@@ -45,6 +45,12 @@ export const pageDescriptions = {
 		'The Isle Cheats privacy policy — how islecheats.net handles visitor data, cookies, and order-related information.',
 	'/terms/':
 		'The Isle Cheats terms of use — license terms, acceptable use, and purchase conditions for islecheats.net packages.',
+	'/why-us/':
+		'Why choose The Isle Cheats — compare Cloud-DMA, Visuals ESP, World ESP, Cheats, package lengths, and support before purchase.',
+	'/demo/':
+		'The Isle Cheats demo gallery — visual previews for ESP, World ESP, and Cheats with feature context for Windows PC players.',
+	'/undetected/':
+		'Evaluate The Isle Cheats Cloud-DMA and ESP options — research checklist for ESP visibility, Cheats, delivery, and support.',
 } as const;
 
 export type PagePath = keyof typeof pageDescriptions;
@@ -162,12 +168,12 @@ export const featureCategories = [
 ] as const;
 
 export const mainNav = [
-	{ label: 'Home', href: '/#home', section: 'home' },
-	{ label: 'Why Us', href: '/#why-us', section: 'why-us' },
-	{ label: 'Features', href: '/#features', section: 'features' },
-	{ label: 'Demo', href: '/#demo', section: 'demo' },
-	{ label: 'Undetected', href: '/#undetected', section: 'undetected' },
-	{ label: 'Blog', href: '/#blog', section: 'blog' },
+	{ label: 'Home', href: '/' },
+	{ label: 'Why Us', href: '/why-us/' },
+	{ label: 'Features', href: '/features/' },
+	{ label: 'Demo', href: '/demo/' },
+	{ label: 'Undetected', href: '/undetected/' },
+	{ label: 'FAQ', href: '/faq/' },
 ] as const;
 
 export const footerNav = [
@@ -180,6 +186,9 @@ export const footerNav = [
 
 export const footerExplore = [
 	{ label: 'Site overview', href: '/' },
+	{ label: 'Why us', href: '/why-us/' },
+	{ label: 'Demo gallery', href: '/demo/' },
+	{ label: 'Undetected guide', href: '/undetected/' },
 	{ label: 'Visuals ESP page', href: '/theisle-esp/' },
 	{ label: 'Cheats page', href: '/cheats/' },
 	{ label: 'All features and hacks', href: '/features/' },

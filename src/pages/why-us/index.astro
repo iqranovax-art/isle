@@ -1,0 +1,48 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import { cloudDmaOption, homeSeo, productInfo, siteConfig, getPageDescription } from '../../data/site';
+import { theIsleImages } from '../../data/theisle';
+
+const title = 'Why Choose The Isle Cheats';
+const description = getPageDescription('/why-us/');
+---
+
+<PageLayout
+	title={title}
+	description={description}
+	canonicalPath="/why-us/"
+	heading={homeSeo.whyUsHeading}
+	intro="Compare Cloud-DMA, ESP, Cheats, package lengths, and support before you buy The Isle Cheats for Windows PC."
+	heroImage={theIsleImages.hero}
+	heroAlt="Why choose The Isle Cheats"
+	gallery={theIsleImages.gallery.slice(1, 4)}
+	ctaPrimary={{ href: siteConfig.checkoutUrl, label: 'Get Access' }}
+	ctaSecondary={{ href: '/features/', label: 'View Features' }}
+>
+	<section class="card-panel">
+		<h2>Built for survival awareness</h2>
+		<p>{productInfo.summary}</p>
+		<p>
+			The Isle is a dinosaur survival game where awareness and positioning matter. {cloudDmaOption.label}
+			focuses on ESP, World ESP, Cheats such as Instant Rotation, and utility hacks without Aimbot.
+		</p>
+	</section>
+
+	<section class="card-panel">
+		<h2>What you can review before purchase</h2>
+		<ul>
+			<li><a href="/theisle-esp/">Visuals ESP and World ESP</a> for entity and resource awareness</li>
+			<li><a href="/cheats/">Cheats</a> for movement and combat options</li>
+			<li><a href="/features/">Full feature list</a> including Cloud-DMA and optional Aimbot details</li>
+			<li><a href="/pricing/">Pricing</a> for monthly and lifetime packages</li>
+			<li><a href="/support/">Support</a> for delivery and setup help</li>
+		</ul>
+	</section>
+
+	<section class="card-panel">
+		<h2>Package highlights</h2>
+		<ul>
+			{productInfo.features.general.map((item) => <li>{item}</li>)}
+		</ul>
+	</section>
+</PageLayout>

@@ -1,4 +1,5 @@
 import { siteConfig } from './site';
+import { theIsleImages } from './theisle';
 
 export type SitemapImage = {
 	url: string;
@@ -21,6 +22,27 @@ const img = (path: string, title: string, caption: string): SitemapImage => ({
 	caption,
 });
 
+const galleryImages = theIsleImages.gallery.map((item) =>
+	img(item.src, item.alt, `${item.alt} — The Isle Cheats visual preview on islecheats.net`),
+);
+
+const productImages = theIsleImages.product.map((item) =>
+	img(item.src, item.alt, `${item.alt} — The Isle Cheats product image on islecheats.net`),
+);
+
+const brandImages = [
+	img(
+		'/images/zadeyo-logo.webp',
+		'The Isle Cheats logo',
+		'Official The Isle Cheats brand logo used across islecheats.net',
+	),
+	img(
+		'/images/zadeyo-logo-full.webp',
+		'The Isle Cheats full logo',
+		'Full-width The Isle Cheats logo for branding and social previews',
+	),
+];
+
 /**
  * Canonical page → image map for the public sitemap at /sitemap.xml
  */
@@ -31,12 +53,46 @@ export const pageSitemapEntries: PageSitemapEntry[] = [
 		changefreq: 'daily',
 		images: [
 			img('/images/hero.webp', 'The Isle Cheats hero', 'Homepage banner for The Isle Cheats Cloud-DMA, ESP, and Cheats'),
-			img('/images/product-2.webp', 'The Isle Cheats product preview', 'Primary product visual on The Isle Cheats homepage'),
-			img('/images/product-3.webp', 'The Isle combat preview', 'Gameplay context image on The Isle Cheats homepage'),
-			img('/images/product-4.webp', 'The Isle environment preview', 'Environment visual used in the homepage product gallery'),
-			img('/images/product-1.webp', 'The Isle gameplay preview', 'Additional product gallery image on the homepage'),
-			img('/images/product-6.webp', 'The Isle dinosaur encounter preview', 'Homepage gallery image showing The Isle dinosaur combat'),
+			...productImages,
 			img('/images/cover.webp', 'The Isle Cheats cover', 'Cover visual used across The Isle Cheats pages'),
+			img('/images/product-7.webp', 'The Isle predator chase preview', 'Homepage gallery image for Instant Rotation and Cheats'),
+			...brandImages,
+		],
+	},
+	{
+		path: '/why-us/',
+		priority: 0.88,
+		changefreq: 'weekly',
+		images: [
+			img('/images/hero.webp', 'Why choose The Isle Cheats', 'Hero image for the Why Us page at islecheats.net'),
+			...productImages.slice(1, 4),
+			img('/images/cover.webp', 'The Isle Cheats package cover', 'Cover visual on the Why Us page'),
+		],
+	},
+	{
+		path: '/features/',
+		priority: 0.85,
+		changefreq: 'weekly',
+		images: [
+			img('/images/hero.webp', 'The Isle Cheats features banner', 'Hero image for the features overview page'),
+			...productImages,
+			img('/images/product-7.webp', 'The Isle Cheats feature gallery image', 'Feature page visual for Cheats and ESP context'),
+		],
+	},
+	{
+		path: '/demo/',
+		priority: 0.86,
+		changefreq: 'weekly',
+		images: galleryImages,
+	},
+	{
+		path: '/undetected/',
+		priority: 0.82,
+		changefreq: 'weekly',
+		images: [
+			img('/images/product-6.webp', 'The Isle Cheats evaluation guide visual', 'Hero image for the Undetected evaluation page'),
+			...productImages.slice(0, 3),
+			img('/images/cover.webp', 'The Isle Cheats safety guide cover', 'Cover visual on the Undetected page'),
 		],
 	},
 	{
@@ -47,6 +103,7 @@ export const pageSitemapEntries: PageSitemapEntry[] = [
 			img('/images/product-2.webp', 'The Isle Cheats preview', 'Main visual for The Isle Cheats page'),
 			img('/images/product-3.webp', 'The Isle Cheats combat scene', 'Combat reference image on The Isle Cheats page'),
 			img('/images/product-6.webp', 'The Isle Cheats gallery image', 'Supporting visual for The Isle Cheats'),
+			img('/images/product-7.webp', 'The Isle predator chase preview', 'Cheats page gallery image for movement and combat hacks'),
 		],
 	},
 	{
@@ -57,17 +114,7 @@ export const pageSitemapEntries: PageSitemapEntry[] = [
 			img('/images/product-4.webp', 'The Isle Cheats ESP preview', 'Main visual for The Isle Cheats ESP page'),
 			img('/images/product-2.webp', 'The Isle Cheats ESP player visibility', 'Supporting ESP page visual'),
 			img('/images/product-3.webp', 'The Isle Cheats ESP dinosaur context', 'Gallery image for The Isle Cheats ESP page'),
-		],
-	},
-	{
-		path: '/features/',
-		priority: 0.85,
-		changefreq: 'weekly',
-		images: [
-			img('/images/hero.webp', 'The Isle Cheats features banner', 'Hero image for the features overview page'),
-			img('/images/product-2.webp', 'Features gallery image 1', 'Feature page visual reference'),
-			img('/images/product-3.webp', 'Features gallery image 2', 'Feature page visual reference'),
-			img('/images/product-4.webp', 'Features gallery image 3', 'Feature page visual reference'),
+			img('/images/hero.webp', 'The Isle Cheats ESP banner', 'Hero banner for Visuals ESP and World ESP'),
 		],
 	},
 	{
@@ -82,16 +129,6 @@ export const pageSitemapEntries: PageSitemapEntry[] = [
 		],
 	},
 	{
-		path: '/updates/',
-		priority: 0.7,
-		changefreq: 'weekly',
-		images: [
-			img('/images/product-3.webp', 'The Isle Cheats updates visual', 'Main image for the updates page'),
-			img('/images/hero.webp', 'Updates page gallery image', 'Supporting visual for updates'),
-			img('/images/product-4.webp', 'Updates maintenance visual', 'Supporting visual for updates'),
-		],
-	},
-	{
 		path: '/faq/',
 		priority: 0.75,
 		changefreq: 'monthly',
@@ -99,6 +136,16 @@ export const pageSitemapEntries: PageSitemapEntry[] = [
 			img('/images/product-1.webp', 'The Isle Cheats FAQ visual', 'Main image for the FAQ page'),
 			img('/images/product-4.webp', 'FAQ gallery image', 'Supporting FAQ page visual'),
 			img('/images/product-6.webp', 'FAQ support context image', 'Supporting FAQ page visual'),
+		],
+	},
+	{
+		path: '/updates/',
+		priority: 0.7,
+		changefreq: 'weekly',
+		images: [
+			img('/images/product-3.webp', 'The Isle Cheats updates visual', 'Main image for the updates page'),
+			img('/images/hero.webp', 'Updates page gallery image', 'Supporting visual for updates'),
+			img('/images/product-4.webp', 'Updates maintenance visual', 'Supporting visual for updates'),
 		],
 	},
 	{

@@ -48,17 +48,23 @@ const faqSchema = {
 	<Navbar />
 	<main class="site">
 		<Hero />
-		<section class="site__section" id="features" data-nav-section="features" aria-label="Product packages">
+		<section class="site__section" id="features" aria-label="Product packages">
 			<div class="shell">
 				<ProductCard />
+				<p class="site__more">
+					<a href="/features/">View the full features page</a>
+				</p>
 			</div>
 		</section>
-		<section class="site__section site__section--seo" id="why-us" data-nav-section="why-us">
+		<section class="site__section site__section--seo" id="why-us">
 			<HomeSeo />
 		</section>
-		<section class="site__section site__section--gallery" id="demo" data-nav-section="demo">
+		<section class="site__section site__section--gallery" id="demo">
 			<div class="shell">
 				<Gallery />
+				<p class="site__more">
+					<a href="/demo/">Open the full demo gallery</a>
+				</p>
 			</div>
 		</section>
 		<SiteFooter />
@@ -81,5 +87,20 @@ const faqSchema = {
 	.site__section--gallery {
 		padding-top: 0.5rem;
 		padding-bottom: 2rem;
+	}
+
+	.site__more {
+		margin: 1.25rem 0 0;
+		text-align: center;
+	}
+
+	.site__more a {
+		color: var(--color-orchid);
+		font-size: 0.95rem;
+		font-weight: 700;
+	}
+
+	.site__more a:hover {
+		color: var(--color-ink);
 	}
 </style>
