@@ -1,6 +1,6 @@
 ---
 import PageLayout from '../../layouts/PageLayout.astro';
-import { cloudDmaOption, productInfo, getPageDescription } from '../../data/site';
+import { cloudDmaOption, productInfo, getPageDescription, siteConfig } from '../../data/site';
 import { theIsleImages } from '../../data/theisle';
 
 const title = 'Cheats - Instant Rotation & More | The Isle Cheats';
@@ -16,8 +16,8 @@ const description = getPageDescription('/cheats/');
 	heroImage={theIsleImages.product[0].src}
 	heroAlt="The Isle Cheats preview"
 	gallery={[theIsleImages.product[0], theIsleImages.product[1], theIsleImages.product[4]]}
-	ctaPrimary={{ href: '/pricing/', label: 'Choose a Package' }}
-	ctaSecondary={{ href: '/theisle-esp/', label: 'Explore ESP' }}
+	ctaPrimary={{ href: siteConfig.checkoutUrl, label: 'Choose a Package' }}
+	ctaSecondary={{ href: siteConfig.checkoutUrl, label: 'Get Access' }}
 >
 	<section class="card-panel">
 		<h2>Cheat features</h2>

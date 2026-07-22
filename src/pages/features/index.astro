@@ -1,6 +1,6 @@
 ---
 import PageLayout from '../../layouts/PageLayout.astro';
-import { cloudDmaOption, productInfo, getPageDescription } from '../../data/site';
+import { cloudDmaOption, productInfo, getPageDescription, siteConfig } from '../../data/site';
 import { theIsleImages } from '../../data/theisle';
 
 const title = 'The Isle Cheats Features - Cloud-DMA, ESP & Cheats';
@@ -16,8 +16,8 @@ const description = getPageDescription('/features/');
 	heroImage={theIsleImages.hero}
 	heroAlt="The Isle Cheats features overview visual"
 	gallery={theIsleImages.gallery.slice(1, 4)}
-	ctaPrimary={{ href: '/pricing/', label: 'Compare Pricing' }}
-	ctaSecondary={{ href: '/faq/', label: 'Read FAQ' }}
+	ctaPrimary={{ href: siteConfig.checkoutUrl, label: 'Compare Pricing' }}
+	ctaSecondary={{ href: siteConfig.checkoutUrl, label: 'Get Access' }}
 >
 	<section class="card-panel">
 		<h2>{cloudDmaOption.label} option</h2>

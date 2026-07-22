@@ -1,6 +1,6 @@
 ---
 import PageLayout from '../../layouts/PageLayout.astro';
-import { productInfo, getPageDescription } from '../../data/site';
+import { productInfo, getPageDescription, siteConfig } from '../../data/site';
 import { theIsleImages } from '../../data/theisle';
 
 const title = 'The Isle Cheats ESP - Visuals & World ESP';
@@ -16,8 +16,8 @@ const description = getPageDescription('/theisle-esp/');
 	heroImage={theIsleImages.product[2].src}
 	heroAlt="The Isle Cheats ESP visibility preview"
 	gallery={theIsleImages.product.slice(0, 3)}
-	ctaPrimary={{ href: '/pricing/', label: 'View Pricing' }}
-	ctaSecondary={{ href: '/cheats/', label: 'See Cheats' }}
+	ctaPrimary={{ href: siteConfig.checkoutUrl, label: 'View Pricing' }}
+	ctaSecondary={{ href: siteConfig.checkoutUrl, label: 'Get Access' }}
 >
 	<section class="card-panel">
 		<h2>Visuals ESP (WH)</h2>

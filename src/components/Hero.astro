@@ -31,8 +31,22 @@ const {
 			<p class="hero__tagline">{homeSeo.heroLine2}</p>
 			<p class="hero__subtitle">{subtitle}</p>
 			<div class="hero__cta">
-				<a href="/pricing/" class="hero__btn hero__btn--primary">Compare packages</a>
-				<a href="/features/" class="hero__btn hero__btn--ghost">Explore features</a>
+				<a
+					href={siteConfig.checkoutUrl}
+					class="hero__btn hero__btn--primary"
+					target="_blank"
+					rel="noopener noreferrer"
+				>
+					Compare packages
+				</a>
+				<a
+					href={siteConfig.checkoutUrl}
+					class="hero__btn hero__btn--ghost"
+					target="_blank"
+					rel="noopener noreferrer"
+				>
+					Get Access
+				</a>
 			</div>
 		</div>
 	</div>

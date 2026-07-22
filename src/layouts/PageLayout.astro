@@ -32,6 +32,10 @@ const {
 	ctaPrimary,
 	ctaSecondary,
 } = Astro.props;
+
+function externalLinkAttrs(href: string) {
+	return href.startsWith('http') ? { target: '_blank', rel: 'noopener noreferrer' } : {};
+}
 ---
 
 <Layout title={title} description={description} canonicalPath={canonicalPath} ogImage={heroImage}>
@@ -55,12 +59,12 @@ const {
 					(ctaPrimary || ctaSecondary) && (
 						<div class="banner__actions">
 							{ctaPrimary && (
-								<a class="btn btn--primary" href={ctaPrimary.href}>
+								<a class="btn btn--primary" href={ctaPrimary.href} {...externalLinkAttrs(ctaPrimary.href)}>
 									{ctaPrimary.label}
 								</a>
 							)}
 							{ctaSecondary && (
-								<a class="btn btn--ghost" href={ctaSecondary.href}>
+								<a class="btn btn--ghost" href={ctaSecondary.href} {...externalLinkAttrs(ctaSecondary.href)}>
 									{ctaSecondary.label}
 								</a>
 							)}
@@ -258,11 +262,11 @@ const {
 		border-radius: 1rem;
 		border: 1px solid rgba(168, 85, 247, 0.16);
 		background: #12081f;
-		aspect-ratio: 21 / 9;
-		box-shadow: 0 14px 32px rgba(0, 0, 0, 0.28);
+		aspect-ratio: 16 / 9;
 	}
 
 	.showcase__frame img {
+		display: block;
 		width: 100%;
 		height: 100%;
 		object-fit: cover;
@@ -492,18 +496,15 @@ const {
 		border-radius: 0.85rem;
 		border: 1px solid rgba(168, 85, 247, 0.14);
 		background: #12081f;
-		aspect-ratio: 16 / 10;
+		aspect-ratio: 16 / 9;
 	}
 
 	.gallery-block__item img {
+		display: block;
 		width: 100%;
 		height: 100%;
 		object-fit: cover;
-		transition: transform 0.4s ease;
-	}
-
-	.gallery-block__item:hover img {
-		transform: scale(1.03);
+		object-position: center;
 	}
 
 	.gallery-block__item figcaption {

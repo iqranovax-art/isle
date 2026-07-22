@@ -48,8 +48,8 @@ const faqSchema = {
 	heroImage={theIsleImages.product[3].src}
 	heroAlt="The Isle Cheats FAQ visual"
 	gallery={theIsleImages.product.slice(2, 5)}
-	ctaPrimary={{ href: '/support/', label: 'Open Support' }}
-	ctaSecondary={{ href: '/pricing/', label: 'View Pricing' }}
+	ctaPrimary={{ href: siteConfig.checkoutUrl, label: 'Get Access' }}
+	ctaSecondary={{ href: siteConfig.checkoutUrl, label: 'View Pricing' }}
 >
 	<script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
 
