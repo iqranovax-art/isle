@@ -9,7 +9,7 @@ export default defineConfig({
 	trailingSlash: 'always',
 	compressHTML: true,
 	server: {
-		host: true,
+		host: '0.0.0.0',
 		port: 3000,
 	},
 	build: {
@@ -19,6 +19,8 @@ export default defineConfig({
 	vite: {
 		plugins: [tailwindcss()],
 		server: {
+			host: '0.0.0.0',
+			strictPort: false,
 			allowedHosts: true,
 		},
 		build: {
