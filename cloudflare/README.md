@@ -2,7 +2,7 @@
 
 Seobility and other SEO tools require **one canonical URL**: `https://islecheats.net`.
 
-The site ships with `public/_worker.js` (advanced mode) to 301 redirect:
+The site uses **Cloudflare Bulk Redirects** (see `bulk-redirects.csv`) to 301 redirect:
 
 - `http://islecheats.net` → `https://islecheats.net`
 - `http://www.islecheats.net` → `https://islecheats.net`
