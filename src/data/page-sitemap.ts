@@ -54,7 +54,6 @@ export const pageSitemapEntries: PageSitemapEntry[] = [
 		images: [
 			img('/images/hero.webp', 'The Isle Cheats hero', 'Homepage banner for The Isle Cheats Cloud-DMA, ESP, and Cheats'),
 			...productImages,
-			img('/images/cover.webp', 'The Isle Cheats cover', 'Cover visual used across The Isle Cheats pages'),
 			img('/images/product-7.webp', 'The Isle predator chase preview', 'Homepage gallery image for Instant Rotation and Cheats'),
 			...brandImages,
 		],
