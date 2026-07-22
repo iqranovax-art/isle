@@ -8,6 +8,7 @@
   "scripts": {
     "dev": "astro dev --host --port 3000",
     "build": "astro build",
+    "deploy": "wrangler deploy",
     "preview": "astro preview",
     "astro": "astro"
   },
@@ -19,6 +20,7 @@
     "tailwindcss": "^4.3.2"
   },
   "devDependencies": {
-    "sharp": "^0.35.3"
+    "sharp": "^0.35.3",
+    "wrangler": "^4.112.0"
   }
 }

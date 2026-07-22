@@ -1,45 +1,47 @@
-# Cloudflare Pages deployment
+# Cloudflare Workers deployment
 
-This site uses **Cloudflare Pages Git integration**. Pages publishes `dist/` automatically after a successful build — no separate deploy step.
+This site deploys as a **Cloudflare Worker** named `isle` with static assets from `./dist`.
 
-## Dashboard settings
+## Workers Builds settings
 
 | Setting | Value |
 | ------- | ----- |
 | **Production branch** | `main` |
 | **Root directory** | `/` |
 | **Build command** | `npm run build` |
-| **Build output directory** | `dist` |
-| **Deploy command** | *(leave empty)* |
+| **Deploy command** | `npx wrangler deploy` |
 
-## Do not use
-
-- `npx wrangler pages deploy ./dist --project-name=isle --commit-dirty=true` — not needed for Pages Git deploy and can fail with auth errors
-- `CLOUDFLARE_API_TOKEN` as a build environment variable — not required for normal Pages Git integration
-- `npx wrangler deploy` — targets Workers, not Pages
+Do **not** use `npx wrangler pages deploy` — that targets the Pages API and needs separate Pages token scopes.
 
 ## wrangler.toml
 
 ```toml
 name = "isle"
-compatibility_date = "2024-09-23"
-pages_build_output_dir = "./dist"
+compatibility_date = "2026-07-22"
+
+[assets]
+directory = "./dist"
 ```
 
-Do **not** add `account_id` — Cloudflare Pages does not accept it in this file.
+Do **not** use `pages_build_output_dir` — that is Pages-only.
 
-## If deploy fails
+Do **not** add `account_id` unless Cloudflare support instructs you to for a specific Workers setup.
 
-1. Confirm **Deploy command** is empty
-2. Remove any manual `CLOUDFLARE_API_TOKEN` from **Settings → Environment variables**
-3. **Clear build cache** and redeploy
-4. Confirm **Build output directory** is `dist` (not `./dist/` with a trailing slash issue — either works, but use `dist`)
+## Do not use
 
-## Manual local build
+- `npx wrangler pages deploy ./dist --project-name=isle` — Pages deploy, not Workers
+- A manual `CLOUDFLARE_API_TOKEN` env var with only Pages scopes — Workers Builds provides a Worker deploy token by default
+
+## Custom domain
+
+Attach `islecheats.net` and `www.islecheats.net` to the **Worker** `isle`:
+
+**Workers & Pages → isle → Settings → Domains & Routes**
+
+## Manual deploy
 
 ```sh
 npm install
 npm run build
+npm run deploy
 ```
-
-Output is in `./dist/`.
