@@ -1,0 +1,53 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import { productInfo, siteConfig, getPageDescription } from '../../data/site';
+import { theIsleImages } from '../../data/theisle';
+
+const title = 'The Isle Cheats Safety & Evaluation Guide';
+const description = getPageDescription('/undetected/');
+---
+
+<PageLayout
+	title={title}
+	description={description}
+	canonicalPath="/undetected/"
+	heading="Evaluate Cloud-DMA and ESP for The Isle"
+	intro="How to compare ESP visibility, World ESP, and Cheats before choosing a monthly or lifetime license."
+	heroImage={theIsleImages.product[4].src}
+	heroAlt={theIsleImages.product[4].alt}
+	gallery={[theIsleImages.product[0], theIsleImages.product[1], theIsleImages.product[2]]}
+	ctaPrimary={{ href: siteConfig.checkoutUrl, label: 'Get Access' }}
+	ctaSecondary={{ href: '/faq/', label: 'Read FAQ' }}
+>
+	<section class="card-panel">
+		<h2>Start with your play style</h2>
+		<p>
+			If threat awareness and map reading are your priority, review the
+			<a href="/theisle-esp/">ESP page</a> and confirm which Visuals ESP and World ESP categories match
+			your needs. If movement and combat hacks matter more, review
+			<a href="/cheats/">Cheats</a> for Instant Rotation, Auto-Attack, and Omnimovement.
+		</p>
+	</section>
+
+	<section class="card-panel">
+		<h2>Delivery and platforms</h2>
+		<p>
+			Delivery is digital after payment confirmation. Timing can vary by payment method and order review.
+			Watch the <a href="/updates/">Updates page</a> for maintenance notes tied to The Isle patches.
+		</p>
+		<ul>
+			<li>Platforms: {productInfo.platforms.join(', ')}</li>
+			<li>Market: {siteConfig.market}</li>
+			<li>Support: <a href="/support/">Contact support</a></li>
+		</ul>
+	</section>
+
+	<section class="card-panel">
+		<h2>Research checklist</h2>
+		<p>
+			Each page on this site has a focused job: ESP explains visibility hacks, Cheats explains combat
+			options, Features summarizes the full package, Pricing compares plan lengths, FAQ answers common
+			questions, and Support is the contact path when you need help.
+		</p>
+	</section>
+</PageLayout>

@@ -2,8 +2,19 @@
 import Layout from './Layout.astro';
 import Navbar from '../components/Navbar.astro';
 import SiteFooter from '../components/SiteFooter.astro';
+import SeoImage from '../components/SeoImage.astro';
 import { siteConfig } from '../data/site';
+import { buildPageImageSchema, getImageSeoOrFallback } from '../data/image-seo';
 import { theIsleImages } from '../data/theisle';
+
+interface GalleryImage {
+	src: string;
+	alt: string;
+	title?: string;
+	caption?: string;
+}
+
+type GalleryInput = GalleryImage | string;
 
 interface Props {
 	title: string;
@@ -14,9 +25,17 @@ interface Props {
 	eyebrow?: string;
 	heroImage?: string;
 	heroAlt?: string;
-	gallery?: ReadonlyArray<{ src: string; alt: string }>;
+	gallery?: ReadonlyArray<GalleryInput>;
 	ctaPrimary?: { href: string; label: string };
 	ctaSecondary?: { href: string; label: string };
+}
+
+function resolveGalleryItem(item: GalleryInput): GalleryImage {
+	if (typeof item === 'string') {
+		const meta = getImageSeoOrFallback(item);
+		return { src: meta.src, alt: meta.alt, title: meta.title, caption: meta.caption };
+	}
+	return item;
 }
 
 const {
@@ -33,17 +52,28 @@ const {
 	ctaSecondary,
 } = Astro.props;
 
+const resolvedGallery = gallery.map(resolveGalleryItem);
+const pageUrl = new URL(canonicalPath, siteConfig.url).href;
+const imageSchema = buildPageImageSchema(pageUrl, [heroImage, ...resolvedGallery.map((image) => image.src)]);
+
 function externalLinkAttrs(href: string) {
 	return href.startsWith('http') ? { target: '_blank', rel: 'noopener noreferrer' } : {};
 }
 ---
 
-<Layout title={title} description={description} canonicalPath={canonicalPath} ogImage={heroImage}>
+<Layout
+	title={title}
+	description={description}
+	canonicalPath={canonicalPath}
+	ogImage={heroImage}
+	ogImageAlt={heroAlt}
+	imageSchema={imageSchema}
+>
 	<Navbar />
 	<main class="page">
 		<section class="banner">
 			<div class="banner__media">
-				<img src={heroImage} alt={heroAlt} width="1600" height="900" class="banner__img" decoding="async" />
+				<SeoImage src={heroImage} alt={heroAlt} width={1600} height={900} class="banner__img" bare />
 				<div class="banner__scrim" aria-hidden="true"></div>
 			</div>
 			<div class="shell banner__content">
@@ -76,9 +106,7 @@ function externalLinkAttrs(href: string) {
 
 		<div class="shell page__wrap">
 			<section class="showcase">
-				<figure class="showcase__frame">
-					<img src={heroImage} alt={heroAlt} width="1400" height="788" decoding="async" />
-				</figure>
+				<SeoImage src={heroImage} alt={heroAlt} width={1400} height={788} showCaption />
 			</section>
 
 			<article class="article">
@@ -86,18 +114,25 @@ function externalLinkAttrs(href: string) {
 			</article>
 
 			{
-				gallery.length > 0 && (
+				resolvedGallery.length > 0 && (
 					<section class="gallery-block" aria-labelledby="page-gallery-title">
 						<div class="gallery-block__head">
 							<p class="gallery-block__eyebrow">Gallery</p>
 							<h2 id="page-gallery-title" class="gallery-block__title">Visual reference</h2>
 						</div>
 						<div class="gallery-block__grid">
-							{gallery.map((image) => (
-								<figure class="gallery-block__item">
-									<img src={image.src} alt={image.alt} width="800" height="500" loading="lazy" decoding="async" />
-									<figcaption>{image.alt}</figcaption>
-								</figure>
+							{resolvedGallery.map((image) => (
+								<div class="gallery-block__item">
+									<SeoImage
+										src={image.src}
+										alt={image.alt}
+										width={800}
+										height={500}
+										loading="lazy"
+										showCaption
+										captionClass="gallery-block__caption"
+									/>
+								</div>
 							))}
 						</div>
 					</section>
@@ -256,21 +291,24 @@ function externalLinkAttrs(href: string) {
 		width: min(100%, 960px);
 	}
 
-	.showcase__frame {
-		margin: 0;
+	.showcase :global(.seo-image) {
 		overflow: hidden;
 		border-radius: 1rem;
 		border: 1px solid rgba(168, 85, 247, 0.16);
 		background: #12081f;
-		aspect-ratio: 16 / 9;
 	}
 
-	.showcase__frame img {
+	.showcase :global(.seo-image img) {
 		display: block;
 		width: 100%;
-		height: 100%;
+		aspect-ratio: 16 / 9;
 		object-fit: cover;
 		object-position: center;
+	}
+
+	.showcase :global(.seo-image__caption) {
+		padding: 0.85rem 1rem 1rem;
+		background: rgba(10, 6, 18, 0.92);
 	}
 
 	.article {
@@ -490,31 +528,23 @@ function externalLinkAttrs(href: string) {
 	}
 
 	.gallery-block__item {
-		position: relative;
-		margin: 0;
 		overflow: hidden;
 		border-radius: 0.85rem;
 		border: 1px solid rgba(168, 85, 247, 0.14);
 		background: #12081f;
-		aspect-ratio: 16 / 9;
 	}
 
-	.gallery-block__item img {
+	.gallery-block__item :global(.seo-image img) {
 		display: block;
 		width: 100%;
-		height: 100%;
+		aspect-ratio: 16 / 9;
 		object-fit: cover;
 		object-position: center;
 	}
 
-	.gallery-block__item figcaption {
-		position: absolute;
-		inset: auto 0 0;
-		padding: 1.4rem 0.75rem 0.65rem;
-		background: linear-gradient(transparent, rgba(10, 6, 18, 0.92));
-		color: #d8cfea;
-		font-size: 0.72rem;
-		font-weight: 600;
+	.gallery-block__item :global(.gallery-block__caption) {
+		padding: 0.65rem 0.75rem 0.75rem;
+		background: linear-gradient(transparent, rgba(10, 6, 18, 0.95));
 	}
 
 	@media (max-width: 800px) {

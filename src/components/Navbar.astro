@@ -1,17 +1,26 @@
 ---
+import { getImageSeoOrFallback } from '../data/image-seo';
 import { theIsleImages } from '../data/theisle';
 import { mainNav, siteConfig } from '../data/site';
 
 const currentPath = Astro.url.pathname;
-const currentHash = Astro.url.hash.replace('#', '');
+const logoImage = getImageSeoOrFallback(theIsleImages.logo, siteConfig.name);
+
+function normalizePath(path: string): string {
+	if (!path || path === '/') return '/';
+	return path.endsWith('/') ? path : `${path}/`;
+}
+
+const activePath = normalizePath(currentPath);
 ---
 
 <header class="nav" data-nav>
 	<div class="nav__bar">
-		<a href="/#home" class="nav__brand" aria-label={`${siteConfig.name} home page`}>
+		<a href="/" class="nav__brand" aria-label={`${siteConfig.name} home page`}>
 			<img
 				src={theIsleImages.logo}
-				alt={siteConfig.name}
+				alt={logoImage.alt}
+				title={logoImage.title}
 				width="40"
 				height="40"
 				class="nav__logo"
@@ -23,19 +32,21 @@ const currentHash = Astro.url.hash.replace('#', '');
 		<nav class="nav__center" id="nav-panel" data-nav-panel aria-label="Primary">
 			<ul class="nav__list" role="list">
 				{
-					mainNav.map((link) => (
-						<li>
-							<a
-								href={link.href}
-								class="nav__link"
-								data-nav-link
-								data-section={link.section}
-								aria-current={currentPath === '/' && currentHash === link.section ? 'page' : undefined}
-							>
-								{link.label}
-							</a>
-						</li>
-					))
+					mainNav.map((link) => {
+						const isActive = activePath === normalizePath(link.href);
+						return (
+							<li>
+								<a
+									href={link.href}
+									class:list={['nav__link', { 'is-active': isActive }]}
+									data-nav-link
+									aria-current={isActive ? 'page' : undefined}
+								>
+									{link.label}
+								</a>
+							</li>
+						);
+					})
 				}
 			</ul>
 		</nav>
@@ -69,11 +80,6 @@ const currentHash = Astro.url.hash.replace('#', '');
 	if (nav) {
 		const toggle = nav.querySelector('[data-nav-toggle]');
 		const panel = nav.querySelector('[data-nav-panel]');
-		const links = Array.from(nav.querySelectorAll('[data-nav-link]'));
-		const sections = Array.from(document.querySelectorAll('[data-nav-section]'));
-		const isHome = window.location.pathname === '/' || window.location.pathname === '/index.html';
-		let activeSection = window.location.hash.replace('#', '') || 'home';
-		let clickedSection: string | null = null;
 
 		const setOpen = (open: boolean) => {
 			toggle?.setAttribute('aria-expanded', String(open));
@@ -82,53 +88,12 @@ const currentHash = Astro.url.hash.replace('#', '');
 			document.body.classList.toggle('nav-open', open);
 		};
 
-		const setActive = (sectionId: string) => {
-			activeSection = sectionId;
-			links.forEach((link) => {
-				const isActive = link.getAttribute('data-section') === sectionId;
-				link.classList.toggle('is-active', isActive);
-				link.setAttribute('aria-current', isActive ? 'page' : 'false');
-			});
-		};
-
-		const scrollToSection = (sectionId: string) => {
-			const target = document.getElementById(sectionId);
-			if (target) {
-				target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-				history.replaceState(null, '', `#${sectionId}`);
-			}
-		};
-
-		links.forEach((link) => {
-			link.addEventListener('click', (event) => {
-				const href = link.getAttribute('href') || '';
-				const sectionId = link.getAttribute('data-section') || '';
-				const onHome = window.location.pathname === '/' || window.location.pathname === '/index.html';
-
-				if (href.startsWith('/#') && onHome) {
-					event.preventDefault();
-					clickedSection = sectionId;
-					setActive(sectionId);
-					scrollToSection(sectionId);
-					setOpen(false);
-					window.setTimeout(() => {
-						clickedSection = null;
-					}, 1200);
-					return;
-				}
-
-				setOpen(false);
-			});
+		panel?.querySelectorAll('a').forEach((link) => {
+			link.addEventListener('click', () => setOpen(false));
 		});
 
 		toggle?.addEventListener('click', () => {
 			setOpen(toggle.getAttribute('aria-expanded') !== 'true');
-		});
-
-		panel?.querySelectorAll('a').forEach((link) => {
-			if (!link.hasAttribute('data-nav-link')) {
-				link.addEventListener('click', () => setOpen(false));
-			}
 		});
 
 		document.addEventListener('keydown', (event) => {
@@ -140,55 +105,6 @@ const currentHash = Astro.url.hash.replace('#', '');
 		const onScroll = () => nav.classList.toggle('is-scrolled', window.scrollY > 8);
 		onScroll();
 		window.addEventListener('scroll', onScroll, { passive: true });
-
-		if (isHome && sections.length > 0) {
-			const navOffset = () => {
-				const bar = nav.querySelector('.nav__bar');
-				return (bar?.getBoundingClientRect().height ?? 72) + 24;
-			};
-
-			const updateActiveFromScroll = () => {
-				if (clickedSection) return;
-
-				const scrollPos = window.scrollY + navOffset();
-				let current = sections[0]?.id || 'home';
-
-				sections.forEach((section) => {
-					if (section instanceof HTMLElement && section.offsetTop <= scrollPos + 2) {
-						current = section.id;
-					}
-				});
-
-				setActive(current);
-			};
-
-			let scrollRaf = 0;
-			const onSectionScroll = () => {
-				if (scrollRaf) return;
-				scrollRaf = window.requestAnimationFrame(() => {
-					scrollRaf = 0;
-					updateActiveFromScroll();
-				});
-			};
-
-			window.addEventListener('scroll', onSectionScroll, { passive: true });
-			window.addEventListener('resize', onSectionScroll, { passive: true });
-
-			if (window.location.hash) {
-				const hash = window.location.hash.replace('#', '');
-				if (document.getElementById(hash)) {
-					setActive(hash);
-				}
-			} else {
-				setActive('home');
-			}
-
-			updateActiveFromScroll();
-		} else if (window.location.hash) {
-			setActive(window.location.hash.replace('#', ''));
-		} else {
-			setActive('home');
-		}
 	}
 </script>
 

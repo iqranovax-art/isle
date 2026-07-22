@@ -6,10 +6,19 @@ import ProductCard from '../components/ProductCard.astro';
 import Gallery from '../components/Gallery.astro';
 import HomeSeo from '../components/HomeSeo.astro';
 import SiteFooter from '../components/SiteFooter.astro';
+import { buildPageImageSchema } from '../data/image-seo';
+import { theIsleImages } from '../data/theisle';
 import { homeFaqs, homeSeo, productInfo, siteConfig } from '../data/site';
 
 const title = homeSeo.title;
 const description = homeSeo.description;
+const pageUrl = `${siteConfig.url}/`;
+const homeImageSrcs = [
+	theIsleImages.hero,
+	...theIsleImages.product.map((image) => image.src),
+	...theIsleImages.gallery.map((image) => image.src),
+];
+const imageSchema = buildPageImageSchema(pageUrl, homeImageSrcs);
 
 const productSchema = {
 	'@context': 'https://schema.org',
@@ -42,23 +51,29 @@ const faqSchema = {
 };
 ---
 
-<Layout title={title} description={description} canonicalPath="/" ogImage="/images/hero.webp">
+<Layout title={title} description={description} canonicalPath="/" ogImage="/images/hero.webp" imageSchema={imageSchema}>
 	<script type="application/ld+json" set:html={JSON.stringify(productSchema)} />
 	<script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
 	<Navbar />
 	<main class="site">
 		<Hero />
-		<section class="site__section" id="features" data-nav-section="features" aria-label="Product packages">
+		<section class="site__section" id="features" aria-label="Product packages">
 			<div class="shell">
 				<ProductCard />
+				<p class="site__more">
+					<a href="/features/">View the full features page</a>
+				</p>
 			</div>
 		</section>
-		<section class="site__section site__section--seo" id="why-us" data-nav-section="why-us">
+		<section class="site__section site__section--seo" id="why-us">
 			<HomeSeo />
 		</section>
-		<section class="site__section site__section--gallery" id="demo" data-nav-section="demo">
+		<section class="site__section site__section--gallery" id="demo">
 			<div class="shell">
 				<Gallery />
+				<p class="site__more">
+					<a href="/demo/">Open the full demo gallery</a>
+				</p>
 			</div>
 		</section>
 		<SiteFooter />
@@ -81,5 +96,20 @@ const faqSchema = {
 	.site__section--gallery {
 		padding-top: 0.5rem;
 		padding-bottom: 2rem;
+	}
+
+	.site__more {
+		margin: 1.25rem 0 0;
+		text-align: center;
+	}
+
+	.site__more a {
+		color: var(--color-orchid);
+		font-size: 0.95rem;
+		font-weight: 700;
+	}
+
+	.site__more a:hover {
+		color: var(--color-ink);
 	}
 </style>

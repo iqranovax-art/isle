@@ -1,0 +1,103 @@
+---
+import { getImageSeoOrFallback } from '../data/image-seo';
+
+interface Props {
+	src: string;
+	alt?: string;
+	width: number;
+	height: number;
+	class?: string;
+	loading?: 'lazy' | 'eager';
+	fetchpriority?: 'high' | 'low' | 'auto';
+	decoding?: 'async' | 'sync' | 'auto';
+	showCaption?: boolean;
+	captionClass?: string;
+	bare?: boolean;
+}
+
+const {
+	src,
+	alt,
+	width,
+	height,
+	class: className,
+	loading,
+	fetchpriority,
+	decoding = 'async',
+	showCaption = false,
+	captionClass = '',
+	bare = false,
+} = Astro.props;
+
+const image = getImageSeoOrFallback(src, alt ?? src);
+---
+
+{
+	bare ? (
+		<img
+			src={image.src}
+			alt={image.alt}
+			title={image.title}
+			width={width}
+			height={height}
+			class={className}
+			loading={loading}
+			fetchpriority={fetchpriority}
+			decoding={decoding}
+			itemprop="image"
+		/>
+	) : (
+		<figure class:list={['seo-image', { 'seo-image--captioned': showCaption }]}>
+			<img
+				src={image.src}
+				alt={image.alt}
+				title={image.title}
+				width={width}
+				height={height}
+				class={className}
+				loading={loading}
+				fetchpriority={fetchpriority}
+				decoding={decoding}
+				itemprop="image"
+			/>
+			{
+				showCaption && (
+					<figcaption class:list={['seo-image__caption', captionClass]}>
+						<strong>{image.title}</strong>
+						<span>{image.caption}</span>
+						<small>Keywords: {image.keywords.join(', ')}</small>
+					</figcaption>
+				)
+			}
+		</figure>
+	)
+}
+
+<style>
+	.seo-image {
+		margin: 0;
+	}
+
+	.seo-image--captioned {
+		display: grid;
+		gap: 0.55rem;
+	}
+
+	.seo-image__caption {
+		display: grid;
+		gap: 0.25rem;
+		color: var(--color-muted);
+		font-size: 0.78rem;
+		line-height: 1.5;
+	}
+
+	.seo-image__caption strong {
+		color: var(--color-ink);
+		font-size: 0.82rem;
+	}
+
+	.seo-image__caption small {
+		color: var(--color-faint);
+		font-size: 0.72rem;
+	}
+</style>

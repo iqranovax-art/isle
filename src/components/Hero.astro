@@ -1,4 +1,5 @@
 ---
+import SeoImage from './SeoImage.astro';
 import { theIsleImages } from '../data/theisle';
 import { homeSeo, siteConfig } from '../data/site';
 
@@ -11,16 +12,15 @@ const {
 } = Astro.props;
 ---
 
-<section class="hero" id="home" data-nav-section="home" aria-label="Hero">
+<section class="hero" id="home" aria-label="Hero">
 	<div class="hero__media">
-		<img
+		<SeoImage
 			src={theIsleImages.hero}
-			alt={`${siteConfig.name} ESP and hacks showcase`}
+			width={1400}
+			height={788}
 			class="hero__bg"
-			width="1400"
-			height="788"
 			fetchpriority="high"
-			decoding="async"
+			bare
 		/>
 		<div class="hero__veil" aria-hidden="true"></div>
 	</div>
