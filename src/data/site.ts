@@ -16,10 +16,10 @@ export const siteConfig = {
 export const homeSeo = {
 	title: 'The Isle Cheats — ESP & Hacks for Windows PC',
 	heroLine1: 'The Isle Cheats',
-	heroLine2: 'ESP & Radar',
+	heroLine2: 'VISION GROWTH AND FOOD',
 	featuresHeading: 'ESP & Hacks Packages',
 	whyUsHeading: 'Why Choose The Isle Cheats',
-	subtitle: '[Visuals, ESP, Radar]',
+	subtitle: '[Vision, Growth, Food]',
 	description: siteConfig.metaDescription,
 } as const;
 
