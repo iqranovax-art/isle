@@ -1,24 +1,50 @@
 import { siteConfig } from './site';
+import { getImageSeo, siteImageCatalog } from './image-seo';
+
+const byId = (id: string) => {
+	const image = siteImageCatalog.find((item) => item.id === id);
+	if (!image) throw new Error(`Missing image SEO entry: ${id}`);
+	return image;
+};
 
 export const theIsleImages = {
-	hero: '/images/hero.webp',
-	cover: '/images/cover.webp',
+	hero: byId('hero').src,
+	cover: byId('cover').src,
 	logo: siteConfig.logo,
 	product: [
-		{ src: '/images/product-2.webp', alt: 'The Isle Cheats product preview for Cloud-DMA, ESP, and Cheats' },
-		{ src: '/images/product-3.webp', alt: 'The Isle combat scene used to illustrate Cheat options' },
-		{ src: '/images/product-4.webp', alt: 'The Isle environment preview for World ESP discussion' },
-		{ src: '/images/product-1.webp', alt: 'The Isle gameplay preview for cheat feature context' },
-		{ src: '/images/product-6.webp', alt: 'The Isle dinosaur encounter preview for ESP and Cheats overview' },
-		{ src: '/images/cover.webp', alt: 'The Isle dinosaur herd scene for The Isle Cheats package preview' },
-	],
+		byId('product-2'),
+		byId('product-3'),
+		byId('product-4'),
+		byId('product-1'),
+		byId('product-6'),
+		byId('cover'),
+	].map((image) => ({ src: image.src, alt: image.alt, title: image.title, caption: image.caption, keywords: image.keywords })),
 	gallery: [
-		{ src: '/images/hero.webp', alt: 'The Isle Cheats Cloud-DMA, ESP, and Cheats showcase preview', featured: true },
-		{ src: '/images/product-2.webp', alt: 'The Isle dinosaur preview for Visuals ESP threat awareness' },
-		{ src: '/images/product-3.webp', alt: 'The Isle combat preview for Cheat targeting context' },
-		{ src: '/images/product-4.webp', alt: 'The Isle landscape preview for World ESP overlay context' },
-		{ src: '/images/product-1.webp', alt: 'The Isle gameplay preview for cheat feature review' },
-		{ src: '/images/product-6.webp', alt: 'The Isle herd encounter preview for ESP distance readouts' },
-		{ src: '/images/product-7.webp', alt: 'The Isle predator chase preview for Instant Rotation and Cheats' },
-	],
+		{ ...byId('hero'), featured: true as const },
+		byId('product-2'),
+		byId('product-3'),
+		byId('product-4'),
+		byId('product-1'),
+		byId('product-6'),
+		byId('product-7'),
+	].map((image) => ({
+		src: image.src,
+		alt: image.alt,
+		title: image.title,
+		caption: image.caption,
+		keywords: image.keywords,
+		...('featured' in image ? { featured: image.featured } : {}),
+	})),
+	all: siteImageCatalog.filter((image) => image.src.startsWith('/images/product-') || image.id === 'hero' || image.id === 'cover'),
 } as const;
+
+export function imageMeta(src: string) {
+	const image = getImageSeo(src);
+	if (!image) return null;
+	return {
+		alt: image.alt,
+		title: image.title,
+		caption: image.caption,
+		keywords: image.keywords,
+	};
+}

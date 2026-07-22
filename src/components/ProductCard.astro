@@ -30,6 +30,7 @@ const active = plans.find((plan) => plan.id === defaultPlan) ?? plans[0];
 			<img
 				src={main.src}
 				alt={main.alt}
+				title={main.title}
 				width="1280"
 				height="720"
 				class="product__image"
@@ -49,8 +50,17 @@ const active = plans.find((plan) => plan.id === defaultPlan) ?? plans[0];
 						data-thumb
 						data-src={image.src}
 						data-alt={image.alt}
+						data-title={image.title}
 					>
-						<img src={image.src} alt={image.alt} width="320" height="200" loading="lazy" decoding="async" />
+						<img
+							src={image.src}
+							alt={image.alt}
+							title={image.title}
+							width="320"
+							height="200"
+							loading="lazy"
+							decoding="async"
+						/>
 					</button>
 				))
 			}
@@ -173,11 +183,13 @@ const active = plans.find((plan) => plan.id === defaultPlan) ?? plans[0];
 			thumb.addEventListener('click', () => {
 				const src = thumb.getAttribute('data-src');
 				const alt = thumb.getAttribute('data-alt');
+				const title = thumb.getAttribute('data-title');
 				if (mainImage && src) {
 					mainImage.style.opacity = '0';
 					window.setTimeout(() => {
 						mainImage.src = src;
 						if (alt) mainImage.alt = alt;
+						if (title) mainImage.title = title;
 						mainImage.style.opacity = '1';
 					}, 140);
 				}

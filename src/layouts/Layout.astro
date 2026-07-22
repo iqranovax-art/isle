@@ -1,14 +1,17 @@
 ---
 import '../styles/global.css';
 import { siteConfig } from '../data/site';
+import { getImageSeoOrFallback } from '../data/image-seo';
 
 interface Props {
 	title: string;
 	description: string;
 	canonicalPath?: string;
 	ogImage?: string;
+	ogImageAlt?: string;
 	noindex?: boolean;
 	type?: 'website' | 'article';
+	imageSchema?: Record<string, unknown> | null;
 }
 
 const {
@@ -16,15 +19,19 @@ const {
 	description,
 	canonicalPath = Astro.url.pathname,
 	ogImage = siteConfig.defaultOgImage,
+	ogImageAlt,
 	noindex = false,
 	type = 'website',
+	imageSchema = null,
 } = Astro.props;
 
 const path = canonicalPath.endsWith('/') || canonicalPath.includes('.') ? canonicalPath : `${canonicalPath}/`;
 const canonicalURL = new URL(path === '//' ? '/' : path, siteConfig.url).href;
 const ogImageURL = new URL(ogImage, siteConfig.url).href;
+const ogImageMeta = getImageSeoOrFallback(ogImage, title);
 const logoURL = new URL(siteConfig.logo, siteConfig.url).href;
 const robots = noindex ? 'noindex, nofollow' : 'index, follow, max-image-preview:large';
+const resolvedOgImageAlt = ogImageAlt ?? ogImageMeta.title;
 ---
 
 <!doctype html>
@@ -54,14 +61,16 @@ const robots = noindex ? 'noindex, nofollow' : 'index, follow, max-image-preview
 		<meta property="og:description" content={description} />
 		<meta property="og:url" content={canonicalURL} />
 		<meta property="og:image" content={ogImageURL} />
-		<meta property="og:image:alt" content={title} />
+		<meta property="og:image:alt" content={resolvedOgImageAlt} />
 		<meta property="og:locale" content="en_US" />
 
 		<meta name="twitter:card" content="summary_large_image" />
 		<meta name="twitter:title" content={title} />
 		<meta name="twitter:description" content={description} />
 		<meta name="twitter:image" content={ogImageURL} />
-		<meta name="twitter:image:alt" content={title} />
+		<meta name="twitter:image:alt" content={resolvedOgImageAlt} />
+
+		{imageSchema && <script type="application/ld+json" set:html={JSON.stringify(imageSchema)} />}
 
 		{!noindex && (
 			<script

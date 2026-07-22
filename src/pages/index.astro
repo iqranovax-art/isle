@@ -6,10 +6,19 @@ import ProductCard from '../components/ProductCard.astro';
 import Gallery from '../components/Gallery.astro';
 import HomeSeo from '../components/HomeSeo.astro';
 import SiteFooter from '../components/SiteFooter.astro';
+import { buildPageImageSchema } from '../data/image-seo';
+import { theIsleImages } from '../data/theisle';
 import { homeFaqs, homeSeo, productInfo, siteConfig } from '../data/site';
 
 const title = homeSeo.title;
 const description = homeSeo.description;
+const pageUrl = `${siteConfig.url}/`;
+const homeImageSrcs = [
+	theIsleImages.hero,
+	...theIsleImages.product.map((image) => image.src),
+	...theIsleImages.gallery.map((image) => image.src),
+];
+const imageSchema = buildPageImageSchema(pageUrl, homeImageSrcs);
 
 const productSchema = {
 	'@context': 'https://schema.org',
@@ -42,7 +51,7 @@ const faqSchema = {
 };
 ---
 
-<Layout title={title} description={description} canonicalPath="/" ogImage="/images/hero.webp">
+<Layout title={title} description={description} canonicalPath="/" ogImage="/images/hero.webp" imageSchema={imageSchema}>
 	<script type="application/ld+json" set:html={JSON.stringify(productSchema)} />
 	<script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
 	<Navbar />

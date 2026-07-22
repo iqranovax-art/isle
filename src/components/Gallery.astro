@@ -1,11 +1,18 @@
 ---
 import { theIsleImages } from '../data/theisle';
 import { siteConfig } from '../data/site';
+import SeoImage from './SeoImage.astro';
+
+interface Props {
+	detailed?: boolean;
+}
+
+const { detailed = false } = Astro.props;
 
 const featured =
 	theIsleImages.gallery.find((image) => 'featured' in image && image.featured) ??
 	theIsleImages.gallery[0];
-const tiles = theIsleImages.gallery.filter((image) => image.src !== featured.src).slice(0, 4);
+const tiles = detailed ? theIsleImages.gallery.filter((image) => image.src !== featured.src) : theIsleImages.gallery.filter((image) => image.src !== featured.src).slice(0, 4);
 
 const cheatHighlights = [
 	{
@@ -28,50 +35,64 @@ const cheatHighlights = [
 		<p class="gallery__eyebrow">{siteConfig.name}</p>
 		<h2 id="gallery-title" class="gallery__title">Game Context Gallery</h2>
 		<p class="gallery__sub">
-			Short visual previews paired with feature context so the section explains the cheat set instead of only
-			showing oversized screenshots.
+			{
+				detailed
+					? 'Full visual index for The Isle Cheats ESP, World ESP, and Cheats — each image includes descriptive captions and search keywords for Google image indexing.'
+					: 'Short visual previews paired with feature context so the section explains the cheat set instead of only showing oversized screenshots.'
+			}
 		</p>
 	</header>
 
 	<div class="gallery__layout">
 		<div class="gallery__content">
-			<div class="gallery__summary">
-				<p class="gallery__lead">
-					{siteConfig.name} combines Cloud-DMA ESP, World ESP, and Cheats into one configurable package.
-				</p>
+			{
+				!detailed && (
+					<div class="gallery__summary">
+						<p class="gallery__lead">
+							{siteConfig.name} combines Cloud-DMA ESP, World ESP, and Cheats into one configurable package.
+						</p>
 
-				<div class="gallery__highlights">
-					{
-						cheatHighlights.map((item) => (
-							<article class="gallery__info-card">
-								<h3>{item.title}</h3>
-								<p>{item.copy}</p>
-							</article>
-						))
-					}
-				</div>
-			</div>
+						<div class="gallery__highlights">
+							{
+								cheatHighlights.map((item) => (
+									<article class="gallery__info-card">
+										<h3>{item.title}</h3>
+										<p>{item.copy}</p>
+									</article>
+								))
+							}
+						</div>
+					</div>
+				)
+			}
 
 			<div class="gallery__media">
-				<figure class="gallery__featured media-frame">
-					<img
+				<div class:list={['gallery__featured', 'media-frame', { 'gallery__featured--detailed': detailed }]}>
+					<SeoImage
 						src={featured.src}
 						alt={featured.alt}
-						width="1400"
-						height="788"
+						width={1400}
+						height={788}
 						loading="lazy"
-						decoding="async"
+						showCaption={detailed}
+						captionClass="gallery__caption"
 					/>
-					<figcaption>{featured.alt}</figcaption>
-				</figure>
+				</div>
 
-				<div class="gallery__grid">
+				<div class:list={['gallery__grid', { 'gallery__grid--detailed': detailed }]}>
 					{
 						tiles.map((image) => (
-							<figure class="gallery__item media-frame">
-								<img src={image.src} alt={image.alt} width="1280" height="720" loading="lazy" decoding="async" />
-								<figcaption>{image.alt}</figcaption>
-							</figure>
+							<div class="gallery__item media-frame">
+								<SeoImage
+									src={image.src}
+									alt={image.alt}
+									width={1280}
+									height={720}
+									loading="lazy"
+									showCaption={detailed}
+									captionClass="gallery__caption"
+								/>
+							</div>
 						))
 					}
 				</div>
@@ -128,6 +149,10 @@ const cheatHighlights = [
 		padding: 1rem;
 	}
 
+	.gallery__content:has(.gallery__grid--detailed) {
+		grid-template-columns: 1fr;
+	}
+
 	.gallery__summary {
 		display: grid;
 		gap: 1rem;
@@ -177,13 +202,16 @@ const cheatHighlights = [
 
 	.gallery__featured,
 	.gallery__item {
-		margin: 0;
+		overflow: hidden;
 	}
 
 	.gallery__featured {
 		aspect-ratio: 16 / 9;
-		overflow: hidden;
 		border: 1px solid rgba(192, 132, 252, 0.2);
+	}
+
+	.gallery__featured--detailed {
+		aspect-ratio: auto;
 	}
 
 	.gallery__grid {
@@ -192,13 +220,21 @@ const cheatHighlights = [
 		gap: 0.75rem;
 	}
 
+	.gallery__grid--detailed {
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+	}
+
 	.gallery__item {
 		aspect-ratio: 16 / 9;
 		overflow: hidden;
 	}
 
-	.gallery__featured img,
-	.gallery__item img {
+	.gallery__grid--detailed .gallery__item {
+		aspect-ratio: auto;
+	}
+
+	.gallery__featured :global(.seo-image img),
+	.gallery__item :global(.seo-image img) {
 		display: block;
 		width: 100%;
 		height: 100%;
@@ -206,27 +242,15 @@ const cheatHighlights = [
 		object-position: center;
 	}
 
-	.gallery__featured figcaption,
-	.gallery__item figcaption {
-		position: absolute;
-		inset: auto 0 0;
-		z-index: 2;
-		padding: 1.6rem 0.95rem 0.8rem;
-		background: linear-gradient(transparent, rgba(10, 6, 18, 0.92));
-		color: #ddd4ec;
-		font-size: 0.75rem;
-		font-weight: 600;
-		opacity: 0;
-		transform: translateY(6px);
-		transition:
-			opacity 0.25s ease,
-			transform 0.25s ease;
+	.gallery__featured--detailed :global(.seo-image img),
+	.gallery__grid--detailed .gallery__item :global(.seo-image img) {
+		aspect-ratio: 16 / 9;
+		height: auto;
 	}
 
-	.gallery__featured:hover figcaption,
-	.gallery__item:hover figcaption {
-		opacity: 1;
-		transform: translateY(0);
+	.gallery :global(.gallery__caption) {
+		padding: 0.7rem 0.85rem 0.8rem;
+		background: rgba(10, 6, 18, 0.94);
 	}
 
 	@media (max-width: 900px) {
@@ -237,6 +261,10 @@ const cheatHighlights = [
 		.gallery__grid {
 			grid-template-columns: repeat(2, minmax(0, 1fr));
 		}
+
+		.gallery__grid--detailed {
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+		}
 	}
 
 	@media (max-width: 560px) {
@@ -244,7 +272,8 @@ const cheatHighlights = [
 			padding: 0.8rem;
 		}
 
-		.gallery__grid {
+		.gallery__grid,
+		.gallery__grid--detailed {
 			grid-template-columns: 1fr;
 			gap: 0.65rem;
 		}

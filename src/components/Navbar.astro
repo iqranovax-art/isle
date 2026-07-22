@@ -1,8 +1,10 @@
 ---
+import { getImageSeoOrFallback } from '../data/image-seo';
 import { theIsleImages } from '../data/theisle';
 import { mainNav, siteConfig } from '../data/site';
 
 const currentPath = Astro.url.pathname;
+const logoImage = getImageSeoOrFallback(theIsleImages.logo, siteConfig.name);
 
 function normalizePath(path: string): string {
 	if (!path || path === '/') return '/';
@@ -17,7 +19,8 @@ const activePath = normalizePath(currentPath);
 		<a href="/" class="nav__brand" aria-label={`${siteConfig.name} home page`}>
 			<img
 				src={theIsleImages.logo}
-				alt={siteConfig.name}
+				alt={logoImage.alt}
+				title={logoImage.title}
 				width="40"
 				height="40"
 				class="nav__logo"

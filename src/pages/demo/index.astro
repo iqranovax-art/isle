@@ -16,12 +16,12 @@ const description = getPageDescription('/demo/');
 	intro="Visual previews for The Isle Cheats ESP, World ESP, and Cheats — each image paired with feature context."
 	heroImage={theIsleImages.gallery[0].src}
 	heroAlt={theIsleImages.gallery[0].alt}
-	gallery={theIsleImages.gallery.slice(1, 5)}
+	gallery={theIsleImages.gallery.slice(1)}
 	ctaPrimary={{ href: siteConfig.checkoutUrl, label: 'Get Access' }}
 	ctaSecondary={{ href: '/features/', label: 'Explore Features' }}
 >
 	<section class="card-panel card-panel--flush">
-		<Gallery />
+		<Gallery detailed />
 	</section>
 </PageLayout>
 
