@@ -209,29 +209,24 @@ const currentHash = Astro.url.hash.replace('#', '');
 		gap: 1rem;
 		width: min(100%, var(--page-max));
 		margin: 0 auto;
-		padding: 0.6rem 1rem;
-		border-radius: 1rem;
-		border: 1px solid rgba(129, 140, 248, 0.18);
-		background: rgba(10, 8, 20, 0.68);
-		backdrop-filter: blur(18px) saturate(1.35);
-		-webkit-backdrop-filter: blur(18px) saturate(1.35);
-		box-shadow:
-			0 8px 32px rgba(0, 0, 0, 0.28),
-			inset 0 1px 0 rgba(255, 255, 255, 0.04);
+		padding: 0.55rem 0.9rem;
+		border-radius: 0.85rem;
+		border: 1px solid rgba(168, 85, 247, 0.14);
+		background: rgba(10, 8, 20, 0.82);
+		backdrop-filter: blur(14px);
+		-webkit-backdrop-filter: blur(14px);
+		box-shadow: 0 4px 18px rgba(0, 0, 0, 0.22);
 		pointer-events: auto;
 		transition:
-			background 0.3s ease,
-			border-color 0.3s ease,
-			box-shadow 0.3s ease;
+			background 0.2s ease,
+			border-color 0.2s ease,
+			box-shadow 0.2s ease;
 	}
 
 	.nav.is-scrolled .nav__bar {
-		background: rgba(8, 6, 16, 0.92);
-		border-color: rgba(147, 51, 234, 0.28);
-		box-shadow:
-			0 12px 36px rgba(0, 0, 0, 0.38),
-			0 0 0 1px rgba(99, 102, 241, 0.08),
-			inset 0 1px 0 rgba(255, 255, 255, 0.05);
+		background: rgba(8, 6, 16, 0.94);
+		border-color: rgba(168, 85, 247, 0.2);
+		box-shadow: 0 6px 22px rgba(0, 0, 0, 0.28);
 	}
 
 	.nav__brand {
@@ -286,18 +281,16 @@ const currentHash = Astro.url.hash.replace('#', '');
 		display: inline-flex;
 		align-items: center;
 		justify-content: center;
-		padding: 0.5rem 0.8rem;
-		border-radius: 0.65rem;
+		padding: 0.48rem 0.75rem;
+		border-radius: 0.55rem;
 		color: var(--color-muted);
 		font-size: 0.84rem;
 		font-weight: 600;
-		letter-spacing: 0.02em;
+		letter-spacing: 0.01em;
 		white-space: nowrap;
 		transition:
-			color 0.3s ease,
-			background 0.3s ease,
-			box-shadow 0.3s ease,
-			text-shadow 0.3s ease;
+			color 0.2s ease,
+			background 0.2s ease;
 	}
 
 	.nav__link::after {
@@ -305,36 +298,26 @@ const currentHash = Astro.url.hash.replace('#', '');
 		position: absolute;
 		left: 0.75rem;
 		right: 0.75rem;
-		bottom: 0.28rem;
+		bottom: 0.3rem;
 		height: 2px;
 		border-radius: 999px;
-		background: linear-gradient(90deg, #3b82f6 0%, #8b5cf6 50%, #c084fc 100%);
-		box-shadow: 0 0 10px rgba(139, 92, 246, 0.65);
+		background: var(--color-violet);
 		transform: scaleX(0);
 		transform-origin: center;
 		opacity: 0;
 		transition:
-			transform 0.32s cubic-bezier(0.22, 1, 0.36, 1),
-			opacity 0.3s ease;
+			transform 0.2s ease,
+			opacity 0.2s ease;
 	}
 
 	.nav__link:hover {
-		color: #ede9fe;
-		background: rgba(99, 102, 241, 0.08);
-		box-shadow: 0 0 18px rgba(99, 102, 241, 0.16);
-		text-shadow: 0 0 12px rgba(129, 140, 248, 0.35);
+		color: var(--color-ink);
+		background: rgba(168, 85, 247, 0.08);
 	}
 
 	.nav__link.is-active {
-		color: #f5f3ff;
-		background: rgba(76, 29, 149, 0.22);
-		box-shadow:
-			0 0 22px rgba(59, 130, 246, 0.28),
-			0 0 34px rgba(168, 85, 247, 0.22),
-			inset 0 0 18px rgba(99, 102, 241, 0.12);
-		text-shadow:
-			0 0 10px rgba(96, 165, 250, 0.75),
-			0 0 22px rgba(168, 85, 247, 0.55);
+		color: var(--color-ink);
+		background: rgba(124, 58, 237, 0.14);
 	}
 
 	.nav__link.is-active::after {
@@ -362,57 +345,48 @@ const currentHash = Astro.url.hash.replace('#', '');
 		display: inline-flex;
 		align-items: center;
 		justify-content: center;
-		min-width: 4.75rem;
-		height: 2.35rem;
-		padding: 0 1.15rem;
-		border-radius: 999px;
-		border: 1px solid rgba(191, 219, 254, 0.35);
-		background: linear-gradient(135deg, #2563eb 0%, #7c3aed 48%, #c026d3 100%);
-		color: #ffffff;
-		font-size: 0.86rem;
-		font-weight: 800;
-		letter-spacing: 0.08em;
+		min-width: 4.5rem;
+		height: 2.25rem;
+		padding: 0 1rem;
+		border-radius: 0.55rem;
+		border: 1px solid rgba(168, 85, 247, 0.28);
+		background: rgba(26, 22, 38, 0.95);
+		color: var(--color-ink);
+		font-size: 0.82rem;
+		font-weight: 700;
+		letter-spacing: 0.06em;
 		text-transform: lowercase;
-		box-shadow:
-			0 0 24px rgba(59, 130, 246, 0.45),
-			0 0 36px rgba(124, 58, 237, 0.35),
-			0 8px 20px rgba(76, 29, 149, 0.28);
 		transition:
-			transform 0.3s ease,
-			box-shadow 0.3s ease,
-			filter 0.3s ease;
-		animation: nav-buy-glow 2.8s ease-in-out infinite;
+			background 0.2s ease,
+			border-color 0.2s ease,
+			color 0.2s ease;
 	}
 
 	.nav__buy:hover {
-		transform: translateY(-1px) scale(1.03);
-		filter: brightness(1.06);
-		box-shadow:
-			0 0 30px rgba(59, 130, 246, 0.62),
-			0 0 44px rgba(168, 85, 247, 0.48),
-			0 10px 24px rgba(76, 29, 149, 0.34);
+		background: rgba(34, 28, 48, 1);
+		border-color: rgba(168, 85, 247, 0.45);
 		color: #ffffff;
 	}
 
 	.nav__toggle {
 		display: none;
 		place-items: center;
-		width: 2.35rem;
-		height: 2.35rem;
+		width: 2.25rem;
+		height: 2.25rem;
 		flex-shrink: 0;
-		border: 1px solid rgba(129, 140, 248, 0.2);
-		border-radius: 0.75rem;
-		background: rgba(99, 102, 241, 0.12);
+		border: 1px solid rgba(168, 85, 247, 0.18);
+		border-radius: 0.55rem;
+		background: rgba(26, 22, 38, 0.9);
 		color: var(--color-ink);
 		cursor: pointer;
 		transition:
-			background 0.3s ease,
-			border-color 0.3s ease;
+			background 0.2s ease,
+			border-color 0.2s ease;
 	}
 
 	.nav__toggle:hover {
-		background: rgba(99, 102, 241, 0.2);
-		border-color: rgba(167, 139, 250, 0.35);
+		background: rgba(34, 28, 48, 1);
+		border-color: rgba(168, 85, 247, 0.32);
 	}
 
 	.nav__toggle-icon,
@@ -461,27 +435,7 @@ const currentHash = Astro.url.hash.replace('#', '');
 		transform: rotate(-45deg);
 	}
 
-	@keyframes nav-buy-glow {
-		0%,
-		100% {
-			box-shadow:
-				0 0 20px rgba(59, 130, 246, 0.38),
-				0 0 30px rgba(124, 58, 237, 0.28),
-				0 8px 20px rgba(76, 29, 149, 0.24);
-		}
-		50% {
-			box-shadow:
-				0 0 28px rgba(59, 130, 246, 0.58),
-				0 0 42px rgba(168, 85, 247, 0.42),
-				0 10px 24px rgba(76, 29, 149, 0.32);
-		}
-	}
-
 	@media (prefers-reduced-motion: reduce) {
-		.nav__buy {
-			animation: none;
-		}
-
 		.nav__link,
 		.nav__buy,
 		.nav__toggle,

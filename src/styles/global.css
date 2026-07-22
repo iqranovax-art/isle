@@ -66,10 +66,7 @@
 		min-height: 100dvh;
 		font-family: var(--font-sans);
 		color: var(--color-ink);
-		background:
-			radial-gradient(ellipse 80% 50% at 80% -10%, rgba(124, 58, 237, 0.22), transparent 55%),
-			radial-gradient(ellipse 50% 40% at 10% 20%, rgba(217, 70, 239, 0.08), transparent 50%),
-			var(--color-midnight);
+		background: var(--color-midnight);
 		-webkit-font-smoothing: antialiased;
 		-moz-osx-font-smoothing: grayscale;
 		scrollbar-width: none;
@@ -121,14 +118,11 @@
 
 @layer utilities {
 	.text-gradient {
-		background: var(--gradient-brand-x);
-		-webkit-background-clip: text;
-		background-clip: text;
-		color: transparent;
+		color: var(--color-orchid);
 	}
 
 	.bg-brand {
-		background: var(--gradient-brand);
+		background: rgba(124, 58, 237, 0.92);
 	}
 
 	.surface-card {
